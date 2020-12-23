@@ -1,10 +1,10 @@
 /*
 =====================================================================
-Автор: Писанка Юрій Валентинович
-Псевдонім: botemm
-Опис: Класс призначений для створення інтерфейсу OpenGL старий стандарт C++
-Зауваження: Вироблено християнином
-Оновлено 23,6,2018
+РђРІС‚РѕСЂ: РџРёСЃР°РЅРєР° Р®СЂС–Р№ Р’Р°Р»РµРЅС‚РёРЅРѕРІРёС‡
+РџСЃРµРІРґРѕРЅС–Рј: botemm
+РћРїРёСЃ: РљР»Р°СЃСЃ РїСЂРёР·РЅР°С‡РµРЅРёР№ РґР»СЏ СЃС‚РІРѕСЂРµРЅРЅСЏ С–РЅС‚РµСЂС„РµР№СЃСѓ OpenGL СЃС‚Р°СЂРёР№ СЃС‚Р°РЅРґР°СЂС‚ C++
+Р—Р°СѓРІР°Р¶РµРЅРЅСЏ: Р’РёСЂРѕР±Р»РµРЅРѕ С…СЂРёСЃС‚РёСЏРЅРёРЅРѕРј
+РћРЅРѕРІР»РµРЅРѕ 23,6,2018
 */
 
 
@@ -14,12 +14,12 @@
 
 #pragma once
 
-#include <string>       //Рядки
-#include <vector>       //Вектор
-#include <fstream>      //Робота з файлами
-#include<GL\gl.h>      //Графіка
-#include <GL\glu.h>     //Графіка
-#include <GL\GLAUX.H>//Графіка
+#include <string>       //Р СЏРґРєРё
+#include <vector>       //Р’РµРєС‚РѕСЂ
+#include <fstream>      //Р РѕР±РѕС‚Р° Р· С„Р°Р№Р»Р°РјРё
+#include<GL\gl.h>      //Р“СЂР°С„С–РєР°
+#include <GL\glu.h>     //Р“СЂР°С„С–РєР°
+#include <GL\GLAUX.H>//Р“СЂР°С„С–РєР°
 #include<stdio.h>
 
 #pragma comment(lib,"Glaux.lib")
@@ -35,12 +35,12 @@
 class DevChBTG
 {
 //=====================================================================================================
-//================Внутрішні_класси======================================================Початок========
+//================Р’РЅСѓС‚СЂС–С€РЅС–_РєР»Р°СЃСЃРё======================================================РџРѕС‡Р°С‚РѕРє========
 
 //2019 Font
 
 public:
-//Класс для роботи з текстом
+//РљР»Р°СЃСЃ РґР»СЏ СЂРѕР±РѕС‚Рё Р· С‚РµРєСЃС‚РѕРј
 class fonts
 {
 public:
@@ -62,7 +62,7 @@ public:
 
 
 	//struct convert
-	//Відповідність кодувань Для перетворень і порівнянь індекс коду відповідає індексу відповідної картинки
+	//Р’С–РґРїРѕРІС–РґРЅС–СЃС‚СЊ РєРѕРґСѓРІР°РЅСЊ Р”Р»СЏ РїРµСЂРµС‚РІРѕСЂРµРЅСЊ С– РїРѕСЂС–РІРЅСЏРЅСЊ С–РЅРґРµРєСЃ РєРѕРґСѓ РІС–РґРїРѕРІС–РґР°С” С–РЅРґРµРєСЃСѓ РІС–РґРїРѕРІС–РґРЅРѕС— РєР°СЂС‚РёРЅРєРё
 	struct Cv2x
 	{
 		int code;
@@ -77,7 +77,7 @@ public:
 	};
 
 
-	//Структура плитки
+	//РЎС‚СЂСѓРєС‚СѓСЂР° РїР»РёС‚РєРё
 	struct fragment
 	{
 		float pX,kX,pY,kY;
@@ -94,22 +94,22 @@ public:
 	{
 		//name
 		std::string name;
-		//Нарізка картинки
+		//РќР°СЂС–Р·РєР° РєР°СЂС‚РёРЅРєРё
 		std::vector<fragment>frag;
 
-		//Коди символів
+		//РљРѕРґРё СЃРёРјРІРѕР»С–РІ
 		std::vector<Cv2x>CodeChar;
-		//Текстура
+		//РўРµРєСЃС‚СѓСЂР°
 		Texture texture;
 	};
 
-	//Масив з завантаженими шрифтами
+	//РњР°СЃРёРІ Р· Р·Р°РІР°РЅС‚Р°Р¶РµРЅРёРјРё С€СЂРёС„С‚Р°РјРё
 	std::vector<font>FontsArray;
 
 	
 	
 
-	//Перетворити Юнікод в нормальний чар якщо неможливо вернути другий аргумент
+	//РџРµСЂРµС‚РІРѕСЂРёС‚Рё Р®РЅС–РєРѕРґ РІ РЅРѕСЂРјР°Р»СЊРЅРёР№ С‡Р°СЂ СЏРєС‰Рѕ РЅРµРјРѕР¶Р»РёРІРѕ РІРµСЂРЅСѓС‚Рё РґСЂСѓРіРёР№ Р°СЂРіСѓРјРµРЅС‚
 	int UnicodeToCharCode(int code,int defCH,font &Sh)
 	{
 		for(int i = 0; i < Sh.CodeChar.size();i++)
@@ -175,7 +175,7 @@ struct POINT2D
 };
 
 
-//Отримати ширину тексту в пікселях
+//РћС‚СЂРёРјР°С‚Рё С€РёСЂРёРЅСѓ С‚РµРєСЃС‚Сѓ РІ РїС–РєСЃРµР»СЏС…
 float getWigthText(std::string text,float Style,float size)
 {
 
@@ -218,23 +218,23 @@ float getWigthText(char CHARone,int fontStyle,int size)
 		int fragID = 0;
 
 
-//Знайти id символа у файлі шрифта
+//Р—РЅР°Р№С‚Рё id СЃРёРјРІРѕР»Р° Сѓ С„Р°Р№Р»С– С€СЂРёС„С‚Р°
 				for(int i = 0;i<FontsArray[fontID].CodeChar.size(); i++){if(FontsArray[fontID].CodeChar[i].code == (int)CHARone){fragID = i;break;}}
 		
-				//Знаходжу який еквывалент OpenGL в 1 пікселі окремо по х і у  при множені піксельної величини на цей еквіваленти ми по факту конвертуємо пікселі в значення системи координат OpenGL
+				//Р—РЅР°С…РѕРґР¶Сѓ СЏРєРёР№ РµРєРІС‹РІР°Р»РµРЅС‚ OpenGL РІ 1 РїС–РєСЃРµР»С– РѕРєСЂРµРјРѕ РїРѕ С… С– Сѓ  РїСЂРё РјРЅРѕР¶РµРЅС– РїС–РєСЃРµР»СЊРЅРѕС— РІРµР»РёС‡РёРЅРё РЅР° С†РµР№ РµРєРІС–РІР°Р»РµРЅС‚Рё РјРё РїРѕ С„Р°РєС‚Сѓ РєРѕРЅРІРµСЂС‚СѓС”РјРѕ РїС–РєСЃРµР»С– РІ Р·РЅР°С‡РµРЅРЅСЏ СЃРёСЃС‚РµРјРё РєРѕРѕСЂРґРёРЅР°С‚ OpenGL
 				float cofX = 2.0f / ((float)WindowsData.ViewportWidth  );
 				float cofY = 2.0f / (float)WindowsData.ViewportHeight;
 
 
-				//Перетворити піксельний розмір в значення OpenGL
+				//РџРµСЂРµС‚РІРѕСЂРёС‚Рё РїС–РєСЃРµР»СЊРЅРёР№ СЂРѕР·РјС–СЂ РІ Р·РЅР°С‡РµРЅРЅСЏ OpenGL
 				float  SizeX = (size*cofX);
 				float  SizeY = (size*cofY);
 
-				//Перетворити кокординати елемента з піксильної системи в систеу OpenGL
+				//РџРµСЂРµС‚РІРѕСЂРёС‚Рё РєРѕРєРѕСЂРґРёРЅР°С‚Рё РµР»РµРјРµРЅС‚Р° Р· РїС–РєСЃРёР»СЊРЅРѕС— СЃРёСЃС‚РµРјРё РІ СЃРёСЃС‚РµСѓ OpenGL
 				//x=cofX;
 				//y=cofY;
 
-				//Так як початок системи координат OpenGL в центрі екрана Я змышуюю її в лівий нижній куток
+				//РўР°Рє СЏРє РїРѕС‡Р°С‚РѕРє СЃРёСЃС‚РµРјРё РєРѕРѕСЂРґРёРЅР°С‚ OpenGL РІ С†РµРЅС‚СЂС– РµРєСЂР°РЅР° РЇ Р·РјС‹С€СѓСЋСЋ С—С— РІ Р»С–РІРёР№ РЅРёР¶РЅС–Р№ РєСѓС‚РѕРє
 			//	x-=1;
 				//y-=1;
 
@@ -246,21 +246,21 @@ float getWigthText(char CHARone,int fontStyle,int size)
 
 
 
-				//Тут я отримую різницю текстурних координат букви система координат від 0 до 1. Для того щоб знати на скільки розтянути букву щоб вона не була спотвореною.
+				//РўСѓС‚ СЏ РѕС‚СЂРёРјСѓСЋ СЂС–Р·РЅРёС†СЋ С‚РµРєСЃС‚СѓСЂРЅРёС… РєРѕРѕСЂРґРёРЅР°С‚ Р±СѓРєРІРё СЃРёСЃС‚РµРјР° РєРѕРѕСЂРґРёРЅР°С‚ РІС–Рґ 0 РґРѕ 1. Р”Р»СЏ С‚РѕРіРѕ С‰РѕР± Р·РЅР°С‚Рё РЅР° СЃРєС–Р»СЊРєРё СЂРѕР·С‚СЏРЅСѓС‚Рё Р±СѓРєРІСѓ С‰РѕР± РІРѕРЅР° РЅРµ Р±СѓР»Р° СЃРїРѕС‚РІРѕСЂРµРЅРѕСЋ.
 				float wi = FontsArray[fontID].frag[fragID].kX - FontsArray[fontID].frag[fragID].pX;
 				float hi = FontsArray[fontID].frag[fragID].kY - FontsArray[fontID].frag[fragID].pY;
 
-				//Розраховую кефіцієнт розтягнення букви з урахуванням початкового розміру текстури і розміру букви
+				//Р РѕР·СЂР°С…РѕРІСѓСЋ РєРµС„С–С†С–С”РЅС‚ СЂРѕР·С‚СЏРіРЅРµРЅРЅСЏ Р±СѓРєРІРё Р· СѓСЂР°С…СѓРІР°РЅРЅСЏРј РїРѕС‡Р°С‚РєРѕРІРѕРіРѕ СЂРѕР·РјС–СЂСѓ С‚РµРєСЃС‚СѓСЂРё С– СЂРѕР·РјС–СЂСѓ Р±СѓРєРІРё
 				float cof = (FontsArray[fontID].texture.width/FontsArray[fontID].texture.height) * (wi/hi);
 	
 				
 
-				/*DrawPlane(PosX,PosY, //Вказую початкові координати в системі OpenGL
-					PosX + SizeX*cof,PosY + SizeY, //Вказую кінцеві координати в системі OpenGL
-					FontsArray[fontID].frag[fragID].pX,-FontsArray[fontID].frag[fragID].pY,FontsArray[fontID].frag[fragID].kX,-FontsArray[fontID].frag[fragID].kY); //Далі текстурні координати
+				/*DrawPlane(PosX,PosY, //Р’РєР°Р·СѓСЋ РїРѕС‡Р°С‚РєРѕРІС– РєРѕРѕСЂРґРёРЅР°С‚Рё РІ СЃРёСЃС‚РµРјС– OpenGL
+					PosX + SizeX*cof,PosY + SizeY, //Р’РєР°Р·СѓСЋ РєС–РЅС†РµРІС– РєРѕРѕСЂРґРёРЅР°С‚Рё РІ СЃРёСЃС‚РµРјС– OpenGL
+					FontsArray[fontID].frag[fragID].pX,-FontsArray[fontID].frag[fragID].pY,FontsArray[fontID].frag[fragID].kX,-FontsArray[fontID].frag[fragID].kY); //Р”Р°Р»С– С‚РµРєСЃС‚СѓСЂРЅС– РєРѕРѕСЂРґРёРЅР°С‚Рё
 
 		*/
-				//Розраховую Ширину букви переведену в піксельні координати На відміну від Y значення Х змінюється через коефіцієнт У залишається таким самим
+				//Р РѕР·СЂР°С…РѕРІСѓСЋ РЁРёСЂРёРЅСѓ Р±СѓРєРІРё РїРµСЂРµРІРµРґРµРЅСѓ РІ РїС–РєСЃРµР»СЊРЅС– РєРѕРѕСЂРґРёРЅР°С‚Рё РќР° РІС–РґРјС–РЅСѓ РІС–Рґ Y Р·РЅР°С‡РµРЅРЅСЏ РҐ Р·РјС–РЅСЋС”С‚СЊСЃСЏ С‡РµСЂРµР· РєРѕРµС„С–С†С–С”РЅС‚ РЈ Р·Р°Р»РёС€Р°С”С‚СЊСЃСЏ С‚Р°РєРёРј СЃР°РјРёРј
 				float WidthText = (SizeX*cof)/cofX;
 				return WidthText;
 }
@@ -293,23 +293,23 @@ float getWigthText(char CHARone,int fontStyle,int size)
 		int fragID = 0;
 
 
-//Знайти id символа у файлі шрифта
+//Р—РЅР°Р№С‚Рё id СЃРёРјРІРѕР»Р° Сѓ С„Р°Р№Р»С– С€СЂРёС„С‚Р°
 				for(int i = 0;i<FontsArray[fontID].CodeChar.size(); i++){if(FontsArray[fontID].CodeChar[i].code == (int)CHARone){fragID = i;break;}}
 		
-				//Знаходжу який еквывалент OpenGL в 1 пікселі окремо по х і у  при множені піксельної величини на цей еквіваленти ми по факту конвертуємо пікселі в значення системи координат OpenGL
+				//Р—РЅР°С…РѕРґР¶Сѓ СЏРєРёР№ РµРєРІС‹РІР°Р»РµРЅС‚ OpenGL РІ 1 РїС–РєСЃРµР»С– РѕРєСЂРµРјРѕ РїРѕ С… С– Сѓ  РїСЂРё РјРЅРѕР¶РµРЅС– РїС–РєСЃРµР»СЊРЅРѕС— РІРµР»РёС‡РёРЅРё РЅР° С†РµР№ РµРєРІС–РІР°Р»РµРЅС‚Рё РјРё РїРѕ С„Р°РєС‚Сѓ РєРѕРЅРІРµСЂС‚СѓС”РјРѕ РїС–РєСЃРµР»С– РІ Р·РЅР°С‡РµРЅРЅСЏ СЃРёСЃС‚РµРјРё РєРѕРѕСЂРґРёРЅР°С‚ OpenGL
 				float cofX = 2.0f / ((float)WindowsData.ViewportWidth  );
 				float cofY = 2.0f / (float)WindowsData.ViewportHeight;
 
 
-				//Перетворити піксельний розмір в значення OpenGL
+				//РџРµСЂРµС‚РІРѕСЂРёС‚Рё РїС–РєСЃРµР»СЊРЅРёР№ СЂРѕР·РјС–СЂ РІ Р·РЅР°С‡РµРЅРЅСЏ OpenGL
 				float  SizeX = (size*cofX);
 				float  SizeY = (size*cofY);
 
-				//Перетворити кокординати елемента з піксильної системи в систеу OpenGL
+				//РџРµСЂРµС‚РІРѕСЂРёС‚Рё РєРѕРєРѕСЂРґРёРЅР°С‚Рё РµР»РµРјРµРЅС‚Р° Р· РїС–РєСЃРёР»СЊРЅРѕС— СЃРёСЃС‚РµРјРё РІ СЃРёСЃС‚РµСѓ OpenGL
 				x*=cofX;
 				y*=cofY;
 
-				//Так як початок системи координат OpenGL в центрі екрана Я змышуюю її в лівий нижній куток
+				//РўР°Рє СЏРє РїРѕС‡Р°С‚РѕРє СЃРёСЃС‚РµРјРё РєРѕРѕСЂРґРёРЅР°С‚ OpenGL РІ С†РµРЅС‚СЂС– РµРєСЂР°РЅР° РЇ Р·РјС‹С€СѓСЋСЋ С—С— РІ Р»С–РІРёР№ РЅРёР¶РЅС–Р№ РєСѓС‚РѕРє
 				x-=1;
 				y-=1;
 
@@ -321,21 +321,21 @@ float getWigthText(char CHARone,int fontStyle,int size)
 
 
 
-				//Тут я отримую різницю текстурних координат букви система координат від 0 до 1. Для того щоб знати на скільки розтянути букву щоб вона не була спотвореною.
+				//РўСѓС‚ СЏ РѕС‚СЂРёРјСѓСЋ СЂС–Р·РЅРёС†СЋ С‚РµРєСЃС‚СѓСЂРЅРёС… РєРѕРѕСЂРґРёРЅР°С‚ Р±СѓРєРІРё СЃРёСЃС‚РµРјР° РєРѕРѕСЂРґРёРЅР°С‚ РІС–Рґ 0 РґРѕ 1. Р”Р»СЏ С‚РѕРіРѕ С‰РѕР± Р·РЅР°С‚Рё РЅР° СЃРєС–Р»СЊРєРё СЂРѕР·С‚СЏРЅСѓС‚Рё Р±СѓРєРІСѓ С‰РѕР± РІРѕРЅР° РЅРµ Р±СѓР»Р° СЃРїРѕС‚РІРѕСЂРµРЅРѕСЋ.
 				float wi = FontsArray[fontID].frag[fragID].kX - FontsArray[fontID].frag[fragID].pX;
 				float hi = FontsArray[fontID].frag[fragID].kY - FontsArray[fontID].frag[fragID].pY;
 
-				//Розраховую кефіцієнт розтягнення букви з урахуванням початкового розміру текстури і розміру букви
+				//Р РѕР·СЂР°С…РѕРІСѓСЋ РєРµС„С–С†С–С”РЅС‚ СЂРѕР·С‚СЏРіРЅРµРЅРЅСЏ Р±СѓРєРІРё Р· СѓСЂР°С…СѓРІР°РЅРЅСЏРј РїРѕС‡Р°С‚РєРѕРІРѕРіРѕ СЂРѕР·РјС–СЂСѓ С‚РµРєСЃС‚СѓСЂРё С– СЂРѕР·РјС–СЂСѓ Р±СѓРєРІРё
 				float cof = (FontsArray[fontID].texture.width/FontsArray[fontID].texture.height) * (wi/hi);
 	
 				
 
-				DrawPlane(PosX,PosY, //Вказую початкові координати в системі OpenGL
-					PosX + SizeX*cof,PosY + SizeY, //Вказую кінцеві координати в системі OpenGL
-					FontsArray[fontID].frag[fragID].pX,-FontsArray[fontID].frag[fragID].pY,FontsArray[fontID].frag[fragID].kX,-FontsArray[fontID].frag[fragID].kY); //Далі текстурні координати
+				DrawPlane(PosX,PosY, //Р’РєР°Р·СѓСЋ РїРѕС‡Р°С‚РєРѕРІС– РєРѕРѕСЂРґРёРЅР°С‚Рё РІ СЃРёСЃС‚РµРјС– OpenGL
+					PosX + SizeX*cof,PosY + SizeY, //Р’РєР°Р·СѓСЋ РєС–РЅС†РµРІС– РєРѕРѕСЂРґРёРЅР°С‚Рё РІ СЃРёСЃС‚РµРјС– OpenGL
+					FontsArray[fontID].frag[fragID].pX,-FontsArray[fontID].frag[fragID].pY,FontsArray[fontID].frag[fragID].kX,-FontsArray[fontID].frag[fragID].kY); //Р”Р°Р»С– С‚РµРєСЃС‚СѓСЂРЅС– РєРѕРѕСЂРґРёРЅР°С‚Рё
 
 		
-				//Розраховую Ширину букви переведену в піксельні координати На відміну від Y значення Х змінюється через коефіцієнт У залишається таким самим
+				//Р РѕР·СЂР°С…РѕРІСѓСЋ РЁРёСЂРёРЅСѓ Р±СѓРєРІРё РїРµСЂРµРІРµРґРµРЅСѓ РІ РїС–РєСЃРµР»СЊРЅС– РєРѕРѕСЂРґРёРЅР°С‚Рё РќР° РІС–РґРјС–РЅСѓ РІС–Рґ Y Р·РЅР°С‡РµРЅРЅСЏ РҐ Р·РјС–РЅСЋС”С‚СЊСЃСЏ С‡РµСЂРµР· РєРѕРµС„С–С†С–С”РЅС‚ РЈ Р·Р°Р»РёС€Р°С”С‚СЊСЃСЏ С‚Р°РєРёРј СЃР°РјРёРј
 				float WidthText = (SizeX*cof)/cofX;
 				return WidthText;
 
@@ -375,55 +375,55 @@ float getWigthText(char CHARone,int fontStyle,int size)
 		 std::ifstream INp(url.c_str(), ios::binary | ios::in);
 
 
-		 if(!INp) {ErrorList += "Файл відсутній\n"; return false;}
+		 if(!INp) {ErrorList += "Р¤Р°Р№Р» РІС–РґСЃСѓС‚РЅС–Р№\n"; return false;}
 
-		 //Читання Коду фалу для перевірки чи коректний файл відкрито============================================
+		 //Р§РёС‚Р°РЅРЅСЏ РљРѕРґСѓ С„Р°Р»Сѓ РґР»СЏ РїРµСЂРµРІС–СЂРєРё С‡Рё РєРѕСЂРµРєС‚РЅРёР№ С„Р°Р№Р» РІС–РґРєСЂРёС‚Рѕ============================================
 				int CodeFiles = 0; //1546534
-				INp.read((char*)&CodeFiles,sizeof(CodeFiles)); //Код файлу
+				INp.read((char*)&CodeFiles,sizeof(CodeFiles)); //РљРѕРґ С„Р°Р№Р»Сѓ
 
-				if(CodeFiles != 1546534) {ErrorList += "Непідтримуваний формат\n"; return false;}
+				if(CodeFiles != 1546534) {ErrorList += "РќРµРїС–РґС‚СЂРёРјСѓРІР°РЅРёР№ С„РѕСЂРјР°С‚\n"; return false;}
 
 
 
-		//Читання Версії файлу==================================================================================
+		//Р§РёС‚Р°РЅРЅСЏ Р’РµСЂСЃС–С— С„Р°Р№Р»Сѓ==================================================================================
 				short Version = 0; //1
-				INp.read((char*)&Version,sizeof(Version)); //Версія файлу
+				INp.read((char*)&Version,sizeof(Version)); //Р’РµСЂСЃС–СЏ С„Р°Р№Р»Сѓ
 
-				if(Version < 1 || Version == 0) {ErrorList += "Непідтримувана версія файлу\n"; return false;}
+				if(Version < 1 || Version == 0) {ErrorList += "РќРµРїС–РґС‚СЂРёРјСѓРІР°РЅР° РІРµСЂСЃС–СЏ С„Р°Р№Р»Сѓ\n"; return false;}
 
-		//Читання розмітки======================================================================================
-				if(INp.eof()) std::cout<<"Кінець файлу що за:"<<std::endl; else  std::cout<<"Ще все норм:"<<std::endl;
+		//Р§РёС‚Р°РЅРЅСЏ СЂРѕР·РјС–С‚РєРё======================================================================================
+				if(INp.eof()) std::cout<<"РљС–РЅРµС†СЊ С„Р°Р№Р»Сѓ С‰Рѕ Р·Р°:"<<std::endl; else  std::cout<<"Р©Рµ РІСЃРµ РЅРѕСЂРј:"<<std::endl;
 		int SS = 0; 
-		INp.read((char*)&SS,sizeof(SS)); //Довжина 
+		INp.read((char*)&SS,sizeof(SS)); //Р”РѕРІР¶РёРЅР° 
 		std::cout<<"SizeFrag:"<<SS<<std::endl;
 		DEF.frag.resize(SS);
 		INp.read((char*)&DEF.frag[0],sizeof(fragment)*SS);
 
-		//Коди відповідності кодування=======================================================================
+		//РљРѕРґРё РІС–РґРїРѕРІС–РґРЅРѕСЃС‚С– РєРѕРґСѓРІР°РЅРЅСЏ=======================================================================
 				
 
-				int sz = 0; //Розмір масиву
-				INp.read((char*)&sz,sizeof(sz));    //Довжина масиву
+				int sz = 0; //Р РѕР·РјС–СЂ РјР°СЃРёРІСѓ
+				INp.read((char*)&sz,sizeof(sz));    //Р”РѕРІР¶РёРЅР° РјР°СЃРёРІСѓ
 				std::cout<<"SizeKode:"<<sz<<std::endl;
 
-				//if(INp.eof()) std::cout<<"Кінець файлу що за:"<<std::endl; else  std::cout<<"Ще все норм:"<<std::endl;
+				//if(INp.eof()) std::cout<<"РљС–РЅРµС†СЊ С„Р°Р№Р»Сѓ С‰Рѕ Р·Р°:"<<std::endl; else  std::cout<<"Р©Рµ РІСЃРµ РЅРѕСЂРј:"<<std::endl;
 
 
 				DEF.CodeChar.resize(sz);
-				INp.read((char*)&DEF.CodeChar[0],sizeof(Cv2x)*sz);    //Масив
+				INp.read((char*)&DEF.CodeChar[0],sizeof(Cv2x)*sz);    //РњР°СЃРёРІ
 				
 
 
 	
 	 
 		
-				//Запис зобрадення====================================================================================
-				//Спочатку читаю інформацію про зображення
-				INp.read((char*)&DEF.texture.width,sizeof(DEF.texture.width));                //Висота
-				INp.read((char*)&DEF.texture.height,sizeof(DEF.texture.height));              //Ширина
-				INp.read((char*)&DEF.texture.nrComponents,sizeof(DEF.texture.nrComponents));  //Кількість компонент в 1 пікселі
+				//Р—Р°РїРёСЃ Р·РѕР±СЂР°РґРµРЅРЅСЏ====================================================================================
+				//РЎРїРѕС‡Р°С‚РєСѓ С‡РёС‚Р°СЋ С–РЅС„РѕСЂРјР°С†С–СЋ РїСЂРѕ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
+				INp.read((char*)&DEF.texture.width,sizeof(DEF.texture.width));                //Р’РёСЃРѕС‚Р°
+				INp.read((char*)&DEF.texture.height,sizeof(DEF.texture.height));              //РЁРёСЂРёРЅР°
+				INp.read((char*)&DEF.texture.nrComponents,sizeof(DEF.texture.nrComponents));  //РљС–Р»СЊРєС–СЃС‚СЊ РєРѕРјРїРѕРЅРµРЅС‚ РІ 1 РїС–РєСЃРµР»С–
 
-				int size = DEF.texture.width*DEF.texture.height*DEF.texture.nrComponents;				//Кількість всіх пікселів
+				int size = DEF.texture.width*DEF.texture.height*DEF.texture.nrComponents;				//РљС–Р»СЊРєС–СЃС‚СЊ РІСЃС–С… РїС–РєСЃРµР»С–РІ
 
 
 				std::cout<<"wi = "<<DEF.texture.width<<"   hi = "<<DEF.texture.height<<"  mod:"<<DEF.texture.nrComponents<<std::endl;
@@ -432,9 +432,9 @@ float getWigthText(char CHARone,int fontStyle,int size)
 				
 
 				vector<char> image1(size);
-				INp.read(&image1[0],size*sizeof(unsigned char));						//Читаємо масив пікселів
+				INp.read(&image1[0],size*sizeof(unsigned char));						//Р§РёС‚Р°С”РјРѕ РјР°СЃРёРІ РїС–РєСЃРµР»С–РІ
 
-				//Компілюємо текстуру-----------
+				//РљРѕРјРїС–Р»СЋС”РјРѕ С‚РµРєСЃС‚СѓСЂСѓ-----------
 				GLenum format;
 				if (DEF.texture.nrComponents == 1)
 					format = GL_RED;
@@ -455,7 +455,7 @@ float getWigthText(char CHARone,int fontStyle,int size)
 
 
 
-				//Зберігти до всіх шрифтів
+				//Р—Р±РµСЂС–РіС‚Рё РґРѕ РІСЃС–С… С€СЂРёС„С‚С–РІ
 				FontsArray.push_back(DEF);
 	            return true;
 				
@@ -555,8 +555,8 @@ private:
 class TEXTURE
 {
 public:
-	bool ISusTextureLoader; //Чи призначав користувач функцію завантаження текстур
-	//Функція для завантажена текстур при потребі розширити підтримук типів текстур визначається користувачем
+	bool ISusTextureLoader; //Р§Рё РїСЂРёР·РЅР°С‡Р°РІ РєРѕСЂРёСЃС‚СѓРІР°С‡ С„СѓРЅРєС†С–СЋ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ С‚РµРєСЃС‚СѓСЂ
+	//Р¤СѓРЅРєС†С–СЏ РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅР° С‚РµРєСЃС‚СѓСЂ РїСЂРё РїРѕС‚СЂРµР±С– СЂРѕР·С€РёСЂРёС‚Рё РїС–РґС‚СЂРёРјСѓРє С‚РёРїС–РІ С‚РµРєСЃС‚СѓСЂ РІРёР·РЅР°С‡Р°С”С‚СЊСЃСЏ РєРѕСЂРёСЃС‚СѓРІР°С‡РµРј
 	bool (*usTextureLoader)(std::string url, int &width, int &height, GLuint &TxID);
 	void setVoidTextureLoader(bool (TextureLoaderA)(std::string url, int &width, int &height, GLuint &TxID))
 	{
@@ -575,13 +575,13 @@ private:
 GLuint CreateTexture(unsigned char* image,GLuint   type, int width, int height)
 {
   GLuint Idtexture;
-  glGenTextures(1, &Idtexture);  // Сгенерировать OpenGL текстуру IDs
-  glBindTexture(GL_TEXTURE_2D,Idtexture); // Привязать нашу текстуру
+  glGenTextures(1, &Idtexture);  // РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ OpenGL С‚РµРєСЃС‚СѓСЂСѓ IDs
+  glBindTexture(GL_TEXTURE_2D,Idtexture); // РџСЂРёРІСЏР·Р°С‚СЊ РЅР°С€Сѓ С‚РµРєСЃС‚СѓСЂСѓ
 
-  // Линейная фильтрация
+  // Р›РёРЅРµР№РЅР°СЏ С„РёР»СЊС‚СЂР°С†РёСЏ
   glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); 
 
-  // Линейная фильтрация 
+  // Р›РёРЅРµР№РЅР°СЏ С„РёР»СЊС‚СЂР°С†РёСЏ 
   glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
  
@@ -591,164 +591,164 @@ GLuint CreateTexture(unsigned char* image,GLuint   type, int width, int height)
 
 
 	public:
-		typedef   struct                      // Структура для завантаження в неї текстур, система загрузки вбудована для зручності
+		typedef   struct                      // РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РІ РЅРµС— С‚РµРєСЃС‚СѓСЂ, СЃРёСЃС‚РµРјР° Р·Р°РіСЂСѓР·РєРё РІР±СѓРґРѕРІР°РЅР° РґР»СЏ Р·СЂСѓС‡РЅРѕСЃС‚С–
 		 { 
-			   unsigned char  *imageData;                  // Данные изображения (до 32 бит)
-			   GLuint   bpp;                         // Глубина цвета в битах на пиксель
-			   GLuint   width;                       // Ширина изображения 
-		       GLuint   height;                      // Высота изображения
-			   GLuint   texID;                       // texID используется для выбора // текстуры
-		 } Knopka_TextureImage;                       // Имя структуры
+			   unsigned char  *imageData;                  // Р”Р°РЅРЅС‹Рµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ (РґРѕ 32 Р±РёС‚)
+			   GLuint   bpp;                         // Р“Р»СѓР±РёРЅР° С†РІРµС‚Р° РІ Р±РёС‚Р°С… РЅР° РїРёРєСЃРµР»СЊ
+			   GLuint   width;                       // РЁРёСЂРёРЅР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 
+		       GLuint   height;                      // Р’С‹СЃРѕС‚Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+			   GLuint   texID;                       // texID РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РІС‹Р±РѕСЂР° // С‚РµРєСЃС‚СѓСЂС‹
+		 } Knopka_TextureImage;                       // РРјСЏ СЃС‚СЂСѓРєС‚СѓСЂС‹
 
 struct TExtureHistory
 		{
 			std::string url;
 			GLuint TextureID;
 		};
-		std::vector<TExtureHistory>TExtureHistory_; //Список заантажених текстур цим інтерфейсомж
+		std::vector<TExtureHistory>TExtureHistory_; //РЎРїРёСЃРѕРє Р·Р°Р°РЅС‚Р°Р¶РµРЅРёС… С‚РµРєСЃС‚СѓСЂ С†РёРј С–РЅС‚РµСЂС„РµР№СЃРѕРјР¶
 
-bool  Knopka_LoadTga(GLuint &texID,std::string filename)  // Загружаем TGA файл в память
+bool  Knopka_LoadTga(GLuint &texID,std::string filename)  // Р—Р°РіСЂСѓР¶Р°РµРј TGA С„Р°Р№Р» РІ РїР°РјСЏС‚СЊ
 {  
 Knopka_TextureImage teIm;
 Knopka_TextureImage *texture = &teIm;
 	
-GLubyte  TGAheader[12]={0,0,2,0,0,0,0,0,0,0,0,0}; // Заголовок несжатого TGA файла
-GLubyte  TGAcompare[12]; // Используется для сравнения заголовка TGA файла
-GLubyte  header[6];      // Первые 6 полезных байт заголовка
-GLuint   bytesPerPixel;  // Количество байтов на пиксель используемое в TGA файле
-GLuint   imageSize;      // Количество байтов, необходимое для хранения изображения в памяти
-GLuint   temp;           // Временная переменная
-GLuint   type=GL_RGBA;   // Установим по умолчанию режим RBGA (32 BPP)
-  FILE *file = fopen(filename.c_str(), "rb");         // Открытие TGA файла
-  if(file==NULL ||                            // Существует ли файл
-fread(TGAcompare,1,sizeof(TGAcompare),file)!=sizeof(TGAcompare) ||  // Если прочитаны 12 байтов заголовка
+GLubyte  TGAheader[12]={0,0,2,0,0,0,0,0,0,0,0,0}; // Р—Р°РіРѕР»РѕРІРѕРє РЅРµСЃР¶Р°С‚РѕРіРѕ TGA С„Р°Р№Р»Р°
+GLubyte  TGAcompare[12]; // РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ Р·Р°РіРѕР»РѕРІРєР° TGA С„Р°Р№Р»Р°
+GLubyte  header[6];      // РџРµСЂРІС‹Рµ 6 РїРѕР»РµР·РЅС‹С… Р±Р°Р№С‚ Р·Р°РіРѕР»РѕРІРєР°
+GLuint   bytesPerPixel;  // РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р№С‚РѕРІ РЅР° РїРёРєСЃРµР»СЊ РёСЃРїРѕР»СЊР·СѓРµРјРѕРµ РІ TGA С„Р°Р№Р»Рµ
+GLuint   imageSize;      // РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р№С‚РѕРІ, РЅРµРѕР±С…РѕРґРёРјРѕРµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РІ РїР°РјСЏС‚Рё
+GLuint   temp;           // Р’СЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ
+GLuint   type=GL_RGBA;   // РЈСЃС‚Р°РЅРѕРІРёРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂРµР¶РёРј RBGA (32 BPP)
+  FILE *file = fopen(filename.c_str(), "rb");         // РћС‚РєСЂС‹С‚РёРµ TGA С„Р°Р№Р»Р°
+  if(file==NULL ||                            // РЎСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё С„Р°Р№Р»
+fread(TGAcompare,1,sizeof(TGAcompare),file)!=sizeof(TGAcompare) ||  // Р•СЃР»Рё РїСЂРѕС‡РёС‚Р°РЅС‹ 12 Р±Р°Р№С‚РѕРІ Р·Р°РіРѕР»РѕРІРєР°
 
-     memcmp(TGAheader,TGAcompare,sizeof(TGAheader))!=0 || // Если заголовок правильный
+     memcmp(TGAheader,TGAcompare,sizeof(TGAheader))!=0 || // Р•СЃР»Рё Р·Р°РіРѕР»РѕРІРѕРє РїСЂР°РІРёР»СЊРЅС‹Р№
 
-     fread(header,1,sizeof(header),file)!=sizeof(header)) // Если прочитаны следующие 6 байтов
+     fread(header,1,sizeof(header),file)!=sizeof(header)) // Р•СЃР»Рё РїСЂРѕС‡РёС‚Р°РЅС‹ СЃР»РµРґСѓСЋС‰РёРµ 6 Р±Р°Р№С‚РѕРІ
 
   {
 
-         if (file == NULL)                      // Если ошибка
+         if (file == NULL)                      // Р•СЃР»Рё РѕС€РёР±РєР°
 
-                return false;                   // Возвращаем false
+                return false;                   // Р’РѕР·РІСЂР°С‰Р°РµРј false
 
          else
 
          {
 
-                fclose(file);                   // Если ошибка, закрываем файл
+                fclose(file);                   // Р•СЃР»Рё РѕС€РёР±РєР°, Р·Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»
 
-                return false;                   // Возвращаем false
+                return false;                   // Р’РѕР·РІСЂР°С‰Р°РµРј false
 
          }
 
   }
 
 
-  // Определяем ширину TGA (старший байт*256+младший байт)
+  // РћРїСЂРµРґРµР»СЏРµРј С€РёСЂРёРЅСѓ TGA (СЃС‚Р°СЂС€РёР№ Р±Р°Р№С‚*256+РјР»Р°РґС€РёР№ Р±Р°Р№С‚)
 
   texture->width  = header[1] * 256 + header[0]; 
 
-  // Определяем высоту TGA (старший байт*256+младший байт)
+  // РћРїСЂРµРґРµР»СЏРµРј РІС‹СЃРѕС‚Сѓ TGA (СЃС‚Р°СЂС€РёР№ Р±Р°Р№С‚*256+РјР»Р°РґС€РёР№ Р±Р°Р№С‚)
 
   texture->height = header[3] * 256 + header[2];
 
   
 
-  if(texture->width  <=0 ||            // Если ширина меньше или равна нулю
+  if(texture->width  <=0 ||            // Р•СЃР»Рё С€РёСЂРёРЅР° РјРµРЅСЊС€Рµ РёР»Рё СЂР°РІРЅР° РЅСѓР»СЋ
 
-   texture->height <=0 ||            // Если высота меньше или равна нулю    
+   texture->height <=0 ||            // Р•СЃР»Рё РІС‹СЃРѕС‚Р° РјРµРЅСЊС€Рµ РёР»Рё СЂР°РІРЅР° РЅСѓР»СЋ    
 
-  (header[4]!=24 && header[4]!=32))  // Является ли TGA 24 или 32 битным?
+  (header[4]!=24 && header[4]!=32))  // РЇРІР»СЏРµС‚СЃСЏ Р»Рё TGA 24 РёР»Рё 32 Р±РёС‚РЅС‹Рј?
 
   {
 
-    fclose(file);                    // Если где-то ошибка, закрываем файл
+    fclose(file);                    // Р•СЃР»Рё РіРґРµ-С‚Рѕ РѕС€РёР±РєР°, Р·Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»
 
-    return false;                    // Возвращаем false
+    return false;                    // Р’РѕР·РІСЂР°С‰Р°РµРј false
 
   }
 
 
-  texture->bpp  = header[4];        // Получаем TGA бит/пиксель (24 or 32)
+  texture->bpp  = header[4];        // РџРѕР»СѓС‡Р°РµРј TGA Р±РёС‚/РїРёРєСЃРµР»СЊ (24 or 32)
 
-  bytesPerPixel = texture->bpp/8;   // Делим на 8 для получения байт/пиксель  
+  bytesPerPixel = texture->bpp/8;   // Р”РµР»РёРј РЅР° 8 РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р±Р°Р№С‚/РїРёРєСЃРµР»СЊ  
 
-  // Подсчитываем размер памяти для данных TGA
+  // РџРѕРґСЃС‡РёС‚С‹РІР°РµРј СЂР°Р·РјРµСЂ РїР°РјСЏС‚Рё РґР»СЏ РґР°РЅРЅС‹С… TGA
 
   imageSize = texture->width*texture->height*bytesPerPixel;
-  texture->imageData=(GLubyte *)malloc(imageSize); // Резервируем память для хранения данных TGA 
-  if(texture->imageData==NULL ||           // Удалось ли выделить память?
+  texture->imageData=(GLubyte *)malloc(imageSize); // Р РµР·РµСЂРІРёСЂСѓРµРј РїР°РјСЏС‚СЊ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… TGA 
+  if(texture->imageData==NULL ||           // РЈРґР°Р»РѕСЃСЊ Р»Рё РІС‹РґРµР»РёС‚СЊ РїР°РјСЏС‚СЊ?
    fread(texture->imageData, 1, imageSize, file)!=imageSize)
-  // Размер выделенной памяти равен  imageSize?
+  // Р Р°Р·РјРµСЂ РІС‹РґРµР»РµРЅРЅРѕР№ РїР°РјСЏС‚Рё СЂР°РІРµРЅ  imageSize?
   {
-    if(texture->imageData!=NULL)       // Были ли загружены данные?
+    if(texture->imageData!=NULL)       // Р‘С‹Р»Рё Р»Рё Р·Р°РіСЂСѓР¶РµРЅС‹ РґР°РЅРЅС‹Рµ?
 
-      free(texture->imageData);        // Если да, то освобождаем память
+      free(texture->imageData);        // Р•СЃР»Рё РґР°, С‚Рѕ РѕСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ
 
   
 
-    fclose(file);                      // Закрываем файл
+    fclose(file);                      // Р—Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»
 
 	texID = texture->texID;
 
-    return false;                      // Возвращаем false
+    return false;                      // Р’РѕР·РІСЂР°С‰Р°РµРј false
 
   } 
 
 
-  for(GLuint i=0; i<int(imageSize); i+=bytesPerPixel)  // Цикл по данным, описывающим изображение
+  for(GLuint i=0; i<int(imageSize); i+=bytesPerPixel)  // Р¦РёРєР» РїРѕ РґР°РЅРЅС‹Рј, РѕРїРёСЃС‹РІР°СЋС‰РёРј РёР·РѕР±СЂР°Р¶РµРЅРёРµ
 
-  {                                                    // Обмена 1го и 3го байтов ('R'ed и 'B'lue)
+  {                                                    // РћР±РјРµРЅР° 1РіРѕ Рё 3РіРѕ Р±Р°Р№С‚РѕРІ ('R'ed Рё 'B'lue)
 
-    temp=texture->imageData[i];                        // Временно сохраняем значение imageData[i]
+    temp=texture->imageData[i];                        // Р’СЂРµРјРµРЅРЅРѕ СЃРѕС…СЂР°РЅСЏРµРј Р·РЅР°С‡РµРЅРёРµ imageData[i]
 
-    texture->imageData[i] = texture->imageData[i + 2]; // Устанавливаем 1й байт в значение 3го байта
+    texture->imageData[i] = texture->imageData[i + 2]; // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј 1Р№ Р±Р°Р№С‚ РІ Р·РЅР°С‡РµРЅРёРµ 3РіРѕ Р±Р°Р№С‚Р°
 
-    texture->imageData[i + 2] = temp;                  // Устанавливаем 3й байт в значение,
+    texture->imageData[i + 2] = temp;                  // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј 3Р№ Р±Р°Р№С‚ РІ Р·РЅР°С‡РµРЅРёРµ,
 
-                                                       // хранящееся в temp (значение 1го байта)
+                                                       // С…СЂР°РЅСЏС‰РµРµСЃСЏ РІ temp (Р·РЅР°С‡РµРЅРёРµ 1РіРѕ Р±Р°Р№С‚Р°)
 
   }
 
-  fclose (file);                                       // Закрываем файл
+  fclose (file);                                       // Р—Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»
 
 /*
-  // Строим текстуру из данных
+  // РЎС‚СЂРѕРёРј С‚РµРєСЃС‚СѓСЂСѓ РёР· РґР°РЅРЅС‹С…
 
-  glGenTextures(1, &texture[0].texID);  // Сгенерировать OpenGL текстуру IDs
+  glGenTextures(1, &texture[0].texID);  // РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ OpenGL С‚РµРєСЃС‚СѓСЂСѓ IDs
 
-  glBindTexture(GL_TEXTURE_2D, texture[0].texID); // Привязать нашу текстуру
+  glBindTexture(GL_TEXTURE_2D, texture[0].texID); // РџСЂРёРІСЏР·Р°С‚СЊ РЅР°С€Сѓ С‚РµРєСЃС‚СѓСЂСѓ
 
-  // Линейная фильтрация
+  // Р›РёРЅРµР№РЅР°СЏ С„РёР»СЊС‚СЂР°С†РёСЏ
 
   glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); 
 
-  // Линейная фильтрация 
+  // Р›РёРЅРµР№РЅР°СЏ С„РёР»СЊС‚СЂР°С†РёСЏ 
 
   glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-  if (texture[0].bpp==24)                      // Если TGA 24 битный
+  if (texture[0].bpp==24)                      // Р•СЃР»Рё TGA 24 Р±РёС‚РЅС‹Р№
 
   {
-     type=GL_RGB;                            // Установим 'type' в GL_RGB
+     type=GL_RGB;                            // РЈСЃС‚Р°РЅРѕРІРёРј 'type' РІ GL_RGB
   }
   glTexImage2D(GL_TEXTURE_2D, 0, type, texture[0].width, texture[0].height,0, type, GL_UNSIGNED_BYTE, texture[0].imageData);
   texID = texture->texID;
   */
   
-  if (texture[0].bpp==24)                      // Если TGA 24 битный
+  if (texture[0].bpp==24)                      // Р•СЃР»Рё TGA 24 Р±РёС‚РЅС‹Р№
 
   {
-     type=GL_RGB;                            // Установим 'type' в GL_RGB
+     type=GL_RGB;                            // РЈСЃС‚Р°РЅРѕРІРёРј 'type' РІ GL_RGB
   }
   texID = CreateTexture(texture[0].imageData,type, texture[0].width, texture[0].height);
-  return true;              // Построение текстуры прошло Ok, возвратим true
+  return true;              // РџРѕСЃС‚СЂРѕРµРЅРёРµ С‚РµРєСЃС‚СѓСЂС‹ РїСЂРѕС€Р»Рѕ Ok, РІРѕР·РІСЂР°С‚РёРј true
   
 }
 
-bool  LoadBMP(GLuint &out_img,string filename) //загрузка bmp
+bool  LoadBMP(GLuint &out_img,string filename) //Р·Р°РіСЂСѓР·РєР° bmp
 { 
 
 
@@ -797,7 +797,7 @@ out_img = CreateTexture(texture1->data, GL_RGB, texture1->sizeX, texture1->sizeY
 
 
 
-bool  Knopka_LoadTexture(GLuint &texture,std::string filename)  // Загружаем TGA файл в память
+bool  Knopka_LoadTexture(GLuint &texture,std::string filename)  // Р—Р°РіСЂСѓР¶Р°РµРј TGA С„Р°Р№Р» РІ РїР°РјСЏС‚СЊ
 {    
 	//int wi
 	//DevChBTG::ISusTextureLoader;
@@ -806,7 +806,7 @@ bool  Knopka_LoadTexture(GLuint &texture,std::string filename)  // Загружаем TGA
   
 
 
-	//Запобігання завантаження текстур по два рази
+	//Р—Р°РїРѕР±С–РіР°РЅРЅСЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ С‚РµРєСЃС‚СѓСЂ РїРѕ РґРІР° СЂР°Р·Рё
 	int i = 0;
 	while(i < TExtureHistory_.size())
 	{
@@ -834,19 +834,19 @@ bool  Knopka_LoadTexture(GLuint &texture,std::string filename)  // Загружаем TGA
 	{
 		if(filename[filename.size()-4] == '.' && (filename[filename.size()-3] == 'T' || filename[filename.size()-3] == 't')  &&  (filename[filename.size()-2] == 'G' || filename[filename.size()-2] == 'g') && (filename[filename.size()-1] == 'A' || filename[filename.size()-1] == 'a'))
 		{
-		 Rez = Knopka_LoadTga(texture,filename);  // Загружаем TGA файл в память
+		 Rez = Knopka_LoadTga(texture,filename);  // Р—Р°РіСЂСѓР¶Р°РµРј TGA С„Р°Р№Р» РІ РїР°РјСЏС‚СЊ
 		}
 		else
 		if(filename[filename.size()-4] == '.' && (filename[filename.size()-3] == 'B' || filename[filename.size()-3] == 'b')  &&  (filename[filename.size()-2] == 'M' || filename[filename.size()-2] == 'm') && (filename[filename.size()-1] == 'P' || filename[filename.size()-1] == 'p'))
 		{
-		  Rez = LoadBMP(texture,filename); //загрузка bmp
+		  Rez = LoadBMP(texture,filename); //Р·Р°РіСЂСѓР·РєР° bmp
 		}
 	}
 
 
 
 
-	if(Rez) //Якщо текстура була завантажена правильно то вкидаємо її до історії
+	if(Rez) //РЇРєС‰Рѕ С‚РµРєСЃС‚СѓСЂР° Р±СѓР»Р° Р·Р°РІР°РЅС‚Р°Р¶РµРЅР° РїСЂР°РІРёР»СЊРЅРѕ С‚Рѕ РІРєРёРґР°С”РјРѕ С—С— РґРѕ С–СЃС‚РѕСЂС–С—
 	{
 	TExtureHistory IS;
 	TExtureHistory_.push_back(IS);
@@ -854,7 +854,7 @@ bool  Knopka_LoadTexture(GLuint &texture,std::string filename)  // Загружаем TGA
 	TExtureHistory_[TExtureHistory_.size()-1].TextureID = texture;
 	}
 
-  return Rez;              // Построение текстуры прошло Ok, возвратим true
+  return Rez;              // РџРѕСЃС‚СЂРѕРµРЅРёРµ С‚РµРєСЃС‚СѓСЂС‹ РїСЂРѕС€Р»Рѕ Ok, РІРѕР·РІСЂР°С‚РёРј true
 
 }
 
@@ -864,7 +864,7 @@ bool  Knopka_LoadTexture(GLuint &texture,std::string filename)  // Загружаем TGA
 
 //=====================================================================================================
 //=====================================================================================================
-//================Внутрішні_класси======================================================Кінець=========
+//================Р’РЅСѓС‚СЂС–С€РЅС–_РєР»Р°СЃСЃРё======================================================РљС–РЅРµС†СЊ=========
 //=====================================================================================================
 //=====================================================================================================
 
@@ -874,9 +874,9 @@ TEXTURE textureLoader;
 
 
 //=================
-//Функції які можна переназначити на свої
+//Р¤СѓРЅРєС†С–С— СЏРєС– РјРѕР¶РЅР° РїРµСЂРµРЅР°Р·РЅР°С‡РёС‚Рё РЅР° СЃРІРѕС—
 public:
-	//Функція для завантажена текстур при потребі розширити підтримук типів текстур визначається користувачем
+	//Р¤СѓРЅРєС†С–СЏ РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅР° С‚РµРєСЃС‚СѓСЂ РїСЂРё РїРѕС‚СЂРµР±С– СЂРѕР·С€РёСЂРёС‚Рё РїС–РґС‚СЂРёРјСѓРє С‚РёРїС–РІ С‚РµРєСЃС‚СѓСЂ РІРёР·РЅР°С‡Р°С”С‚СЊСЃСЏ РєРѕСЂРёСЃС‚СѓРІР°С‡РµРј
 	void setVoidTextureLoader(bool (TextureLoaderA)(std::string url, int &width, int &height, GLuint &TxID))
 	{
 		textureLoader.setVoidTextureLoader(TextureLoaderA);
@@ -895,9 +895,9 @@ public:
 
 //2019 Mode Aspiranska========
 
-//Функція роботу якої програміст може перейняти на себе
+//Р¤СѓРЅРєС†С–СЏ СЂРѕР±РѕС‚Сѓ СЏРєРѕС— РїСЂРѕРіСЂР°РјС–СЃС‚ РјРѕР¶Рµ РїРµСЂРµР№РЅСЏС‚Рё РЅР° СЃРµР±Рµ
 
-//Функція малювання площин перехват програмістом
+//Р¤СѓРЅРєС†С–СЏ РјР°Р»СЋРІР°РЅРЅСЏ РїР»РѕС‰РёРЅ РїРµСЂРµС…РІР°С‚ РїСЂРѕРіСЂР°РјС–СЃС‚РѕРј
 bool isVoidDrawPlane;
 void (*VoidDrawPlane)(float SizeX,float SizeY,float TX,float TY,float R,float G, float B,float A,GLuint TextuteID,int styleNum,int ISactive,bool Enable, bool Vis,int BTid);
 void setVoidDrawPlane(void (*VoidDrawPlaneA)(float SizeX,float SizeY,float TX,float TY,float R,float G, float B,float A,GLuint TextuteID,int styleNum,int ISactive,bool Enable, bool Vis,int BTid))
@@ -909,10 +909,10 @@ void setVoidDrawPlane(void (*VoidDrawPlaneA)(float SizeX,float SizeY,float TX,fl
 
 
 
-//Малювати елементи головна функція
+//РњР°Р»СЋРІР°С‚Рё РµР»РµРјРµРЅС‚Рё РіРѕР»РѕРІРЅР° С„СѓРЅРєС†С–СЏ
 void DrawStyleElements(int id, float x,float y, float width, float height)
 {
-	//Не малювати не видиму кнопку
+	//РќРµ РјР°Р»СЋРІР°С‚Рё РЅРµ РІРёРґРёРјСѓ РєРЅРѕРїРєСѓ
 	if(!mObgects[id].Vizual) return;
 
 
@@ -920,13 +920,13 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 	glBindTexture(GL_TEXTURE_2D,mObgects[id].ImageKnopki);
 	float SizeX , SizeY ,PosX ,PosY;
 	float HoverSizeX,HoverSizeY;//,HoverPosY,HoverPosX;
-	//Розрахунок коефіцієнту розміру 
+	//Р РѕР·СЂР°С…СѓРЅРѕРє РєРѕРµС„С–С†С–С”РЅС‚Сѓ СЂРѕР·РјС–СЂСѓ 
 				float cofX = 2.0f / (float)windows_data.ViewportWidth ;
 				float cofY = 2.0f / (float)windows_data.ViewportHeight ;
 			{
 				
 
-				//Ширина і висота графічного елементу
+				//РЁРёСЂРёРЅР° С– РІРёСЃРѕС‚Р° РіСЂР°С„С–С‡РЅРѕРіРѕ РµР»РµРјРµРЅС‚Сѓ
 				 SizeX = ((float)mObgects[id].SizeX*cofX);
 				 SizeY = ((float)mObgects[id].SizeY*cofY);
 				
@@ -937,7 +937,7 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 
 
 
-				 //Ширина і висота графічного елементу
+				 //РЁРёСЂРёРЅР° С– РІРёСЃРѕС‚Р° РіСЂР°С„С–С‡РЅРѕРіРѕ РµР»РµРјРµРЅС‚Сѓ
 				 HoverSizeX = ((float)mObgects[id].HoverSizeX*cofX);
 				 HoverSizeY = ((float)mObgects[id].HoverSizeY*cofY);
 				
@@ -954,7 +954,7 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 
 			//float
 
-			//Колір залежно від активності
+			//РљРѕР»С–СЂ Р·Р°Р»РµР¶РЅРѕ РІС–Рґ Р°РєС‚РёРІРЅРѕСЃС‚С–
 				if(mObgects[id].Temp.activ)
 					glColor4ub(mObgects[id].HoverColor.R ,mObgects[id].HoverColor.G,mObgects[id].HoverColor.B,mObgects[id].HoverColor.A);
 				else
@@ -1003,7 +1003,7 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 
 
 
-					//Початак І кінець руху каретки
+					//РџРѕС‡Р°С‚Р°Рє Р† РєС–РЅРµС†СЊ СЂСѓС…Сѓ РєР°СЂРµС‚РєРё
 				float EndPos = ((X_CORD-(float)windows_data.ViewportPosX+(float)mObgects[id].SizeX - (float)mObgects[id].trackBarKaretkaSizeX/2)*cofX )-1;
 				float StartPos = ((X_CORD-(float)windows_data.ViewportPosX+(float)mObgects[id].trackBarKaretkaSizeX/2)*cofX)-1;
 				float MaxValue = EndPos - StartPos;
@@ -1013,14 +1013,14 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 				float Val = mObgects[id].Value - mObgects[id].MinValue;
 				//float vStart = 0;
 
-				//Розмір у відцотках від 0 до 1
+				//Р РѕР·РјС–СЂ Сѓ РІС–РґС†РѕС‚РєР°С… РІС–Рґ 0 РґРѕ 1
 				float Value = Val/VEnd;
 				
 				DrawPlane(mObgects[id].trackBarKaretkaSizeX*cofX,mObgects[id].trackBarKaretkaSizeY*cofY,StartPos+MaxValue*Value,PosY,1,1,0,0,mObgects[id].RotationMode);
 
 				}
 				else //======================================================================================================
-				if(mObgects[id].RotationMode == 'W') //Вертикальний трек бар
+				if(mObgects[id].RotationMode == 'W') //Р’РµСЂС‚РёРєР°Р»СЊРЅРёР№ С‚СЂРµРє Р±Р°СЂ
 				{
 
 
@@ -1041,7 +1041,7 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 
 
 
-					//Початак І кінець руху каретки
+					//РџРѕС‡Р°С‚Р°Рє Р† РєС–РЅРµС†СЊ СЂСѓС…Сѓ РєР°СЂРµС‚РєРё
 				float EndPos = ((Y_CORD-(float)windows_data.ViewportPosY+(float)mObgects[id].SizeY - (float)mObgects[id].trackBarKaretkaSizeY/2)*cofY )-1;
 				float StartPos = ((Y_CORD-(float)windows_data.ViewportPosY+(float)mObgects[id].trackBarKaretkaSizeY/2)*cofY)-1;
 				float MaxValue = EndPos - StartPos;
@@ -1051,7 +1051,7 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 				float Val = mObgects[id].Value - mObgects[id].MinValue;
 				//float vStart = 0;
 
-				//Розмір у відцотках від 0 до 1
+				//Р РѕР·РјС–СЂ Сѓ РІС–РґС†РѕС‚РєР°С… РІС–Рґ 0 РґРѕ 1
 				float Value = Val/VEnd;
 				
 				DrawPlane(mObgects[id].trackBarKaretkaSizeX*cofX,mObgects[id].trackBarKaretkaSizeY*cofY,PosX,StartPos+MaxValue*Value,1,1,0,0,mObgects[id].RotationMode);
@@ -1079,7 +1079,7 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 
 			}
 			else
-			if(mObgects[id].Type == "Label" || mObgects[id].Type == "label") // Для лейбелів підкладинка не потрібна
+			if(mObgects[id].Type == "Label" || mObgects[id].Type == "label") // Р”Р»СЏ Р»РµР№Р±РµР»С–РІ РїС–РґРєР»Р°РґРёРЅРєР° РЅРµ РїРѕС‚СЂС–Р±РЅР°
 			{
 
 				
@@ -1139,10 +1139,10 @@ void DrawStyleElements(int id, float x,float y, float width, float height)
 				PosTextRealY = Yy + mObgects[id].SizeY/2;
 
 
-			//Малювати текст
+			//РњР°Р»СЋРІР°С‚Рё С‚РµРєСЃС‚
 			FontSystems.print(mObgects[id].Text	,PosTextRealX	,PosTextRealY	,FontSystems.DefaultFonts,mObgects[id].TextSize);
 
-			//Малювати курсор введення для текст бокса
+			//РњР°Р»СЋРІР°С‚Рё РєСѓСЂСЃРѕСЂ РІРІРµРґРµРЅРЅСЏ РґР»СЏ С‚РµРєСЃС‚ Р±РѕРєСЃР°
 			if(IdTheLastPush == id)
 			{
 			if(mObgects[IdTheLastPush].Type == "textBox")
@@ -1222,7 +1222,7 @@ void DrawPlane(float SizeX,float SizeY,float PosX,float PosY,float SizeTX,float 
 public:
 
 
-//2018 Спрощене додавання кнопок в групи
+//2018 РЎРїСЂРѕС‰РµРЅРµ РґРѕРґР°РІР°РЅРЅСЏ РєРЅРѕРїРѕРє РІ РіСЂСѓРїРё
 struct TlogBtToGrups
 {
 	std::string NameBT;
@@ -1239,8 +1239,8 @@ public:
 	//========14_11_2017==================
 	//====================================
 
-	bool textEnable; //Чи відображати текст
-	//int DirFIX;      //Змінна вказує скільки кроків назад зробити щоб запрацювали зображення (Вона не функціональна тобто інформація в ній зберігається але клас нічого з нею не робить)
+	bool textEnable; //Р§Рё РІС–РґРѕР±СЂР°Р¶Р°С‚Рё С‚РµРєСЃС‚
+	//int DirFIX;      //Р—РјС–РЅРЅР° РІРєР°Р·СѓС” СЃРєС–Р»СЊРєРё РєСЂРѕРєС–РІ РЅР°Р·Р°Рґ Р·СЂРѕР±РёС‚Рё С‰РѕР± Р·Р°РїСЂР°С†СЋРІР°Р»Рё Р·РѕР±СЂР°Р¶РµРЅРЅСЏ (Р’РѕРЅР° РЅРµ С„СѓРЅРєС†С–РѕРЅР°Р»СЊРЅР° С‚РѕР±С‚Рѕ С–РЅС„РѕСЂРјР°С†С–СЏ РІ РЅС–Р№ Р·Р±РµСЂС–РіР°С”С‚СЊСЃСЏ Р°Р»Рµ РєР»Р°СЃ РЅС–С‡РѕРіРѕ Р· РЅРµСЋ РЅРµ СЂРѕР±РёС‚СЊ)
 
 
 
@@ -1259,13 +1259,13 @@ public:
 	int X_CORD1;
 	
 public:
-	std::string korin_dir; //Корнева папка
+	std::string korin_dir; //РљРѕСЂРЅРµРІР° РїР°РїРєР°
 	    
-	    struct ComandVector       //Структура для збереження команд
+	    struct ComandVector       //РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ РєРѕРјР°РЅРґ
 		{
 			std::string Comand_FUNC;
-			std::vector<std::string> ComandLine; //фУНКЦІЯ І ЇЇ АРГУМЕНТИ
-			std::vector<int> ArgLine; //Числові аргументи
+			std::vector<std::string> ComandLine; //С„РЈРќРљР¦Р†РЇ Р† Р‡Р‡ РђР Р“РЈРњР•РќРўР
+			std::vector<int> ArgLine; //Р§РёСЃР»РѕРІС– Р°СЂРіСѓРјРµРЅС‚Рё
 		};
 		ComandVector ComandVectorIN()
 		{
@@ -1273,35 +1273,35 @@ public:
 			A.Comand_FUNC = "";
 			return A;
 		}
-		ComandVector ComandVectorTemp; //допоміже змінна 
+		ComandVector ComandVectorTemp; //РґРѕРїРѕРјС–Р¶Рµ Р·РјС–РЅРЅР° 
 
-	    struct GrupSetVievport    //Дані які повертатиме функція 
+	    struct GrupSetVievport    //Р”Р°РЅС– СЏРєС– РїРѕРІРµСЂС‚Р°С‚РёРјРµ С„СѓРЅРєС†С–СЏ 
 		 {
 			 int PosX;
 			 int PosY;
 		 };
 
-	     struct Maus_Data         //Структура інформації про мишу
+	     struct Maus_Data         //РЎС‚СЂСѓРєС‚СѓСЂР° С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕ РјРёС€Сѓ
          {
 	           int MausX_W ,MausY_W;// ,MausX,  MausY;
                int PressState;  int MausBT;
          };
 
-		 struct windows_info      //Віконна інформація для вирахувань розміщення кнопок  дані заносятся вручну
+		 struct windows_info      //Р’С–РєРѕРЅРЅР° С–РЅС„РѕСЂРјР°С†С–СЏ РґР»СЏ РІРёСЂР°С…СѓРІР°РЅСЊ СЂРѕР·РјС–С‰РµРЅРЅСЏ РєРЅРѕРїРѕРє  РґР°РЅС– Р·Р°РЅРѕСЃСЏС‚СЃСЏ РІСЂСѓС‡РЅСѓ
 		 {
 	           Maus_Data  Maus_Data_;
-			   //Ширина і висота вікна цілком
+			   //РЁРёСЂРёРЅР° С– РІРёСЃРѕС‚Р° РІС–РєРЅР° С†С–Р»РєРѕРј
 			   int WindowsHeight;
 			   int WindowsWidth;
 
-	           int ViewportWidth;  //Ширина Області промальовки
-               int ViewportHeight; //Висота Області промальовки
+	           int ViewportWidth;  //РЁРёСЂРёРЅР° РћР±Р»Р°СЃС‚С– РїСЂРѕРјР°Р»СЊРѕРІРєРё
+               int ViewportHeight; //Р’РёСЃРѕС‚Р° РћР±Р»Р°СЃС‚С– РїСЂРѕРјР°Р»СЊРѕРІРєРё
 			  
-			   int ViewportPosX; //Зміщення по х та у якщо потрібно змістити систему з країв вікна
+			   int ViewportPosX; //Р—РјС–С‰РµРЅРЅСЏ РїРѕ С… С‚Р° Сѓ СЏРєС‰Рѕ РїРѕС‚СЂС–Р±РЅРѕ Р·РјС–СЃС‚РёС‚Рё СЃРёСЃС‚РµРјСѓ Р· РєСЂР°С—РІ РІС–РєРЅР°
 			   int ViewportPosY;
 		 };
 
-		 struct  PixelRGBA        //Структура збереження коряру
+		 struct  PixelRGBA        //РЎС‚СЂСѓРєС‚СѓСЂР° Р·Р±РµСЂРµР¶РµРЅРЅСЏ РєРѕСЂСЏСЂСѓ
 		 {
 		       short R;
 			   short G;
@@ -1316,21 +1316,21 @@ public:
 		 };
 
 
-		 struct PrivateBT                     //Згруповані дані для структури кнопок, до яких користувач не лізе, змінні обробляются на автоматі
+		 struct PrivateBT                     //Р—РіСЂСѓРїРѕРІР°РЅС– РґР°РЅС– РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂРё РєРЅРѕРїРѕРє, РґРѕ СЏРєРёС… РєРѕСЂРёСЃС‚СѓРІР°С‡ РЅРµ Р»С–Р·Рµ, Р·РјС–РЅРЅС– РѕР±СЂРѕР±Р»СЏСЋС‚СЃСЏ РЅР° Р°РІС‚РѕРјР°С‚С–
 		 {
 			   PSSTEXT F; //Temp
-			   bool activ;      //Активність кнопки
+			   bool activ;      //РђРєС‚РёРІРЅС–СЃС‚СЊ РєРЅРѕРїРєРё
 			   bool Clic;
 			   bool Clic_Temp; 
 			   bool TiskActiv;
 			   bool Klik;
-			   bool Temp_obrob; //Кнопка вже оброблялась чи ні
-			   std::string URL; //Адреса Картинки
-			   std::string URL2; //Адреса допоміжної Картинки
-			   bool Perehvat; //Вказує що кнопка була перезхвачена і не малює її
+			   bool Temp_obrob; //РљРЅРѕРїРєР° РІР¶Рµ РѕР±СЂРѕР±Р»СЏР»Р°СЃСЊ С‡Рё РЅС–
+			   std::string URL; //РђРґСЂРµСЃР° РљР°СЂС‚РёРЅРєРё
+			   std::string URL2; //РђРґСЂРµСЃР° РґРѕРїРѕРјС–Р¶РЅРѕС— РљР°СЂС‚РёРЅРєРё
+			   bool Perehvat; //Р’РєР°Р·СѓС” С‰Рѕ РєРЅРѕРїРєР° Р±СѓР»Р° РїРµСЂРµР·С…РІР°С‡РµРЅР° С– РЅРµ РјР°Р»СЋС” С—С—
 		 };
 
-		 struct OBGECT						//Структура інформації про кнопку (Правила створення кнопки)
+		 struct OBGECT						//РЎС‚СЂСѓРєС‚СѓСЂР° С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕ РєРЅРѕРїРєСѓ (РџСЂР°РІРёР»Р° СЃС‚РІРѕСЂРµРЅРЅСЏ РєРЅРѕРїРєРё)
 		 {
 			   PrivateBT Temp;
 		       GLuint ImageKnopki;
@@ -1355,16 +1355,16 @@ public:
 			   //2019=============
 
 			   //=============================================FontSetling============================
-			   int TextSize;			//Висота тексту
-			   char TextPositionAlignX;		//Позиціонування відносно елемента по Х
-			   char TextPositionAlignY;		//Позиціонування відносно елемента по Y
-			   std::string FontName;	//Назва щрифта або по іншому Стиль вибирається з завантажених
-			   PixelRGBA TextColor;		//Колір тексту
+			   int TextSize;			//Р’РёСЃРѕС‚Р° С‚РµРєСЃС‚Сѓ
+			   char TextPositionAlignX;		//РџРѕР·РёС†С–РѕРЅСѓРІР°РЅРЅСЏ РІС–РґРЅРѕСЃРЅРѕ РµР»РµРјРµРЅС‚Р° РїРѕ РҐ
+			   char TextPositionAlignY;		//РџРѕР·РёС†С–РѕРЅСѓРІР°РЅРЅСЏ РІС–РґРЅРѕСЃРЅРѕ РµР»РµРјРµРЅС‚Р° РїРѕ Y
+			   std::string FontName;	//РќР°Р·РІР° С‰СЂРёС„С‚Р° Р°Р±Рѕ РїРѕ С–РЅС€РѕРјСѓ РЎС‚РёР»СЊ РІРёР±РёСЂР°С”С‚СЊСЃСЏ Р· Р·Р°РІР°РЅС‚Р°Р¶РµРЅРёС…
+			   PixelRGBA TextColor;		//РљРѕР»С–СЂ С‚РµРєСЃС‚Сѓ
 			   //====================================================================================
 
 
 			   //Global Setling
-			   int ObjectType; //Тип Об'єкта  Label Button CheckBox ....
+			   int ObjectType; //РўРёРї РћР±'С”РєС‚Р°  Label Button CheckBox ....
 
 			   //Check and Radio Box
 			   bool Checked;
@@ -1381,7 +1381,7 @@ public:
 			   PixelRGBA HoverTextColor;
 
 
-			   //Додаткове зображення наприклад для Бігунка полоси прокрутки trackBar
+			   //Р”РѕРґР°С‚РєРѕРІРµ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ РЅР°РїСЂРёРєР»Р°Рґ РґР»СЏ Р‘С–РіСѓРЅРєР° РїРѕР»РѕСЃРё РїСЂРѕРєСЂСѓС‚РєРё trackBar
 			   GLuint Image2;
 			   float Value;
 			   float MinValue;
@@ -1394,26 +1394,26 @@ public:
 			   PixelRGBA trackBarKaretkaColor;
 			   PixelRGBA trackBarKaretkaHoverColor;
 
-			   //Вертикально чи горизонтальо відображати елемет
+			   //Р’РµСЂС‚РёРєР°Р»СЊРЅРѕ С‡Рё РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРѕ РІС–РґРѕР±СЂР°Р¶Р°С‚Рё РµР»РµРјРµС‚
 			   char RotationMode;
 
 
 			   //#2019
-			   //Яцщо на кнопку натиснули і не відпускали кнопку ця змінна буде одиницею, і неважливо активна кнопка чи ні
+			   //РЇС†С‰Рѕ РЅР° РєРЅРѕРїРєСѓ РЅР°С‚РёСЃРЅСѓР»Рё С– РЅРµ РІС–РґРїСѓСЃРєР°Р»Рё РєРЅРѕРїРєСѓ С†СЏ Р·РјС–РЅРЅР° Р±СѓРґРµ РѕРґРёРЅРёС†РµСЋ, С– РЅРµРІР°Р¶Р»РёРІРѕ Р°РєС‚РёРІРЅР° РєРЅРѕРїРєР° С‡Рё РЅС–
 			   bool ClickPress;
 
 
 
 			   
-			   std::vector<ComandVector>Comanda; //Список зчитаних командsaw
+			   std::vector<ComandVector>Comanda; //РЎРїРёСЃРѕРє Р·С‡РёС‚Р°РЅРёС… РєРѕРјР°РЅРґsaw
 			   //new
-			   bool static_func;  //Чи використовувати команди зчитані з форми
+			   bool static_func;  //Р§Рё РІРёРєРѕСЂРёСЃС‚РѕРІСѓРІР°С‚Рё РєРѕРјР°РЅРґРё Р·С‡РёС‚Р°РЅС– Р· С„РѕСЂРјРё
 
-			   //Позиція при введенні тексту
+			   //РџРѕР·РёС†С–СЏ РїСЂРё РІРІРµРґРµРЅРЅС– С‚РµРєСЃС‚Сѓ
 			   int PosTextCursor;
 		};
 
-		struct Grup //Система груп
+		struct Grup //РЎРёСЃС‚РµРјР° РіСЂСѓРї
 		{
 			   std::string Name;
 			   std::vector<int>ID_Objects;
@@ -1434,7 +1434,7 @@ public:
 			   GLuint backgroundImage;
 			   std::string bacgroundImageURL;
 
-			   //Полоска яку тягнути
+			   //РџРѕР»РѕСЃРєР° СЏРєСѓ С‚СЏРіРЅСѓС‚Рё
 			    std::string bacgroundHeaderImageURL;
 				GLuint backgroundHeaderImage;
 			   int heightHeader;
@@ -1449,52 +1449,52 @@ public:
  
 
 
-OBGECT Knopka_IN()     //Стандартні налаштування кнопки
+OBGECT Knopka_IN()     //РЎС‚Р°РЅРґР°СЂС‚РЅС– РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РєРЅРѕРїРєРё
 {
-	//Об'єкт нова кнопка
+	//РћР±'С”РєС‚ РЅРѕРІР° РєРЅРѕРїРєР°
 	OBGECT A;
 
 	A.RotationMode = 'H';
 
-	//По замовчуванню на кнопку не натискали
+	//РџРѕ Р·Р°РјРѕРІС‡СѓРІР°РЅРЅСЋ РЅР° РєРЅРѕРїРєСѓ РЅРµ РЅР°С‚РёСЃРєР°Р»Рё
 	A.ClickPress = false;
 
-	//Темчасові дані
+	//РўРµРјС‡Р°СЃРѕРІС– РґР°РЅС–
 	A.Temp.Temp_obrob = 0;
 
-	//Адреса текстурки
+	//РђРґСЂРµСЃР° С‚РµРєСЃС‚СѓСЂРєРё
 	A.Temp.URL = "";
 
-	//Позиція кнопки на екрані (Реальна позиція буде розрахована відносно позиціонування)
+	//РџРѕР·РёС†С–СЏ РєРЅРѕРїРєРё РЅР° РµРєСЂР°РЅС– (Р РµР°Р»СЊРЅР° РїРѕР·РёС†С–СЏ Р±СѓРґРµ СЂРѕР·СЂР°С…РѕРІР°РЅР° РІС–РґРЅРѕСЃРЅРѕ РїРѕР·РёС†С–РѕРЅСѓРІР°РЅРЅСЏ)
 	A.PosX = 0;
 	A.PosY = 0;
 
-	//Розмір кнопки
+	//Р РѕР·РјС–СЂ РєРЅРѕРїРєРё
 	A.SizeX = 50;
 	A.SizeY = 50;
 
 	A.Type = "Button";
 	A.Enabled = true;
 
-	//Колір
+	//РљРѕР»С–СЂ
 	A.Color.A = 255;
 	A.Color.R = 255;
 	A.Color.G = 255;
 	A.Color.B = 255;
 
-	//Колір Активного елемента
+	//РљРѕР»С–СЂ РђРєС‚РёРІРЅРѕРіРѕ РµР»РµРјРµРЅС‚Р°
 	A.HoverColor.A = 200;
 	A.HoverColor.R = 255;
 	A.HoverColor.G = 255;
 	A.HoverColor.B = 100;
 
-	//Текст
+	//РўРµРєСЃС‚
 	A.Text = "";
 
-	//Ім'я по ньому обробляються кліки
+	//Р†Рј'СЏ РїРѕ РЅСЊРѕРјСѓ РѕР±СЂРѕР±Р»СЏСЋС‚СЊСЃСЏ РєР»С–РєРё
 	A.Names = "ButtonEnemy";
 
-	//Темчасові змінні для кліків
+	//РўРµРјС‡Р°СЃРѕРІС– Р·РјС–РЅРЅС– РґР»СЏ РєР»С–РєС–РІ
 	A.Temp.activ = 0;
 	A.Temp.Clic = 0;
 	A.Temp.Clic_Temp = 0;
@@ -1502,20 +1502,20 @@ OBGECT Knopka_IN()     //Стандартні налаштування кнопки
 	A.Temp.Klik = 0;
 
 
-	//Видимість
+	//Р’РёРґРёРјС–СЃС‚СЊ
 	A.Vizual = true;
 	
-	//Позиціонування
+	//РџРѕР·РёС†С–РѕРЅСѓРІР°РЅРЅСЏ
 	A.CHorizontal = 'L';
 	A.CWertical = 'W';
 
 	
 	
 	
-	//Якщо увімкнено подія буде викликатися кожного кадра
+	//РЇРєС‰Рѕ СѓРІС–РјРєРЅРµРЅРѕ РїРѕРґС–СЏ Р±СѓРґРµ РІРёРєР»РёРєР°С‚РёСЃСЏ РєРѕР¶РЅРѕРіРѕ РєР°РґСЂР°
 	A.Avtomatic = false;
 
-	//Адреса текстури
+	//РђРґСЂРµСЃР° С‚РµРєСЃС‚СѓСЂРё
 	A.Temp.URL = "";
 
 	//#2019
@@ -1539,13 +1539,13 @@ OBGECT Knopka_IN()     //Стандартні налаштування кнопки
 
 
 
-	//Про всяк випадок очистити список внутрішніх оманд
+	//РџСЂРѕ РІСЃСЏРє РІРёРїР°РґРѕРє РѕС‡РёСЃС‚РёС‚Рё СЃРїРёСЃРѕРє РІРЅСѓС‚СЂС–С€РЅС–С… РѕРјР°РЅРґ
 	A.Comanda.~vector();
     return A;
 }
 
 
-Grup  Grup_IN()     //Стандартні налаштування Групи
+Grup  Grup_IN()     //РЎС‚Р°РЅРґР°СЂС‚РЅС– РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ Р“СЂСѓРїРё
 {
 	Grup A;
 	A.Name = "no name";
@@ -1594,10 +1594,10 @@ Grup  Grup_IN()     //Стандартні налаштування Групи
     return A;
 }
 
-int BT_MAUSE_KLIK_KNOPKA; //Яка кнопка (сигнал) відповідає за натиск
+int BT_MAUSE_KLIK_KNOPKA; //РЇРєР° РєРЅРѕРїРєР° (СЃРёРіРЅР°Р») РІС–РґРїРѕРІС–РґР°С” Р·Р° РЅР°С‚РёСЃРє
 
 //##2019
-//Знайти елемент по назві і записанти посилання на нього
+//Р—РЅР°Р№С‚Рё РµР»РµРјРµРЅС‚ РїРѕ РЅР°Р·РІС– С– Р·Р°РїРёСЃР°РЅС‚Рё РїРѕСЃРёР»Р°РЅРЅСЏ РЅР° РЅСЊРѕРіРѕ
 				OBGECT& Get_Object(std::string name,bool &suces)
 				{
 					for(int i = 0; i < mObgects.size(); i++)
@@ -1616,10 +1616,10 @@ int BT_MAUSE_KLIK_KNOPKA; //Яка кнопка (сигнал) відповідає за натиск
 
 
 //Pos Ok
-GrupSetVievport  Get_Position_glViewport(int SizeX,int SizeY,int PosX,int PosY,char CWertical,char CHorizontal)  //функція заповнює змінні розрахування положення Для віэвпорта
+GrupSetVievport  Get_Position_glViewport(int SizeX,int SizeY,int PosX,int PosY,char CWertical,char CHorizontal)  //С„СѓРЅРєС†С–СЏ Р·Р°РїРѕРІРЅСЋС” Р·РјС–РЅРЅС– СЂРѕР·СЂР°С…СѓРІР°РЅРЅСЏ РїРѕР»РѕР¶РµРЅРЅСЏ Р”Р»СЏ РІС–СЌРІРїРѕСЂС‚Р°
 {
 	GrupSetVievport A;
-	//Налаштування по вертикалі
+	//РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РїРѕ РІРµСЂС‚РёРєР°Р»С–
 	if(CWertical == 'W' || CWertical == 'w')  
 	A.PosY = (-PosY+windows_data.ViewportHeight - SizeY) +  windows_data.ViewportPosY ; 
 	else 
@@ -1628,7 +1628,7 @@ GrupSetVievport  Get_Position_glViewport(int SizeX,int SizeY,int PosX,int PosY,c
 	else 
 	A.PosY = PosY +  windows_data.ViewportPosY;
 
-    //Налаштування по горизонталі
+    //РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»С–
 	if(CHorizontal == 'R' || CHorizontal == 'r')    
 	A.PosX = -PosX+windows_data.ViewportWidth - SizeX  + windows_data.ViewportPosX; 
 	else 
@@ -1648,30 +1648,30 @@ public:
 
 
 
-	windows_info windows_data;        //Змінна в яку потрібно заносити дані про вікно і клавішні натиски
-	std::vector<OBGECT>mObgects;       //Векторна змінна в якій зберігаются кнопки
-	OBGECT BT_K_TEMP;                 //Допоміжна змінна яка налаштовуєтся а потім вкидаєтся її копія в вектор кнопок
-	bool kyrsor_na_cnopci;            //Показує що одна із кнопок активна
-	std::vector<Grup>Grups_;          //Вектор груп
+	windows_info windows_data;        //Р—РјС–РЅРЅР° РІ СЏРєСѓ РїРѕС‚СЂС–Р±РЅРѕ Р·Р°РЅРѕСЃРёС‚Рё РґР°РЅС– РїСЂРѕ РІС–РєРЅРѕ С– РєР»Р°РІС–С€РЅС– РЅР°С‚РёСЃРєРё
+	std::vector<OBGECT>mObgects;       //Р’РµРєС‚РѕСЂРЅР° Р·РјС–РЅРЅР° РІ СЏРєС–Р№ Р·Р±РµСЂС–РіР°СЋС‚СЃСЏ РєРЅРѕРїРєРё
+	OBGECT BT_K_TEMP;                 //Р”РѕРїРѕРјС–Р¶РЅР° Р·РјС–РЅРЅР° СЏРєР° РЅР°Р»Р°С€С‚РѕРІСѓС”С‚СЃСЏ Р° РїРѕС‚С–Рј РІРєРёРґР°С”С‚СЃСЏ С—С— РєРѕРїС–СЏ РІ РІРµРєС‚РѕСЂ РєРЅРѕРїРѕРє
+	bool kyrsor_na_cnopci;            //РџРѕРєР°Р·СѓС” С‰Рѕ РѕРґРЅР° С–Р· РєРЅРѕРїРѕРє Р°РєС‚РёРІРЅР°
+	std::vector<Grup>Grups_;          //Р’РµРєС‚РѕСЂ РіСЂСѓРї
 	Grup  BT_G_TEMP;   
 
 
-//Темчасові дані
+//РўРµРјС‡Р°СЃРѕРІС– РґР°РЅС–
 int Y_CORD;
 int X_CORD;
 
 
 //bmp
-/* размер заголовка BMP-файла */ 
+/* СЂР°Р·РјРµСЂ Р·Р°РіРѕР»РѕРІРєР° BMP-С„Р°Р№Р»Р° */ 
  
 #define BMP_SIZE_FILEHEADER 14  
  
-/* размер информационного заголовка BMP-файла */ 
+/* СЂР°Р·РјРµСЂ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРіРѕ Р·Р°РіРѕР»РѕРІРєР° BMP-С„Р°Р№Р»Р° */ 
 #define BMP_SIZE_INFOHEADER 40   
  
 #define BMP_COLOR_BITS_24 24  
  
-/* вспомогательные функции */ 
+/* РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё */ 
 /* <<<<<<<<<<<<<<<<<<<<<<< */ 
  
 static unsigned int uInt16Number(unsigned char buf[2]) 
@@ -1721,30 +1721,30 @@ int ReadFileHeader(FILE* f, int* bitmap_pos)
 
 public:
 	
-	//Модифікація промальовки кнопок, дозволяє при малюванні не використовувати Viewport що дозволяэ ховати панельки
+	//РњРѕРґРёС„С–РєР°С†С–СЏ РїСЂРѕРјР°Р»СЊРѕРІРєРё РєРЅРѕРїРѕРє, РґРѕР·РІРѕР»СЏС” РїСЂРё РјР°Р»СЋРІР°РЅРЅС– РЅРµ РІРёРєРѕСЂРёСЃС‚РѕРІСѓРІР°С‚Рё Viewport С‰Рѕ РґРѕР·РІРѕР»СЏСЌ С…РѕРІР°С‚Рё РїР°РЅРµР»СЊРєРё
 	bool MODglViewport;
  
 
-//Останній натиск по ід Кнопка яку останню нажимали
+//РћСЃС‚Р°РЅРЅС–Р№ РЅР°С‚РёСЃРє РїРѕ С–Рґ РљРЅРѕРїРєР° СЏРєСѓ РѕСЃС‚Р°РЅРЅСЋ РЅР°Р¶РёРјР°Р»Рё
 int IdTheLastPush;
 double Time;
 
 
-//Темчасові змінні які дозволять переміщати вікна
-int idTheLastPushWindow; //На якому вікні було клікнуто мишею
+//РўРµРјС‡Р°СЃРѕРІС– Р·РјС–РЅРЅС– СЏРєС– РґРѕР·РІРѕР»СЏС‚СЊ РїРµСЂРµРјС–С‰Р°С‚Рё РІС–РєРЅР°
+int idTheLastPushWindow; //РќР° СЏРєРѕРјСѓ РІС–РєРЅС– Р±СѓР»Рѕ РєР»С–РєРЅСѓС‚Рѕ РјРёС€РµСЋ
 int IdGrupsHoverHight;
-int IdGrupsHoverMain; //На якому вікні зараз миша, запобігання клікабельності опо перекритим вікнам
-//Запамятовує координати миші в момент кліку що дозволяє розраховувати тільки зміщення
+int IdGrupsHoverMain; //РќР° СЏРєРѕРјСѓ РІС–РєРЅС– Р·Р°СЂР°Р· РјРёС€Р°, Р·Р°РїРѕР±С–РіР°РЅРЅСЏ РєР»С–РєР°Р±РµР»СЊРЅРѕСЃС‚С– РѕРїРѕ РїРµСЂРµРєСЂРёС‚РёРј РІС–РєРЅР°Рј
+//Р—Р°РїР°РјСЏС‚РѕРІСѓС” РєРѕРѕСЂРґРёРЅР°С‚Рё РјРёС€С– РІ РјРѕРјРµРЅС‚ РєР»С–РєСѓ С‰Рѕ РґРѕР·РІРѕР»СЏС” СЂРѕР·СЂР°С…РѕРІСѓРІР°С‚Рё С‚С–Р»СЊРєРё Р·РјС–С‰РµРЅРЅСЏ
 int TheLastXpsMAuse;
 int TheLastYpsMAuse;
-//Позиція вікна в момент кліку
+//РџРѕР·РёС†С–СЏ РІС–РєРЅР° РІ РјРѕРјРµРЅС‚ РєР»С–РєСѓ
 int TheLastXPosWin;
 int TheLastYPosWin;
 
 
 
 //(2019.12 - point 20)
-//Знайти обєкт в групі
+//Р—РЅР°Р№С‚Рё РѕР±С”РєС‚ РІ РіСЂСѓРїС–
 int FindIdObject(std::string ObjectName,int GrupID)
 {
 	if(GrupID<0 || GrupID >= Grups_.size()) return -1;
@@ -1797,33 +1797,33 @@ int FindIdGrup(std::string GrupName)
 }
 
 
-//(2019.12 - point 20) //Дуюлювати вікно зі всіма його елементами (Додати приставку до імені кожного елемента)
+//(2019.12 - point 20) //Р”СѓСЋР»СЋРІР°С‚Рё РІС–РєРЅРѕ Р·С– РІСЃС–РјР° Р№РѕРіРѕ РµР»РµРјРµРЅС‚Р°РјРё (Р”РѕРґР°С‚Рё РїСЂРёСЃС‚Р°РІРєСѓ РґРѕ С–РјРµРЅС– РєРѕР¶РЅРѕРіРѕ РµР»РµРјРµРЅС‚Р°)
 bool DuplicateGrup(int idGrup,std::string SubText,int &newGrup, bool CopyElements)
 {
-	//Якщо група не існує то то відправляємо помилку
+	//РЇРєС‰Рѕ РіСЂСѓРїР° РЅРµ С–СЃРЅСѓС” С‚Рѕ С‚Рѕ РІС–РґРїСЂР°РІР»СЏС”РјРѕ РїРѕРјРёР»РєСѓ
 	if(idGrup >= Grups_.size() || idGrup < 0)
 	{
 		return false;
 	}
 
 
-	//Скопіювати групу 
+	//РЎРєРѕРїС–СЋРІР°С‚Рё РіСЂСѓРїСѓ 
 	Grup tGrup =  Grups_[idGrup];
-	//і з нової видалити посилання на старі елемети
+	//С– Р· РЅРѕРІРѕС— РІРёРґР°Р»РёС‚Рё РїРѕСЃРёР»Р°РЅРЅСЏ РЅР° СЃС‚Р°СЂС– РµР»РµРјРµС‚Рё
 	tGrup.ID_Objects.clear();
-	//Додати до імені приставку
+	//Р”РѕРґР°С‚Рё РґРѕ С–РјРµРЅС– РїСЂРёСЃС‚Р°РІРєСѓ
 	tGrup.Name = SubText + tGrup.Name;
 
-	//Скопіювати всі елемети групи
+	//РЎРєРѕРїС–СЋРІР°С‚Рё РІСЃС– РµР»РµРјРµС‚Рё РіСЂСѓРїРё
 	if(CopyElements)
 	for(int i = 0; i < Grups_[idGrup].ID_Objects.size() ; i++)
 	{
 		{
-		//Скопіювати в змінну обект
+		//РЎРєРѕРїС–СЋРІР°С‚Рё РІ Р·РјС–РЅРЅСѓ РѕР±РµРєС‚
 		OBGECT tObjects = mObgects[  Grups_[idGrup].ID_Objects[i]  ];
-		//Додати суб назву
+		//Р”РѕРґР°С‚Рё СЃСѓР± РЅР°Р·РІСѓ
 		tObjects.Names = SubText + tObjects.Names;
-		//Зберегти в масив обєкт
+		//Р—Р±РµСЂРµРіС‚Рё РІ РјР°СЃРёРІ РѕР±С”РєС‚
 
 		//tObjects.Comanda.clear();
 		mObgects.push_back(tObjects);
@@ -1832,7 +1832,7 @@ bool DuplicateGrup(int idGrup,std::string SubText,int &newGrup, bool CopyElement
 
 
 
-		//Зберегти ідентифікатор скопійованого обекта в нову групу
+		//Р—Р±РµСЂРµРіС‚Рё С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ СЃРєРѕРїС–Р№РѕРІР°РЅРѕРіРѕ РѕР±РµРєС‚Р° РІ РЅРѕРІСѓ РіСЂСѓРїСѓ
 		tGrup.ID_Objects.push_back(mObgects.size()-1);
 		}
 	}
@@ -1840,7 +1840,7 @@ bool DuplicateGrup(int idGrup,std::string SubText,int &newGrup, bool CopyElement
 
 	Grups_.push_back(tGrup);
 
-	//Записую ід нової групи
+	//Р—Р°РїРёСЃСѓСЋ С–Рґ РЅРѕРІРѕС— РіСЂСѓРїРё
 	newGrup = Grups_.size() - 1;
 
 	return true;
@@ -1871,13 +1871,13 @@ DevChBTG()
 	Enable(MODglViewport);
 	windows_data.ViewportPosX = 0;
 	windows_data.ViewportPosY = 0;
-	//Вимикаємо користувацьку функцію на правах конструктора
+	//Р’РёРјРёРєР°С”РјРѕ РєРѕСЂРёСЃС‚СѓРІР°С†СЊРєСѓ С„СѓРЅРєС†С–СЋ РЅР° РїСЂР°РІР°С… РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 	Disable(textureLoader.ISusTextureLoader);
 	//Disable(isVoidDrawPlane);
 	Disable(isVoidDrawPlane);
 	Disable(isVoidGlobalDrawPlane);
 	
-	//Функція для завантажена текстур при потребі розширити підтримук типів текстур визначається користувачем
+	//Р¤СѓРЅРєС†С–СЏ РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅР° С‚РµРєСЃС‚СѓСЂ РїСЂРё РїРѕС‚СЂРµР±С– СЂРѕР·С€РёСЂРёС‚Рё РїС–РґС‚СЂРёРјСѓРє С‚РёРїС–РІ С‚РµРєСЃС‚СѓСЂ РІРёР·РЅР°С‡Р°С”С‚СЊСЃСЏ РєРѕСЂРёСЃС‚СѓРІР°С‡РµРј
 	bool (*usTextureLoader)(std::string url, int &width, int &height, GLuint &TxID);
 
 	string vertexS = "";
@@ -1887,17 +1887,17 @@ DevChBTG()
 
 
 	textEnable = 1;
-	OBGECT BT_K_TEMP = Knopka_IN();                 //Допоміжна змінна яка налаштовуєтся а потім вкидаєтся її копія в вектор кнопок
+	OBGECT BT_K_TEMP = Knopka_IN();                 //Р”РѕРїРѕРјС–Р¶РЅР° Р·РјС–РЅРЅР° СЏРєР° РЅР°Р»Р°С€С‚РѕРІСѓС”С‚СЃСЏ Р° РїРѕС‚С–Рј РІРєРёРґР°С”С‚СЃСЏ С—С— РєРѕРїС–СЏ РІ РІРµРєС‚РѕСЂ РєРЅРѕРїРѕРє
 	Grup  BT_G_TEMP = Grup_IN();
-	BT_MAUSE_KLIK_KNOPKA = 0;                       //якщо сигнал від glut то ліва кнопка миші по стандарту
+	BT_MAUSE_KLIK_KNOPKA = 0;                       //СЏРєС‰Рѕ СЃРёРіРЅР°Р» РІС–Рґ glut С‚Рѕ Р»С–РІР° РєРЅРѕРїРєР° РјРёС€С– РїРѕ СЃС‚Р°РЅРґР°СЂС‚Сѓ
 	windows_data.Maus_Data_ .PressState = 0;
 	windows_data.Maus_Data_ .MausBT = -1;
 
 }
 
 
-//Функції роботи з клавіатурою
-//Функція в яку потрібно передавати aspi натисненої кнопки
+//Р¤СѓРЅРєС†С–С— СЂРѕР±РѕС‚Рё Р· РєР»Р°РІС–Р°С‚СѓСЂРѕСЋ
+//Р¤СѓРЅРєС†С–СЏ РІ СЏРєСѓ РїРѕС‚СЂС–Р±РЅРѕ РїРµСЂРµРґР°РІР°С‚Рё aspi РЅР°С‚РёСЃРЅРµРЅРѕС— РєРЅРѕРїРєРё
 void VoidSetKeyEvent(int key, int action, int mode)
 {
 	//r 262
@@ -1943,7 +1943,7 @@ void VoidSetKeyEvent(int key, int action, int mode)
 	}
 }
 
-//Функція в яку потрібно передавати Символ натиснутої кнопки
+//Р¤СѓРЅРєС†С–СЏ РІ СЏРєСѓ РїРѕС‚СЂС–Р±РЅРѕ РїРµСЂРµРґР°РІР°С‚Рё РЎРёРјРІРѕР» РЅР°С‚РёСЃРЅСѓС‚РѕС— РєРЅРѕРїРєРё
 void VoidSetKeyEventText(unsigned char ch)
 {
 	if(IdTheLastPush>0)
@@ -1957,7 +1957,7 @@ void VoidSetKeyEventText(unsigned char ch)
 
 
 
-//2019 Отримати позицію кнопки з урахуванням позиціювання
+//2019 РћС‚СЂРёРјР°С‚Рё РїРѕР·РёС†С–СЋ РєРЅРѕРїРєРё Р· СѓСЂР°С…СѓРІР°РЅРЅСЏРј РїРѕР·РёС†С–СЋРІР°РЅРЅСЏ
  void GetPosBT(int id,int &x,int &y)
  {
 
@@ -1985,7 +1985,7 @@ void VoidSetKeyEventText(unsigned char ch)
 
 	
 
-	 //Налаштування по вертикалі
+	 //РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РїРѕ РІРµСЂС‚РёРєР°Р»С–
 	if(CWertical == 'W' || CWertical == 'w')  
 	y = -PosY+windows_data.ViewportHeight - SizeY ; 
 	else 
@@ -1994,7 +1994,7 @@ void VoidSetKeyEventText(unsigned char ch)
 	else 
 	y = PosY;
 
-    //Налаштування по горизонталі
+    //РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»С–
 	if(CHorizontal == 'R' || CHorizontal == 'r')    
 	x = -PosX+windows_data.ViewportWidth - SizeX ; 
 	else 
@@ -2013,12 +2013,12 @@ void VoidSetKeyEventText(unsigned char ch)
 
 
 
-void BPrivate_Rozmis(int i)  //функція заповнює змінні розрахування положення
+void BPrivate_Rozmis(int i)  //С„СѓРЅРєС†С–СЏ Р·Р°РїРѕРІРЅСЋС” Р·РјС–РЅРЅС– СЂРѕР·СЂР°С…СѓРІР°РЅРЅСЏ РїРѕР»РѕР¶РµРЅРЅСЏ
 {
 	GetPosBT(i,X_CORD1,Y_CORD1);
 }
 
-void FixWindow_Private_Size(int iBt,int IdG,int &x,int &y)  //функція заповнює змінні розрахування положення
+void FixWindow_Private_Size(int iBt,int IdG,int &x,int &y)  //С„СѓРЅРєС†С–СЏ Р·Р°РїРѕРІРЅСЋС” Р·РјС–РЅРЅС– СЂРѕР·СЂР°С…СѓРІР°РЅРЅСЏ РїРѕР»РѕР¶РµРЅРЅСЏ
 {
 
  //int x,int y;
@@ -2040,7 +2040,7 @@ void FixWindow_Private_Size(int iBt,int IdG,int &x,int &y)  //функція заповнює з
 	
 	
 
-	 //Налаштування по вертикалі
+	 //РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РїРѕ РІРµСЂС‚РёРєР°Р»С–
 	if(CWertical == 'W' || CWertical == 'w')  
 	y = -PosY+WindowHeight - SizeY ; 
 	else 
@@ -2049,7 +2049,7 @@ void FixWindow_Private_Size(int iBt,int IdG,int &x,int &y)  //функція заповнює з
 	else 
 	y = PosY;
 
-    //Налаштування по горизонталі
+    //РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»С–
 	if(CHorizontal == 'R' || CHorizontal == 'r')    
 	x = -PosX+WindowWidth - SizeX ; 
 	else 
@@ -2067,10 +2067,10 @@ void FixWindow_Private_Size(int iBt,int IdG,int &x,int &y)  //функція заповнює з
 
 
 
-void  VSTAN_ZMIN_T_OBROB(bool Stan) //Вказує чи ооброблялись усі кнопки Приватна
+void  VSTAN_ZMIN_T_OBROB(bool Stan) //Р’РєР°Р·СѓС” С‡Рё РѕРѕР±СЂРѕР±Р»СЏР»РёСЃСЊ СѓСЃС– РєРЅРѕРїРєРё РџСЂРёРІР°С‚РЅР°
 {
 
-	//MD_ Модифыкувати під активні групи
+	//MD_ РњРѕРґРёС„С‹РєСѓРІР°С‚Рё РїС–Рґ Р°РєС‚РёРІРЅС– РіСЂСѓРїРё
 		/*int i = 0;
 		while(i<KNopka_.size())
 		{
@@ -2079,14 +2079,14 @@ void  VSTAN_ZMIN_T_OBROB(bool Stan) //Вказує чи ооброблялись усі кнопки Приватна
 		}*/
 
 			int j = 0;
-		while(j<Grups_.size()) //пройтись по всім групам
+		while(j<Grups_.size()) //РїСЂРѕР№С‚РёСЃСЊ РїРѕ РІСЃС–Рј РіСЂСѓРїР°Рј
 		{
-			if(Grups_[j].vizual == 1) //якщо група видима і активна
+			if(Grups_[j].vizual == 1) //СЏРєС‰Рѕ РіСЂСѓРїР° РІРёРґРёРјР° С– Р°РєС‚РёРІРЅР°
 			{
 							int i = 0;
-							while(i<Grups_[j].ID_Objects.size()) //обробити записані ідентифікатори
+							while(i<Grups_[j].ID_Objects.size()) //РѕР±СЂРѕР±РёС‚Рё Р·Р°РїРёСЃР°РЅС– С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРё
 								{
-										mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob = Stan; //Вказуємо що кнопка оброблена
+										mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob = Stan; //Р’РєР°Р·СѓС”РјРѕ С‰Рѕ РєРЅРѕРїРєР° РѕР±СЂРѕР±Р»РµРЅР°
                                         i++;
 							    }
 			}
@@ -2095,7 +2095,7 @@ void  VSTAN_ZMIN_T_OBROB(bool Stan) //Вказує чи ооброблялись усі кнопки Приватна
 
 }
 
-int  ID_GRUP_NAME(std::string Name) //Функція повертає ІД знаходячи його за назвою
+int  ID_GRUP_NAME(std::string Name) //Р¤СѓРЅРєС†С–СЏ РїРѕРІРµСЂС‚Р°С” Р†Р” Р·РЅР°С…РѕРґСЏС‡Рё Р№РѕРіРѕ Р·Р° РЅР°Р·РІРѕСЋ
 {
 	int i = 0;
 	while(Grups_.size()>i)
@@ -2104,50 +2104,50 @@ int  ID_GRUP_NAME(std::string Name) //Функція повертає ІД знаходячи його за назв
 		return i;
 		i++;
 	}
-	return -1; //Групу з такою назвою не знайдено
+	return -1; //Р“СЂСѓРїСѓ Р· С‚Р°РєРѕСЋ РЅР°Р·РІРѕСЋ РЅРµ Р·РЅР°Р№РґРµРЅРѕ
 }
-bool IStheProcessReform;//Змінна яка дозволяє зупинити обробку кнопок якщо при натиску на кнопку виконано завантаження іншої форми
-void  MSG_BT(void (*func)(std::string Name,int idObject,int idGrup))   //Цю функцю потрібно викликати в циклі з назфою функції куди потрібно надіслати назву натисненої кнопки.
+bool IStheProcessReform;//Р—РјС–РЅРЅР° СЏРєР° РґРѕР·РІРѕР»СЏС” Р·СѓРїРёРЅРёС‚Рё РѕР±СЂРѕР±РєСѓ РєРЅРѕРїРѕРє СЏРєС‰Рѕ РїСЂРё РЅР°С‚РёСЃРєСѓ РЅР° РєРЅРѕРїРєСѓ РІРёРєРѕРЅР°РЅРѕ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ С–РЅС€РѕС— С„РѕСЂРјРё
+void  MSG_BT(void (*func)(std::string Name,int idObject,int idGrup))   //Р¦СЋ С„СѓРЅРєС†СЋ РїРѕС‚СЂС–Р±РЅРѕ РІРёРєР»РёРєР°С‚Рё РІ С†РёРєР»С– Р· РЅР°Р·С„РѕСЋ С„СѓРЅРєС†С–С— РєСѓРґРё РїРѕС‚СЂС–Р±РЅРѕ РЅР°РґС–СЃР»Р°С‚Рё РЅР°Р·РІСѓ РЅР°С‚РёСЃРЅРµРЅРѕС— РєРЅРѕРїРєРё.
 {
 	IStheProcessReform = false;
-	VSTAN_ZMIN_T_OBROB(0); //всі кнопки не оброблені По замовчуваню
+	VSTAN_ZMIN_T_OBROB(0); //РІСЃС– РєРЅРѕРїРєРё РЅРµ РѕР±СЂРѕР±Р»РµРЅС– РџРѕ Р·Р°РјРѕРІС‡СѓРІР°РЅСЋ
 
 	    kyrsor_na_cnopci = 0;
 	
 
 		int j = 0;
-		while(j<Grups_.size()) //пройтись по всім групам
+		while(j<Grups_.size()) //РїСЂРѕР№С‚РёСЃСЊ РїРѕ РІСЃС–Рј РіСЂСѓРїР°Рј
 		{
-			if(Grups_[j].vizual == 1 && Grups_[j].Enable == 1) //якщо група видима і активна
+			if(Grups_[j].vizual == 1 && Grups_[j].Enable == 1) //СЏРєС‰Рѕ РіСЂСѓРїР° РІРёРґРёРјР° С– Р°РєС‚РёРІРЅР°
 			{
 							int i = 0;
-							while(i<Grups_[j].ID_Objects.size()) //обробити записані ідентифікатори
+							while(i<Grups_[j].ID_Objects.size()) //РѕР±СЂРѕР±РёС‚Рё Р·Р°РїРёСЃР°РЅС– С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРё
 								{
 									//if(mObgects.size() > Grups_[j].ID_Objects[i] && Grups_[j].ID_Objects[i]>=0)
 
-									if(mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob == 0) //Якщо кнопка не оброблялася
-									{//**Обробити кнопку
+									if(mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob == 0) //РЇРєС‰Рѕ РєРЅРѕРїРєР° РЅРµ РѕР±СЂРѕР±Р»СЏР»Р°СЃСЏ
+									{//**РћР±СЂРѕР±РёС‚Рё РєРЅРѕРїРєСѓ
 
-										mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob = 1; //Вказуємо що кнопка оброблена
+										mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob = 1; //Р’РєР°Р·СѓС”РјРѕ С‰Рѕ РєРЅРѕРїРєР° РѕР±СЂРѕР±Р»РµРЅР°
 
 									if(mObgects[Grups_[j].ID_Objects[i]].Temp.Klik == 1)
 									{
 										
-										//Надіслати в користувацьку функцію імя і ід
+										//РќР°РґС–СЃР»Р°С‚Рё РІ РєРѕСЂРёСЃС‚СѓРІР°С†СЊРєСѓ С„СѓРЅРєС†С–СЋ С–РјСЏ С– С–Рґ
 										func(mObgects[Grups_[j].ID_Objects[i]].Names,Grups_[j].ID_Objects[i] ,j );
-										if(IStheProcessReform == true) return; //Терміново зупинити обробку було завантажено нову форму або оновлено
+										if(IStheProcessReform == true) return; //РўРµСЂРјС–РЅРѕРІРѕ Р·СѓРїРёРЅРёС‚Рё РѕР±СЂРѕР±РєСѓ Р±СѓР»Рѕ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРѕ РЅРѕРІСѓ С„РѕСЂРјСѓ Р°Р±Рѕ РѕРЅРѕРІР»РµРЅРѕ
 										mObgects[Grups_[j].ID_Objects[i]].PosTextCursor = mObgects[Grups_[j].ID_Objects[i]].Text.size();
 
 										//if(Grups_.size() == 0 && mObgects.size() == 0) return;
 
 										//if(Grups_[j].ID_Objects.size() < j) return;
 
-										IdTheLastPush = Grups_[j].ID_Objects[i]; //Запомнити останню натиснену кнопку
+										IdTheLastPush = Grups_[j].ID_Objects[i]; //Р—Р°РїРѕРјРЅРёС‚Рё РѕСЃС‚Р°РЅРЅСЋ РЅР°С‚РёСЃРЅРµРЅСѓ РєРЅРѕРїРєСѓ
 
 
 										mObgects[Grups_[j].ID_Objects[i]].Temp.Klik = 0;
 
-										//Якщо натиснено на радіобокс зняти всы галочки з групи цього радыобокса і поставити на цьому галочку якщо її не було
+										//РЇРєС‰Рѕ РЅР°С‚РёСЃРЅРµРЅРѕ РЅР° СЂР°РґС–РѕР±РѕРєСЃ Р·РЅСЏС‚Рё РІСЃС‹ РіР°Р»РѕС‡РєРё Р· РіСЂСѓРїРё С†СЊРѕРіРѕ СЂР°РґС‹РѕР±РѕРєСЃР° С– РїРѕСЃС‚Р°РІРёС‚Рё РЅР° С†СЊРѕРјСѓ РіР°Р»РѕС‡РєСѓ СЏРєС‰Рѕ С—С— РЅРµ Р±СѓР»Рѕ
 										if(mObgects[Grups_[j].ID_Objects[i]].Type == "radioBox" && mObgects[Grups_[j].ID_Objects[i]].Checked == false)
 											for(int i1 = 0; i1 < mObgects.size();i1++)
 											{
@@ -2164,41 +2164,41 @@ void  MSG_BT(void (*func)(std::string Name,int idObject,int idGrup))   //Цю функ
 
 
 										
-				//===========================Обробка внутрішніх команд кнопок
+				//===========================РћР±СЂРѕР±РєР° РІРЅСѓС‚СЂС–С€РЅС–С… РєРѕРјР°РЅРґ РєРЅРѕРїРѕРє
 										int i_t = 0;
 										while(i_t < mObgects[Grups_[j].ID_Objects[i]].Comanda.size())
 										{
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnable")  ////Активувати групи = груповий пакет
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnable")  ////РђРєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 											{
 											GrupEnable(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,1);
 											GrupEnable(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,1);
 											}
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisable")   ////Деактивувати групи = груповий пакет
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisable")   ////Р”РµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 											{
 											GrupEnable(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,0);
 											GrupEnable(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,0);
 											}
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOn") //Робить видимими вказані групи
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOn") //Р РѕР±РёС‚СЊ РІРёРґРёРјРёРјРё РІРєР°Р·Р°РЅС– РіСЂСѓРїРё
 											{
 											GrupVisual(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,1);
 											GrupVisual(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,1);
 											}
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOff") //Робить не видимими вказані групи
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOff") //Р РѕР±РёС‚СЊ РЅРµ РІРёРґРёРјРёРјРё РІРєР°Р·Р°РЅС– РіСЂСѓРїРё
 											{
 											GrupVisual(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,0);
 											GrupVisual(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,0);
 											}
 											else
 
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOnInsert") //GrupVisualOnInsert –робить видимими всі не вказані групи (вказані не зачіпає). Приймає наступні дані (int кількість, *(string  та int)).
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOnInsert") //GrupVisualOnInsert вЂ“СЂРѕР±РёС‚СЊ РІРёРґРёРјРёРјРё РІСЃС– РЅРµ РІРєР°Р·Р°РЅС– РіСЂСѓРїРё (РІРєР°Р·Р°РЅС– РЅРµ Р·Р°С‡С–РїР°С”). РџСЂРёР№РјР°С” РЅР°СЃС‚СѓРїРЅС– РґР°РЅС– (int РєС–Р»СЊРєС–СЃС‚СЊ, *(string  С‚Р° int)).
 											{
 											GrupVisualInsert(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,1);
 											}
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOffInsert") //GrupVisualOnInsert –робить видимими всі не вказані групи (вказані не зачіпає). Приймає наступні дані (int кількість, *(string  та int)).
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOffInsert") //GrupVisualOnInsert вЂ“СЂРѕР±РёС‚СЊ РІРёРґРёРјРёРјРё РІСЃС– РЅРµ РІРєР°Р·Р°РЅС– РіСЂСѓРїРё (РІРєР°Р·Р°РЅС– РЅРµ Р·Р°С‡С–РїР°С”). РџСЂРёР№РјР°С” РЅР°СЃС‚СѓРїРЅС– РґР°РЅС– (int РєС–Р»СЊРєС–СЃС‚СЊ, *(string  С‚Р° int)).
 											{
 										    GrupVisualInsert(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,0);
 											}
@@ -2206,43 +2206,43 @@ void  MSG_BT(void (*func)(std::string Name,int idObject,int idGrup))   //Цю функ
 												
 											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnableInsert")
 											{
-											GrupEnableInsert(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,1); //– робить активними всі не вказані групи (вказані не зачіпає). Приймає наступні дані (int кількість, *(string  та int)).
+											GrupEnableInsert(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,1); //вЂ“ СЂРѕР±РёС‚СЊ Р°РєС‚РёРІРЅРёРјРё РІСЃС– РЅРµ РІРєР°Р·Р°РЅС– РіСЂСѓРїРё (РІРєР°Р·Р°РЅС– РЅРµ Р·Р°С‡С–РїР°С”). РџСЂРёР№РјР°С” РЅР°СЃС‚СѓРїРЅС– РґР°РЅС– (int РєС–Р»СЊРєС–СЃС‚СЊ, *(string  С‚Р° int)).
 											}
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisableInsert")  //– робить неактивними всі не вказані групи (вказані не зачіпає). Приймає наступні дані (int кількість, *(string  та int)).
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisableInsert")  //вЂ“ СЂРѕР±РёС‚СЊ РЅРµР°РєС‚РёРІРЅРёРјРё РІСЃС– РЅРµ РІРєР°Р·Р°РЅС– РіСЂСѓРїРё (РІРєР°Р·Р°РЅС– РЅРµ Р·Р°С‡С–РїР°С”). РџСЂРёР№РјР°С” РЅР°СЃС‚СѓРїРЅС– РґР°РЅС– (int РєС–Р»СЊРєС–СЃС‚СЊ, *(string  С‚Р° int)).
 											{
 											GrupEnableInsert(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine,0);
 											}
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnableAll") //Активувати всі групи
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnableAll") //РђРєС‚РёРІСѓРІР°С‚Рё РІСЃС– РіСЂСѓРїРё
 											GrupEnableAll(1);
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisableAll") //Деактивувати всі групи
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisableAll") //Р”РµР°РєС‚РёРІСѓРІР°С‚Рё РІСЃС– РіСЂСѓРїРё
 											GrupEnableAll(0);
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOnAll") //Зробити видимими всі
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOnAll") //Р—СЂРѕР±РёС‚Рё РІРёРґРёРјРёРјРё РІСЃС–
 											GrupVisualAll(1);
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOffAll") //Зробити не видимими всі
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualOffAll") //Р—СЂРѕР±РёС‚Рё РЅРµ РІРёРґРёРјРёРјРё РІСЃС–
 											GrupVisualAll(0);
 
 
 
 											else
-											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnableInsertRevers" || mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisableInsertRevers") // змінити значення активності не вказаних груп на протилежні. ). Приймає наступні дані (int кількість, *(string  та int)).
-											GrupEnableInsertRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Видимість = груповий пакет Всі окрім
+											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnableInsertRevers" || mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisableInsertRevers") // Р·РјС–РЅРёС‚Рё Р·РЅР°С‡РµРЅРЅСЏ Р°РєС‚РёРІРЅРѕСЃС‚С– РЅРµ РІРєР°Р·Р°РЅРёС… РіСЂСѓРї РЅР° РїСЂРѕС‚РёР»РµР¶РЅС–. ). РџСЂРёР№РјР°С” РЅР°СЃС‚СѓРїРЅС– РґР°РЅС– (int РєС–Р»СЊРєС–СЃС‚СЊ, *(string  С‚Р° int)).
+											GrupEnableInsertRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 											else
 											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualInsertRevers")
-											GrupVisualInsertRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Видимість = груповий пакет Всі окрім
+											GrupVisualInsertRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 											else
 											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupEnableRevers" || mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupDisableRevers")
 											{
-											GrupEnableRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Видимість = груповий пакет Всі окрім
+											GrupEnableRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 											}
 											else
 											if(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].Comand_FUNC == "GrupVisualRevers")
 											{
-											GrupVisualRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Видимість = груповий пакет Всі окрім
+											GrupVisualRevers(mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ComandLine,mObgects[Grups_[j].ID_Objects[i]].Comanda[i_t].ArgLine); //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 											}
 
 
@@ -2263,13 +2263,13 @@ void  MSG_BT(void (*func)(std::string Name,int idObject,int idGrup))   //Цю функ
 									}
 			
 											//-----------
-											if(mObgects[Grups_[j].ID_Objects[i]].Temp.activ == 0) //Якщо кнопка не активна дані про натиск затираются
+											if(mObgects[Grups_[j].ID_Objects[i]].Temp.activ == 0) //РЇРєС‰Рѕ РєРЅРѕРїРєР° РЅРµ Р°РєС‚РёРІРЅР° РґР°РЅС– РїСЂРѕ РЅР°С‚РёСЃРє Р·Р°С‚РёСЂР°СЋС‚СЃСЏ
 											{
 												mObgects[Grups_[j].ID_Objects[i]].Temp.Clic = 0;
 												mObgects[Grups_[j].ID_Objects[i]].Temp.Clic_Temp = 0;
 											}
 												else
-											kyrsor_na_cnopci = 1; //Якщо хоч одна кнопка активна
+											kyrsor_na_cnopci = 1; //РЇРєС‰Рѕ С…РѕС‡ РѕРґРЅР° РєРЅРѕРїРєР° Р°РєС‚РёРІРЅР°
 											//-----------
 									}//**
 			i++;
@@ -2286,7 +2286,7 @@ void  MSG_BT(void (*func)(std::string Name,int idObject,int idGrup))   //Цю функ
 
 
 
-//Система вкидання в пам'ять нової кнопки
+//РЎРёСЃС‚РµРјР° РІРєРёРґР°РЅРЅСЏ РІ РїР°Рј'СЏС‚СЊ РЅРѕРІРѕС— РєРЅРѕРїРєРё
 int  BT_NEW_Knopka(OBGECT A,std::string Name)
 {
 	A.ClickPress = false;
@@ -2295,7 +2295,7 @@ mObgects[mObgects.size()-1].Names = Name;
 return mObgects.size()-1;
 }
 
-//Система вкидання в пам'ять нової кнопки з завантаження вказаної текстури
+//РЎРёСЃС‚РµРјР° РІРєРёРґР°РЅРЅСЏ РІ РїР°Рј'СЏС‚СЊ РЅРѕРІРѕС— РєРЅРѕРїРєРё Р· Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РІРєР°Р·Р°РЅРѕС— С‚РµРєСЃС‚СѓСЂРё
 int  BT_NEW_Knopka(OBGECT A,std::string Name, std::string Url_TGA_INEG)
 {
 A.ClickPress = false;
@@ -2321,7 +2321,7 @@ int  ID_names(std::string a)
 	return -1;
 }
 
-void  PanelDisableVizual(int *a,int size) //Панелі які потрібно Вимкнути
+void  PanelDisableVizual(int *a,int size) //РџР°РЅРµР»С– СЏРєС– РїРѕС‚СЂС–Р±РЅРѕ Р’РёРјРєРЅСѓС‚Рё
 {
 	int i = 0;
 	while(i<size)
@@ -2332,7 +2332,7 @@ void  PanelDisableVizual(int *a,int size) //Панелі які потрібно Вимкнути
 }
 
 void  PanelDisableVizualR(int *a,int size) 
-{//Панелі які не потрібно вимкнути
+{//РџР°РЅРµР»С– СЏРєС– РЅРµ РїРѕС‚СЂС–Р±РЅРѕ РІРёРјРєРЅСѓС‚Рё
 	int j=0;
 
 	while(j<mObgects.size())
@@ -2359,7 +2359,7 @@ void  PAneli_Visual(int Panalka,bool Visual)
 }
 
 private:
-void  Private_Rozmis(int i)  //функція заповнює змінні розрахування положення
+void  Private_Rozmis(int i)  //С„СѓРЅРєС†С–СЏ Р·Р°РїРѕРІРЅСЋС” Р·РјС–РЅРЅС– СЂРѕР·СЂР°С…СѓРІР°РЅРЅСЏ РїРѕР»РѕР¶РµРЅРЅСЏ
 {
 	GetPosBT(i,X_CORD,Y_CORD);
 }
@@ -2370,7 +2370,7 @@ void  Private_Rozmis(int i)  //функція заповнює змінні розрахування положення
 public:
 
 	
-//Глобальна функція малювання
+//Р“Р»РѕР±Р°Р»СЊРЅР° С„СѓРЅРєС†С–СЏ РјР°Р»СЋРІР°РЅРЅСЏ
 bool isVoidGlobalDrawPlane;
 
 void (*VoidGlobalDrawPlane)(float SizeX,float SizeY,float TX,float TY,float R,float G, float B,float A,GLuint TextuteID,int styleNum,int ISactive,bool Enable, bool Vis,int BTid);
@@ -2380,19 +2380,19 @@ void setVoidGlobalDrawPlane(void (*VoidGlobalDrawPlane)(float SizeX,float SizeY,
 	Enable(isVoidGlobalDrawPlane);
 }
 
-//Якщо яка небуть кнопка  зараз зажата іншу не зажимати
+//РЇРєС‰Рѕ СЏРєР° РЅРµР±СѓС‚СЊ РєРЅРѕРїРєР°  Р·Р°СЂР°Р· Р·Р°Р¶Р°С‚Р° С–РЅС€Сѓ РЅРµ Р·Р°Р¶РёРјР°С‚Рё
 bool PressKnopkaONE;
 
 /*
 
-void  PRIVATE_DRAW_MOD(int i, float x,float y,float width, float heigth) //Саме малювання виведено окремо, для зручності створення нових стилів приватна функція
+void  PRIVATE_DRAW_MOD(int i, float x,float y,float width, float heigth) //РЎР°РјРµ РјР°Р»СЋРІР°РЅРЅСЏ РІРёРІРµРґРµРЅРѕ РѕРєСЂРµРјРѕ, РґР»СЏ Р·СЂСѓС‡РЅРѕСЃС‚С– СЃС‚РІРѕСЂРµРЅРЅСЏ РЅРѕРІРёС… СЃС‚РёР»С–РІ РїСЂРёРІР°С‚РЅР° С„СѓРЅРєС†С–СЏ
 {
 	//2019 mod
 	// glActiveTexture(GL_TEXTURE0);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D,KNopka_[i].ImageKnopki);
 
-	if(isVoidDrawPlane == false) //Якщо 
+	if(isVoidDrawPlane == false) //РЇРєС‰Рѕ 
 	DrawPlane(1,1,0,0,KNopka_[i].Color.R,KNopka_[i].Color.G,KNopka_[i].Color.B,KNopka_[i].Color.A,KNopka_[i].ImageKnopki,KNopka_[i].Tip,KNopka_[i].Temp.activ,KNopka_[i].Enabled,KNopka_[i].Vizual,i);
 	else
 	VoidDrawPlane(1,1,0,0,KNopka_[i].Color.R,KNopka_[i].Color.G,KNopka_[i].Color.B,KNopka_[i].Color.A,KNopka_[i].ImageKnopki,KNopka_[i].Tip,KNopka_[i].Temp.activ,KNopka_[i].Enabled,KNopka_[i].Vizual,i);
@@ -2400,7 +2400,7 @@ void  PRIVATE_DRAW_MOD(int i, float x,float y,float width, float heigth) //Саме 
 	return;
 }*/
 
-void  PRIVATE_DRAW(int i, float x,float y,float width, float heigth) //Саме малювання виведено окремо, для зручності створення нових стилів приватна функція
+void  PRIVATE_DRAW(int i, float x,float y,float width, float heigth) //РЎР°РјРµ РјР°Р»СЋРІР°РЅРЅСЏ РІРёРІРµРґРµРЅРѕ РѕРєСЂРµРјРѕ, РґР»СЏ Р·СЂСѓС‡РЅРѕСЃС‚С– СЃС‚РІРѕСЂРµРЅРЅСЏ РЅРѕРІРёС… СЃС‚РёР»С–РІ РїСЂРёРІР°С‚РЅР° С„СѓРЅРєС†С–СЏ
 {
 	//2019 mod
 	// glActiveTexture(GL_TEXTURE0);
@@ -2421,7 +2421,7 @@ void  PRIVATE_DRAW(int i, float x,float y,float width, float heigth) //Саме малю
 				DrawPlane(((float)KNopka_[i].SizeX*cofX),((float)KNopka_[i].SizeY*cofY),((X_CORD-RX)*cofX-1)+(((float)KNopka_[i].SizeX*cofX))/2,((Y_CORD-RY)*cofY-1)+(((float)KNopka_[i].SizeY*cofY))/2,1,1,0,0);
 				*/
 				//				
-	if(isVoidDrawPlane == false) //Якщо 
+	if(isVoidDrawPlane == false) //РЇРєС‰Рѕ 
 	DrawPlane(1,1,0,0,mObgects[i].Color.R,mObgects[i].Color.G,mObgects[i].Color.B,mObgects[i].Color.A,mObgects[i].ImageKnopki,0,mObgects[i].Temp.activ,mObgects[i].Enabled,mObgects[i].Vizual,i);
 	else
 	VoidDrawPlane(1,1,0,0,mObgects[i].Color.R,mObgects[i].Color.G,mObgects[i].Color.B,mObgects[i].Color.A,mObgects[i].ImageKnopki,0,mObgects[i].Temp.activ,mObgects[i].Enabled,mObgects[i].Vizual,i);
@@ -2432,14 +2432,14 @@ void  PRIVATE_DRAW(int i, float x,float y,float width, float heigth) //Саме малю
 
 
 
-void  PRIVATE_DRAW(int i) //Саме малювання виведено окремо, для зручності створення нових стилів приватна функція
+void  PRIVATE_DRAW(int i) //РЎР°РјРµ РјР°Р»СЋРІР°РЅРЅСЏ РІРёРІРµРґРµРЅРѕ РѕРєСЂРµРјРѕ, РґР»СЏ Р·СЂСѓС‡РЅРѕСЃС‚С– СЃС‚РІРѕСЂРµРЅРЅСЏ РЅРѕРІРёС… СЃС‚РёР»С–РІ РїСЂРёРІР°С‚РЅР° С„СѓРЅРєС†С–СЏ
 {
 	//2019 mod
 	// glActiveTexture(GL_TEXTURE0);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D,mObgects[i].ImageKnopki);
 
-	if(isVoidDrawPlane == false) //Якщо 
+	if(isVoidDrawPlane == false) //РЇРєС‰Рѕ 
 	DrawPlane(2,2,0,0,mObgects[i].Color.R,mObgects[i].Color.G,mObgects[i].Color.B,mObgects[i].Color.A,mObgects[i].ImageKnopki,0,mObgects[i].Temp.activ,mObgects[i].Enabled,mObgects[i].Vizual,i);
 	else
 	VoidDrawPlane(2,2,0,0,mObgects[i].Color.R,mObgects[i].Color.G,mObgects[i].Color.B,mObgects[i].Color.A,mObgects[i].ImageKnopki,0,mObgects[i].Temp.activ,mObgects[i].Enabled,mObgects[i].Vizual,i);
@@ -2450,7 +2450,7 @@ void  PRIVATE_DRAW(int i) //Саме малювання виведено окремо, для зручності створе
 
 //void  Draw() 
 //{
-void  Draw(void (*func)(std::string Name,int idObject,int idGrup)) //Малює всі кнопки що зареєстровані в видимих групах і зразу обробляє
+void  Draw(void (*func)(std::string Name,int idObject,int idGrup)) //РњР°Р»СЋС” РІСЃС– РєРЅРѕРїРєРё С‰Рѕ Р·Р°СЂРµС”СЃС‚СЂРѕРІР°РЅС– РІ РІРёРґРёРјРёС… РіСЂСѓРїР°С… С– Р·СЂР°Р·Сѓ РѕР±СЂРѕР±Р»СЏС”
 {
 	Draw();
 	MSG_BT(func);
@@ -2458,7 +2458,7 @@ void  Draw(void (*func)(std::string Name,int idObject,int idGrup)) //Малює всі к
 }
 
 
-//Примінити колір
+//РџСЂРёРјС–РЅРёС‚Рё РєРѕР»С–СЂ
 void USColor(PixelRGBA &Color)
 {
 	glColor4ub(Color.R,Color.G,Color.B,Color.A);
@@ -2466,7 +2466,7 @@ void USColor(PixelRGBA &Color)
 
 
 
-//2019 Перевірити чи миша попадає в квадрат
+//2019 РџРµСЂРµРІС–СЂРёС‚Рё С‡Рё РјРёС€Р° РїРѕРїР°РґР°С” РІ РєРІР°РґСЂР°С‚
 /*bool ISmauseCvadrat(int X,int Y,int SizeX,int SizeY)
 {
 	int mY  = windows_data.WindowsHeight-windows_data.Maus_Data_.MausY_W;
@@ -2488,12 +2488,12 @@ void DrawGrup(int id)
 	//Grups_[id];
 	if(Grups_[id].type == "Window")
 	{
-			//Розрахунок коефіцієнту розміру 
+			//Р РѕР·СЂР°С…СѓРЅРѕРє РєРѕРµС„С–С†С–С”РЅС‚Сѓ СЂРѕР·РјС–СЂСѓ 
 				float cofX = 2.0f / (float)windows_data.ViewportWidth ;
 				float cofY = 2.0f / (float)windows_data.ViewportHeight ;
 				float SizeX , SizeY ,PosX ,PosY;
 				{
-				//Ширина і висота графічного елементу
+				//РЁРёСЂРёРЅР° С– РІРёСЃРѕС‚Р° РіСЂР°С„С–С‡РЅРѕРіРѕ РµР»РµРјРµРЅС‚Сѓ
 				 SizeX = ((float)Grups_[id].sizeX*cofX);
 				 SizeY = ((float)Grups_[id].sizeY*cofY);
 				
@@ -2504,7 +2504,7 @@ void DrawGrup(int id)
 				 PosX = (((float)pX -(float)windows_data.ViewportPosX + (float)Grups_[id].sizeX/2) * cofX)-1;
 				 PosY = (((float)pY -(float)windows_data.ViewportPosY + (float)Grups_[id].sizeY/2) * cofY)-1;
 
-				 //Малюю Тіло вікна========================================================Window===========================================
+				 //РњР°Р»СЋСЋ РўС–Р»Рѕ РІС–РєРЅР°========================================================Window===========================================
 				 USColor(Grups_[id].BackgroundColor);
 				 if(Grups_[id].bacgroundImageURL == "" || Grups_[id].bacgroundImageURL == "NUL" || Grups_[id].bacgroundImageURL == "null")
 				 glDisable(GL_TEXTURE_2D);
@@ -2515,13 +2515,13 @@ void DrawGrup(int id)
 
 				 USColor(Grups_[id].HeaderColor);
 				 
-				 //Розрахувати позицію Хадера
+				 //Р РѕР·СЂР°С…СѓРІР°С‚Рё РїРѕР·РёС†С–СЋ РҐР°РґРµСЂР°
 			
 				 PosY += SizeY/2;
 				 SizeY = (float)Grups_[id].heightHeader *cofY;
 
 				 PosY+=SizeY/2;
-				 //Малювати Хеадер
+				 //РњР°Р»СЋРІР°С‚Рё РҐРµР°РґРµСЂ
 				   if(Grups_[id].bacgroundHeaderImageURL == "" || Grups_[id].bacgroundHeaderImageURL == "NUL" || Grups_[id].bacgroundHeaderImageURL == "null")
 					glDisable(GL_TEXTURE_2D);
 				   else
@@ -2539,7 +2539,7 @@ void DrawGrup(int id)
 						int mY  = windows_data.WindowsHeight-windows_data.Maus_Data_.MausY_W;
 						int mX =  windows_data.Maus_Data_.MausX_W;
 
-						//Перевіряє чи миша над вікном основною облаастю
+						//РџРµСЂРµРІС–СЂСЏС” С‡Рё РјРёС€Р° РЅР°Рґ РІС–РєРЅРѕРј РѕСЃРЅРѕРІРЅРѕСЋ РѕР±Р»Р°Р°СЃС‚СЋ
 						if(mX>pX && mX<pX+Grups_[id].sizeX   &&    mY>pY && mY<pY+Grups_[id].sizeY + Grups_[id].heightHeader    )
 						{
 							if(IdGrupsHoverMain == -1)
@@ -2552,14 +2552,14 @@ void DrawGrup(int id)
 
 
 						if(IdGrupsHoverMain == id)
-						//Перевіряє чи курсор миші над полосою вікна 
-						if(IdGrupsHoverHight == -1 ) //При умові що ніяке вікно не перекриває
+						//РџРµСЂРµРІС–СЂСЏС” С‡Рё РєСѓСЂСЃРѕСЂ РјРёС€С– РЅР°Рґ РїРѕР»РѕСЃРѕСЋ РІС–РєРЅР° 
+						if(IdGrupsHoverHight == -1 ) //РџСЂРё СѓРјРѕРІС– С‰Рѕ РЅС–СЏРєРµ РІС–РєРЅРѕ РЅРµ РїРµСЂРµРєСЂРёРІР°С”
 						if(mX>pX && mX<pX+Grups_[id].sizeX   &&    mY>pY+Grups_[id].sizeY && mY<pY+Grups_[id].sizeY+Grups_[id].heightHeader  
-							&& windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA  //І Мишкою клікнуто
+							&& windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA  //Р† РњРёС€РєРѕСЋ РєР»С–РєРЅСѓС‚Рѕ
 							&& windows_data.Maus_Data_.PressState == true)
 						{
 						 //std::cout<<"MouseCLock\n";
-							//Ця частина коду виконується тільки в момент кліку
+							//Р¦СЏ С‡Р°СЃС‚РёРЅР° РєРѕРґСѓ РІРёРєРѕРЅСѓС”С‚СЊСЃСЏ С‚С–Р»СЊРєРё РІ РјРѕРјРµРЅС‚ РєР»С–РєСѓ
 						 TheLastXpsMAuse = windows_data.Maus_Data_.MausX_W;
 						 TheLastYpsMAuse = windows_data.Maus_Data_.MausY_W;
 
@@ -2572,7 +2572,7 @@ void DrawGrup(int id)
 
 					if(IdGrupsHoverHight == id)
 					{
-						//Розраховую зміщення вікна мишею в різних системах координат
+						//Р РѕР·СЂР°С…РѕРІСѓСЋ Р·РјС–С‰РµРЅРЅСЏ РІС–РєРЅР° РјРёС€РµСЋ РІ СЂС–Р·РЅРёС… СЃРёСЃС‚РµРјР°С… РєРѕРѕСЂРґРёРЅР°С‚
 
 						//=======X======
 						if(Grups_[id].CHorizontal == 'L' || Grups_[id].CHorizontal == 'l')
@@ -2615,17 +2615,17 @@ void DrawGrup(int id)
 
 
 //###2019
-void DrawGrup(int id) //Тільки промальовка
+void DrawGrup(int id) //РўС–Р»СЊРєРё РїСЂРѕРјР°Р»СЊРѕРІРєР°
 {
 
 	if(Grups_[id].type == "Window" || Grups_[id].type  == "window")
 	{
-			//Розрахунок коефіцієнту розміру 
+			//Р РѕР·СЂР°С…СѓРЅРѕРє РєРѕРµС„С–С†С–С”РЅС‚Сѓ СЂРѕР·РјС–СЂСѓ 
 				float cofX = 2.0f / (float)windows_data.ViewportWidth ;
 				float cofY = 2.0f / (float)windows_data.ViewportHeight ;
 				float SizeX , SizeY ,PosX ,PosY;
 				
-				//Ширина і висота графічного елементу
+				//РЁРёСЂРёРЅР° С– РІРёСЃРѕС‚Р° РіСЂР°С„С–С‡РЅРѕРіРѕ РµР»РµРјРµРЅС‚Сѓ
 				 SizeX = ((float)Grups_[id].sizeX*cofX);
 				 SizeY = ((float)Grups_[id].sizeY*cofY);
 				
@@ -2636,7 +2636,7 @@ void DrawGrup(int id) //Тільки промальовка
 				 PosX = (((float)pX -(float)windows_data.ViewportPosX + (float)Grups_[id].sizeX/2) * cofX)-1;
 				 PosY = (((float)pY -(float)windows_data.ViewportPosY + (float)Grups_[id].sizeY/2) * cofY)-1;
 
-				 //Малюю Тіло вікна========================================================Window===========================================
+				 //РњР°Р»СЋСЋ РўС–Р»Рѕ РІС–РєРЅР°========================================================Window===========================================
 				 USColor(Grups_[id].BackgroundColor);
 				 if(Grups_[id].bacgroundImageURL == "" || Grups_[id].bacgroundImageURL == "NUL" || Grups_[id].bacgroundImageURL == "null")
 					 glDisable(GL_TEXTURE_2D);
@@ -2651,12 +2651,12 @@ void DrawGrup(int id) //Тільки промальовка
 				 {
 					 USColor(Grups_[id].HeaderColor);
 				 
-					 //Розрахувати позицію Хадера
+					 //Р РѕР·СЂР°С…СѓРІР°С‚Рё РїРѕР·РёС†С–СЋ РҐР°РґРµСЂР°
 					 PosY += SizeY/2;
 					 SizeY = (float)Grups_[id].heightHeader *cofY;
 					 PosY+=SizeY/2;
 
-					 //Малювати Хеадер
+					 //РњР°Р»СЋРІР°С‚Рё РҐРµР°РґРµСЂ
 					 if(Grups_[id].bacgroundHeaderImageURL == "" || Grups_[id].bacgroundHeaderImageURL == "NUL" || Grups_[id].bacgroundHeaderImageURL == "null")
 						 glDisable(GL_TEXTURE_2D);
 					  else
@@ -2686,7 +2686,7 @@ void DrawGrup(int id) //Тільки промальовка
 
 
 //###2019
-//Для групи обробляю чисто події зміщення взаємодію з користувачем
+//Р”Р»СЏ РіСЂСѓРїРё РѕР±СЂРѕР±Р»СЏСЋ С‡РёСЃС‚Рѕ РїРѕРґС–С— Р·РјС–С‰РµРЅРЅСЏ РІР·Р°С”РјРѕРґС–СЋ Р· РєРѕСЂРёСЃС‚СѓРІР°С‡РµРј
 void EventGrup(int id)
 {
 
@@ -2703,7 +2703,7 @@ void EventGrup(int id)
 						int mY  = windows_data.WindowsHeight-windows_data.Maus_Data_.MausY_W;
 						int mX =  windows_data.Maus_Data_.MausX_W;
 
-						//Перевіряє чи миша над вікном основною облаастю
+						//РџРµСЂРµРІС–СЂСЏС” С‡Рё РјРёС€Р° РЅР°Рґ РІС–РєРЅРѕРј РѕСЃРЅРѕРІРЅРѕСЋ РѕР±Р»Р°Р°СЃС‚СЋ
 						if(mX>pX && mX<pX+Grups_[id].sizeX   &&    mY>pY && mY<pY+Grups_[id].sizeY + Grups_[id].heightHeader    )
 						{
 							if(IdGrupsHoverMain == -1)
@@ -2715,14 +2715,14 @@ void EventGrup(int id)
 
 
 						if(IdGrupsHoverMain == id)
-						//Перевіряє чи курсор миші над полосою вікна 
-						if(IdGrupsHoverHight == -1 /*|| IdGrupsHoverHight == id*/) //При умові що ніяке вікно не перекриває
+						//РџРµСЂРµРІС–СЂСЏС” С‡Рё РєСѓСЂСЃРѕСЂ РјРёС€С– РЅР°Рґ РїРѕР»РѕСЃРѕСЋ РІС–РєРЅР° 
+						if(IdGrupsHoverHight == -1 /*|| IdGrupsHoverHight == id*/) //РџСЂРё СѓРјРѕРІС– С‰Рѕ РЅС–СЏРєРµ РІС–РєРЅРѕ РЅРµ РїРµСЂРµРєСЂРёРІР°С”
 						if(mX>pX && mX<pX+Grups_[id].sizeX   &&    mY>pY+Grups_[id].sizeY && mY<pY+Grups_[id].sizeY+Grups_[id].heightHeader  
-							&& windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA  //І Мишкою клікнуто
+							&& windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA  //Р† РњРёС€РєРѕСЋ РєР»С–РєРЅСѓС‚Рѕ
 							&& windows_data.Maus_Data_.PressState == true)
 						{
 						 //std::cout<<"MouseCLock\n";
-							//Ця частина коду виконується тільки в момент кліку
+							//Р¦СЏ С‡Р°СЃС‚РёРЅР° РєРѕРґСѓ РІРёРєРѕРЅСѓС”С‚СЊСЃСЏ С‚С–Р»СЊРєРё РІ РјРѕРјРµРЅС‚ РєР»С–РєСѓ
 						 TheLastXpsMAuse = windows_data.Maus_Data_.MausX_W;
 						 TheLastYpsMAuse = windows_data.Maus_Data_.MausY_W;
 
@@ -2737,13 +2737,13 @@ void EventGrup(int id)
 
 					//std::cout<<IdGrupsHoverMain<<std::endl;
 
-					//Обробка кліків по тілу вікна
+					//РћР±СЂРѕР±РєР° РєР»С–РєС–РІ РїРѕ С‚С–Р»Сѓ РІС–РєРЅР°
 					if(IdGrupsHoverMain == id && windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA  && windows_data.Maus_Data_.PressState == true)
 						 idTheLastPushWindow = id;
 
 					if(IdGrupsHoverHight == id && Grups_[id].ISheader)
 					{
-						//Розраховую зміщення вікна мишею в різних системах координат
+						//Р РѕР·СЂР°С…РѕРІСѓСЋ Р·РјС–С‰РµРЅРЅСЏ РІС–РєРЅР° РјРёС€РµСЋ РІ СЂС–Р·РЅРёС… СЃРёСЃС‚РµРјР°С… РєРѕРѕСЂРґРёРЅР°С‚
 
 						//=======X======
 						if(Grups_[id].CHorizontal == 'L' || Grups_[id].CHorizontal == 'l')
@@ -2766,26 +2766,26 @@ void EventGrup(int id)
 }
 
 
-void Button_Events(int ID,int idGrup) //Намалювати одну кнопку за ІД
+void Button_Events(int ID,int idGrup) //РќР°РјР°Р»СЋРІР°С‚Рё РѕРґРЅСѓ РєРЅРѕРїРєСѓ Р·Р° Р†Р”
 {
  	int i = ID;
-	//Private_Rozmis(ID); //Функція розраховує актуальну позицію кнопки і зразу обновлює дані в ній
-    mObgects[i].Temp.activ = 0; //Скинути активність 
-	mObgects[i].trackBarKaretkaActiv = 0; //Скинути активність для каретки
+	//Private_Rozmis(ID); //Р¤СѓРЅРєС†С–СЏ СЂРѕР·СЂР°С…РѕРІСѓС” Р°РєС‚СѓР°Р»СЊРЅСѓ РїРѕР·РёС†С–СЋ РєРЅРѕРїРєРё С– Р·СЂР°Р·Сѓ РѕР±РЅРѕРІР»СЋС” РґР°РЅС– РІ РЅС–Р№
+    mObgects[i].Temp.activ = 0; //РЎРєРёРЅСѓС‚Рё Р°РєС‚РёРІРЅС–СЃС‚СЊ 
+	mObgects[i].trackBarKaretkaActiv = 0; //РЎРєРёРЅСѓС‚Рё Р°РєС‚РёРІРЅС–СЃС‚СЊ РґР»СЏ РєР°СЂРµС‚РєРё
 
 
 
-	if(IdGrupsHoverMain==-1 || IdGrupsHoverMain == idGrup) //Тільки якщо група не перекриває кнопку (група типу вікно)
+	if(IdGrupsHoverMain==-1 || IdGrupsHoverMain == idGrup) //РўС–Р»СЊРєРё СЏРєС‰Рѕ РіСЂСѓРїР° РЅРµ РїРµСЂРµРєСЂРёРІР°С” РєРЅРѕРїРєСѓ (РіСЂСѓРїР° С‚РёРїСѓ РІС–РєРЅРѕ)
 	{}else return;
 
-	//Розрахувати розміщення кнопки активність і натиски=====================================================================+
-	if(mObgects[i].Vizual && mObgects[i].Enabled) //Продовжити тільки якщо кнопка Не вимкнена і Видима
+	//Р РѕР·СЂР°С…СѓРІР°С‚Рё СЂРѕР·РјС–С‰РµРЅРЅСЏ РєРЅРѕРїРєРё Р°РєС‚РёРІРЅС–СЃС‚СЊ С– РЅР°С‚РёСЃРєРё=====================================================================+
+	if(mObgects[i].Vizual && mObgects[i].Enabled) //РџСЂРѕРґРѕРІР¶РёС‚Рё С‚С–Р»СЊРєРё СЏРєС‰Рѕ РєРЅРѕРїРєР° РќРµ РІРёРјРєРЅРµРЅР° С– Р’РёРґРёРјР°
 	{	
 
 
-	if(!kyrsor_na_cnopci) //Продожити якщо протягом цикла ніяку кнопку ще не активували
+	if(!kyrsor_na_cnopci) //РџСЂРѕРґРѕР¶РёС‚Рё СЏРєС‰Рѕ РїСЂРѕС‚СЏРіРѕРј С†РёРєР»Р° РЅС–СЏРєСѓ РєРЅРѕРїРєСѓ С‰Рµ РЅРµ Р°РєС‚РёРІСѓРІР°Р»Рё
 	{
-		//Розраховує и мишку наведено на каретку
+		//Р РѕР·СЂР°С…РѕРІСѓС” Рё РјРёС€РєСѓ РЅР°РІРµРґРµРЅРѕ РЅР° РєР°СЂРµС‚РєСѓ
 		float EndX = mObgects[i].MaxValue - mObgects[i].MinValue;
 		float pixVal = (mObgects[i].Value/EndX)*(mObgects[i].SizeX - mObgects[i].trackBarKaretkaSizeX);
 		float KaretkaStartX = X_CORD+pixVal ;
@@ -2797,29 +2797,29 @@ void Button_Events(int ID,int idGrup) //Намалювати одну кнопку за ІД
 
 		if(windows_data.Maus_Data_.MausX_W> KaretkaStartX && windows_data.Maus_Data_.MausX_W < KaretkaEndX && windows_data.Maus_Data_.MausY_W> KaretkaStartY  && windows_data.Maus_Data_.MausY_W < KaretkaEndY)
 		{
-			//if(IdGrupsHoverMain==-1 || IdGrupsHoverMain == idGrup) //Тільки якщо група не перекриває кнопку (група типу вікно)
+			//if(IdGrupsHoverMain==-1 || IdGrupsHoverMain == idGrup) //РўС–Р»СЊРєРё СЏРєС‰Рѕ РіСЂСѓРїР° РЅРµ РїРµСЂРµРєСЂРёРІР°С” РєРЅРѕРїРєСѓ (РіСЂСѓРїР° С‚РёРїСѓ РІС–РєРЅРѕ)
 			{
-				mObgects[i].trackBarKaretkaActiv = 1;               //Вказує що ця кнопна активна
-				kyrsor_na_cnopci = 1;					 //Вказує що ця кнопка активована, і за рахунок цього відбирає право на активацію інших за цей цикл  Тобто робим так щоб не існувало двох активних кнопок одночасно    
+				mObgects[i].trackBarKaretkaActiv = 1;               //Р’РєР°Р·СѓС” С‰Рѕ С†СЏ РєРЅРѕРїРЅР° Р°РєС‚РёРІРЅР°
+				kyrsor_na_cnopci = 1;					 //Р’РєР°Р·СѓС” С‰Рѕ С†СЏ РєРЅРѕРїРєР° Р°РєС‚РёРІРѕРІР°РЅР°, С– Р·Р° СЂР°С…СѓРЅРѕРє С†СЊРѕРіРѕ РІС–РґР±РёСЂР°С” РїСЂР°РІРѕ РЅР° Р°РєС‚РёРІР°С†С–СЋ С–РЅС€РёС… Р·Р° С†РµР№ С†РёРєР»  РўРѕР±С‚Рѕ СЂРѕР±РёРј С‚Р°Рє С‰РѕР± РЅРµ С–СЃРЅСѓРІР°Р»Рѕ РґРІРѕС… Р°РєС‚РёРІРЅРёС… РєРЅРѕРїРѕРє РѕРґРЅРѕС‡Р°СЃРЅРѕ    
 			}
 		}
 		//ENd
 	}
 
-	if(!kyrsor_na_cnopci) //Продожити якщо протягом цикла ніяку кнопку ще не активували і каретку
+	if(!kyrsor_na_cnopci) //РџСЂРѕРґРѕР¶РёС‚Рё СЏРєС‰Рѕ РїСЂРѕС‚СЏРіРѕРј С†РёРєР»Р° РЅС–СЏРєСѓ РєРЅРѕРїРєСѓ С‰Рµ РЅРµ Р°РєС‚РёРІСѓРІР°Р»Рё С– РєР°СЂРµС‚РєСѓ
 	{
 
-	//Стандартна система для всіх
+	//РЎС‚Р°РЅРґР°СЂС‚РЅР° СЃРёСЃС‚РµРјР° РґР»СЏ РІСЃС–С…
 		float RX =( (float)windows_data.WindowsWidth - (float)windows_data.ViewportWidth)/2;
 		float RY =( (float)windows_data.WindowsHeight - (float)windows_data.ViewportHeight);
 
 		int Y_CORD1= Y_CORD - RY + mObgects[i].SizeY;
 		if(windows_data.Maus_Data_.MausX_W>X_CORD && windows_data.Maus_Data_.MausX_W < X_CORD +  mObgects[i].SizeX 	&& windows_data.Maus_Data_.MausY_W>   windows_data.ViewportHeight - Y_CORD1 && windows_data.Maus_Data_.MausY_W < windows_data.ViewportHeight - Y_CORD1 + mObgects[i].SizeY)
 		{
-			//if(IdGrupsHoverMain==-1 || IdGrupsHoverMain == idGrup) //Тільки якщо група не перекриває кнопку (група типу вікно)
+			//if(IdGrupsHoverMain==-1 || IdGrupsHoverMain == idGrup) //РўС–Р»СЊРєРё СЏРєС‰Рѕ РіСЂСѓРїР° РЅРµ РїРµСЂРµРєСЂРёРІР°С” РєРЅРѕРїРєСѓ (РіСЂСѓРїР° С‚РёРїСѓ РІС–РєРЅРѕ)
 			{
-				mObgects[i].Temp.activ = 1;               //Вказує що ця кнопна активна
-				kyrsor_na_cnopci = true;					 //Вказує що ця кнопка активована, і за рахунок цього відбирає право на активацію інших за цей цикл  Тобто робим так щоб не існувало двох активних кнопок одночасно    
+				mObgects[i].Temp.activ = 1;               //Р’РєР°Р·СѓС” С‰Рѕ С†СЏ РєРЅРѕРїРЅР° Р°РєС‚РёРІРЅР°
+				kyrsor_na_cnopci = true;					 //Р’РєР°Р·СѓС” С‰Рѕ С†СЏ РєРЅРѕРїРєР° Р°РєС‚РёРІРѕРІР°РЅР°, С– Р·Р° СЂР°С…СѓРЅРѕРє С†СЊРѕРіРѕ РІС–РґР±РёСЂР°С” РїСЂР°РІРѕ РЅР° Р°РєС‚РёРІР°С†С–СЋ С–РЅС€РёС… Р·Р° С†РµР№ С†РёРєР»  РўРѕР±С‚Рѕ СЂРѕР±РёРј С‚Р°Рє С‰РѕР± РЅРµ С–СЃРЅСѓРІР°Р»Рѕ РґРІРѕС… Р°РєС‚РёРІРЅРёС… РєРЅРѕРїРѕРє РѕРґРЅРѕС‡Р°СЃРЅРѕ    
 			}
 		}
 
@@ -2830,7 +2830,7 @@ void Button_Events(int ID,int idGrup) //Намалювати одну кнопку за ІД
 
 
 	
-	//Подія затиску
+	//РџРѕРґС–СЏ Р·Р°С‚РёСЃРєСѓ
 	if(!mObgects[i].Temp.Clic_Temp && mObgects[i].Temp.activ && windows_data.Maus_Data_.PressState == 0 && windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA)
 	{
 		mObgects[i].Temp.Clic_Temp = 1;
@@ -2840,31 +2840,31 @@ void Button_Events(int ID,int idGrup) //Намалювати одну кнопку за ІД
 
 
 	
-	//Якщо активний режим безперепивного подання сигналів
+	//РЇРєС‰Рѕ Р°РєС‚РёРІРЅРёР№ СЂРµР¶РёРј Р±РµР·РїРµСЂРµРїРёРІРЅРѕРіРѕ РїРѕРґР°РЅРЅСЏ СЃРёРіРЅР°Р»С–РІ
 	if(mObgects[i].Avtomatic)
 	{
-		//Якщо на кнопці зажали кнопку миші
+		//РЇРєС‰Рѕ РЅР° РєРЅРѕРїС†С– Р·Р°Р¶Р°Р»Рё РєРЅРѕРїРєСѓ РјРёС€С–
 		if(mObgects[i].ClickPress)
 		{
-			//Ці стрічки провокують сигнал натиску 
+			//Р¦С– СЃС‚СЂС–С‡РєРё РїСЂРѕРІРѕРєСѓСЋС‚СЊ СЃРёРіРЅР°Р» РЅР°С‚РёСЃРєСѓ 
 			mObgects[i].Temp.Clic_Temp = 0; 
 			mObgects[i].Temp.Clic = 0;	
 			mObgects[i].Temp.Klik = 1;
 		}
 	}
-	//Якщо активний режим деактивовано для даної кнопки
+	//РЇРєС‰Рѕ Р°РєС‚РёРІРЅРёР№ СЂРµР¶РёРј РґРµР°РєС‚РёРІРѕРІР°РЅРѕ РґР»СЏ РґР°РЅРѕС— РєРЅРѕРїРєРё
 	else
-	//Подія відпуску, але тільки у випадку якщо перед тим був затиск
+	//РџРѕРґС–СЏ РІС–РґРїСѓСЃРєСѓ, Р°Р»Рµ С‚С–Р»СЊРєРё Сѓ РІРёРїР°РґРєСѓ СЏРєС‰Рѕ РїРµСЂРµРґ С‚РёРј Р±СѓРІ Р·Р°С‚РёСЃРє
 	if(mObgects[i].Temp.Clic_Temp && mObgects[i].Temp.activ && windows_data.Maus_Data_.PressState == 1 && windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA)
 	{	
-		//Ці стрічки провокують сигнал натиску 
+		//Р¦С– СЃС‚СЂС–С‡РєРё РїСЂРѕРІРѕРєСѓСЋС‚СЊ СЃРёРіРЅР°Р» РЅР°С‚РёСЃРєСѓ 
 		mObgects[i].Temp.Clic_Temp = 0;
 		mObgects[i].Temp.Clic = 0;
 		mObgects[i].Temp.Klik = 1;	
 	}
 	
 	}
-	//Розрахувати розміщення кнопки активність і натиски=====================================================================-
+	//Р РѕР·СЂР°С…СѓРІР°С‚Рё СЂРѕР·РјС–С‰РµРЅРЅСЏ РєРЅРѕРїРєРё Р°РєС‚РёРІРЅС–СЃС‚СЊ С– РЅР°С‚РёСЃРєРё=====================================================================-
 
 	//std::cout<<windows_data.Maus_Data_.PressState <<std::endl;
 
@@ -2882,7 +2882,7 @@ void Button_Events(int ID,int idGrup) //Намалювати одну кнопку за ІД
 
 
 
-		//Розрахунок зміщення каретки за допомогою миші
+		//Р РѕР·СЂР°С…СѓРЅРѕРє Р·РјС–С‰РµРЅРЅСЏ РєР°СЂРµС‚РєРё Р·Р° РґРѕРїРѕРјРѕРіРѕСЋ РјРёС€С–
 		//if(mObgects[i].Temp.Clic_Temp)
 	if( mObgects[i].ClickPress  )
 		{
@@ -2912,20 +2912,20 @@ void Button_Events(int ID,int idGrup) //Намалювати одну кнопку за ІД
 
 
 
-			//Обмежити По максимальному і мінімальному значенню каретку
+			//РћР±РјРµР¶РёС‚Рё РџРѕ РјР°РєСЃРёРјР°Р»СЊРЅРѕРјСѓ С– РјС–РЅС–РјР°Р»СЊРЅРѕРјСѓ Р·РЅР°С‡РµРЅРЅСЋ РєР°СЂРµС‚РєСѓ
 			if(mObgects[i].Value > mObgects[i].MaxValue)
 			mObgects[i].Value = mObgects[i].MaxValue;
 			if(mObgects[i].Value < mObgects[i].MinValue)
 			mObgects[i].Value = mObgects[i].MinValue;
 
-	//===============================================================Функція виведення на екран і резервування===============+
+	//===============================================================Р¤СѓРЅРєС†С–СЏ РІРёРІРµРґРµРЅРЅСЏ РЅР° РµРєСЂР°РЅ С– СЂРµР·РµСЂРІСѓРІР°РЅРЅСЏ===============+
 
 }
 
-void  Button_Draw(int ID) //Намалювати одну кнопку за ІД
+void  Button_Draw(int ID) //РќР°РјР°Р»СЋРІР°С‚Рё РѕРґРЅСѓ РєРЅРѕРїРєСѓ Р·Р° Р†Р”
 {
  	int i = ID;
-	//Private_Rozmis(ID); //Функція розраховує актуальну позицію кнопки і зразу обновлює дані в ній
+	//Private_Rozmis(ID); //Р¤СѓРЅРєС†С–СЏ СЂРѕР·СЂР°С…РѕРІСѓС” Р°РєС‚СѓР°Р»СЊРЅСѓ РїРѕР·РёС†С–СЋ РєРЅРѕРїРєРё С– Р·СЂР°Р·Сѓ РѕР±РЅРѕРІР»СЋС” РґР°РЅС– РІ РЅС–Р№
    
 
 	if(isVoidGlobalDrawPlane)
@@ -2935,7 +2935,7 @@ void  Button_Draw(int ID) //Намалювати одну кнопку за ІД
 	else
 	{
 		
-		if(!mObgects[i].Temp.Perehvat) //Якщо кнопка не була перехвачена,малюю її
+		if(!mObgects[i].Temp.Perehvat) //РЇРєС‰Рѕ РєРЅРѕРїРєР° РЅРµ Р±СѓР»Р° РїРµСЂРµС…РІР°С‡РµРЅР°,РјР°Р»СЋСЋ С—С—
 		{
 				DrawStyleElements(i,X_CORD,Y_CORD,mObgects[i].SizeX,mObgects[i].SizeY);		
 		}
@@ -2945,7 +2945,7 @@ void  Button_Draw(int ID) //Намалювати одну кнопку за ІД
 
 
 
-	mObgects[i].Temp.Perehvat = 0; //Скидання
+	mObgects[i].Temp.Perehvat = 0; //РЎРєРёРґР°РЅРЅСЏ
 }
 
 
@@ -2955,20 +2955,20 @@ void draw_grup_and_button(int idG)
 	int j = idG;
 
 
-	//Якщо група не видима допобачення
+	//РЇРєС‰Рѕ РіСЂСѓРїР° РЅРµ РІРёРґРёРјР° РґРѕРїРѕР±Р°С‡РµРЅРЅСЏ
 	if(!Grups_[j].vizual) return;
 
-	//Тіло вікна
-	DrawGrup(j); //Малювати вікно якщо група являється вікном
+	//РўС–Р»Рѕ РІС–РєРЅР°
+	DrawGrup(j); //РњР°Р»СЋРІР°С‚Рё РІС–РєРЅРѕ СЏРєС‰Рѕ РіСЂСѓРїР° СЏРІР»СЏС”С‚СЊСЃСЏ РІС–РєРЅРѕРј
 
 	
 
-									//Цикл обробки подій (Внутрішні події обробляються окремо у зворотньому напрямку для того щоб натиски спрацьовували не на тих кнопка що на задньому плані а на кнопках переднього плану)
+									//Р¦РёРєР» РѕР±СЂРѕР±РєРё РїРѕРґС–Р№ (Р’РЅСѓС‚СЂС–С€РЅС– РїРѕРґС–С— РѕР±СЂРѕР±Р»СЏСЋС‚СЊСЃСЏ РѕРєСЂРµРјРѕ Сѓ Р·РІРѕСЂРѕС‚РЅСЊРѕРјСѓ РЅР°РїСЂСЏРјРєСѓ РґР»СЏ С‚РѕРіРѕ С‰РѕР± РЅР°С‚РёСЃРєРё СЃРїСЂР°С†СЊРѕРІСѓРІР°Р»Рё РЅРµ РЅР° С‚РёС… РєРЅРѕРїРєР° С‰Рѕ РЅР° Р·Р°РґРЅСЊРѕРјСѓ РїР»Р°РЅС– Р° РЅР° РєРЅРѕРїРєР°С… РїРµСЂРµРґРЅСЊРѕРіРѕ РїР»Р°РЅСѓ)
 									if(Grups_[j].Enable == 1 )
 									{
-										for(int i = Grups_[j].ID_Objects.size()-1;i>=0;i--) //Обробити всі кнопки з групи в зворотьньому напрямку
+										for(int i = Grups_[j].ID_Objects.size()-1;i>=0;i--) //РћР±СЂРѕР±РёС‚Рё РІСЃС– РєРЅРѕРїРєРё Р· РіСЂСѓРїРё РІ Р·РІРѕСЂРѕС‚СЊРЅСЊРѕРјСѓ РЅР°РїСЂСЏРјРєСѓ
 										{
-											if(mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob == 0) //Якщо кнопка не оброблялася
+											if(mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob == 0) //РЇРєС‰Рѕ РєРЅРѕРїРєР° РЅРµ РѕР±СЂРѕР±Р»СЏР»Р°СЃСЏ
 											{
 												if(Grups_[j].type == "Window" || Grups_[j].type == "window")
 													FixWindow_Private_Size(Grups_[j].ID_Objects[i],j, X_CORD , Y_CORD);
@@ -2981,11 +2981,11 @@ void draw_grup_and_button(int idG)
 									}
 
 
-									//Цикл Промальвки
-									for(int i = 0;i<Grups_[j].ID_Objects.size();i++) //обробити записані ідентифікатори
-									if(mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob == 0) //Якщо кнопка не оброблялася
-									{//**Обробити кнопку
-										//mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob = 1; //Вказуємо що кнопка оброблена (Запобігає малюванню кнопки двічі Якщо вона зареєстрована в двох групах)
+									//Р¦РёРєР» РџСЂРѕРјР°Р»СЊРІРєРё
+									for(int i = 0;i<Grups_[j].ID_Objects.size();i++) //РѕР±СЂРѕР±РёС‚Рё Р·Р°РїРёСЃР°РЅС– С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРё
+									if(mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob == 0) //РЇРєС‰Рѕ РєРЅРѕРїРєР° РЅРµ РѕР±СЂРѕР±Р»СЏР»Р°СЃСЏ
+									{//**РћР±СЂРѕР±РёС‚Рё РєРЅРѕРїРєСѓ
+										//mObgects[Grups_[j].ID_Objects[i]].Temp.Temp_obrob = 1; //Р’РєР°Р·СѓС”РјРѕ С‰Рѕ РєРЅРѕРїРєР° РѕР±СЂРѕР±Р»РµРЅР° (Р—Р°РїРѕР±С–РіР°С” РјР°Р»СЋРІР°РЅРЅСЋ РєРЅРѕРїРєРё РґРІС–С‡С– РЇРєС‰Рѕ РІРѕРЅР° Р·Р°СЂРµС”СЃС‚СЂРѕРІР°РЅР° РІ РґРІРѕС… РіСЂСѓРїР°С…)
 										//Button_Events(Grups_[j].ID_Objects[i]); 
 										//
 									if(Grups_[j].type == "Window" || Grups_[j].type == "window")
@@ -3000,9 +3000,9 @@ void draw_grup_and_button(int idG)
 
 }
 
-void  Draw() //Валює всі кнопки що зареєстровані в видимих групах
+void  Draw() //Р’Р°Р»СЋС” РІСЃС– РєРЅРѕРїРєРё С‰Рѕ Р·Р°СЂРµС”СЃС‚СЂРѕРІР°РЅС– РІ РІРёРґРёРјРёС… РіСЂСѓРїР°С…
 {
-	//Передаю параметри вікна классу шрифтів
+	//РџРµСЂРµРґР°СЋ РїР°СЂР°РјРµС‚СЂРё РІС–РєРЅР° РєР»Р°СЃСЃСѓ С€СЂРёС„С‚С–РІ
 	FontSystems.WindowsData.ViewportHeight = windows_data.ViewportHeight;
 	FontSystems.WindowsData.ViewportWidth =  windows_data.ViewportWidth;
 	FontSystems.WindowsData.ViewportPosX =   windows_data.ViewportPosX;
@@ -3010,23 +3010,23 @@ void  Draw() //Валює всі кнопки що зареєстровані в видимих групах
 	FontSystems.WindowsData.WindowsHeight =  windows_data.WindowsHeight;
 	FontSystems.WindowsData.WindowsWidth =   windows_data.WindowsHeight;
 
-	if(windows_data.Maus_Data_.PressState == false && windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA) //Обнуляти Ід активного вікна тільки при умові що кнопку миші не зажато
+	if(windows_data.Maus_Data_.PressState == false && windows_data.Maus_Data_.MausBT == BT_MAUSE_KLIK_KNOPKA) //РћР±РЅСѓР»СЏС‚Рё Р†Рґ Р°РєС‚РёРІРЅРѕРіРѕ РІС–РєРЅР° С‚С–Р»СЊРєРё РїСЂРё СѓРјРѕРІС– С‰Рѕ РєРЅРѕРїРєСѓ РјРёС€С– РЅРµ Р·Р°Р¶Р°С‚Рѕ
 	{
 		IdGrupsHoverHight = -1;
 		IdGrupsHoverMain = -1;
 	}
 
 
-	//Цикл обробки подій внутрішніх
+	//Р¦РёРєР» РѕР±СЂРѕР±РєРё РїРѕРґС–Р№ РІРЅСѓС‚СЂС–С€РЅС–С…
 
-	//Спочатку обробляємо активну групу
+	//РЎРїРѕС‡Р°С‚РєСѓ РѕР±СЂРѕР±Р»СЏС”РјРѕ Р°РєС‚РёРІРЅСѓ РіСЂСѓРїСѓ
 	if(idTheLastPushWindow != -1)
 		if(Grups_[idTheLastPushWindow].vizual == 1)
 			EventGrup(idTheLastPushWindow);
 
 	for(int j = Grups_.size()-1;j>=0;j--)
 		{
-			if(Grups_[j].vizual == 1) //якщо група видима і активна
+			if(Grups_[j].vizual == 1) //СЏРєС‰Рѕ РіСЂСѓРїР° РІРёРґРёРјР° С– Р°РєС‚РёРІРЅР°
 			{
 				if(idTheLastPushWindow != j)
 				EventGrup(j);
@@ -3034,7 +3034,7 @@ void  Draw() //Валює всі кнопки що зареєстровані в видимих групах
 		}
 	
  
-	//Активую Прозорість
+	//РђРєС‚РёРІСѓСЋ РџСЂРѕР·РѕСЂС–СЃС‚СЊ
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -3043,15 +3043,15 @@ void  Draw() //Валює всі кнопки що зареєстровані в видимих групах
 	VSTAN_ZMIN_T_OBROB(0); //Onul
 
 		//int j = 0;
-		//while(j<Grups_.size()) //пройтись по всім групам
+		//while(j<Grups_.size()) //РїСЂРѕР№С‚РёСЃСЊ РїРѕ РІСЃС–Рј РіСЂСѓРїР°Рј
 		
 	
 		for(int j = 0;j<Grups_.size();j++)
 		{
-			if(Grups_[j].vizual == 1) //якщо група видима і активна
+			if(Grups_[j].vizual == 1) //СЏРєС‰Рѕ РіСЂСѓРїР° РІРёРґРёРјР° С– Р°РєС‚РёРІРЅР°
 			{
 				if(j != idTheLastPushWindow)
-				draw_grup_and_button(j); //Малювати групу  і її вміст
+				draw_grup_and_button(j); //РњР°Р»СЋРІР°С‚Рё РіСЂСѓРїСѓ  С– С—С— РІРјС–СЃС‚
 			}
 		}
 
@@ -3061,20 +3061,20 @@ void  Draw() //Валює всі кнопки що зареєстровані в видимих групах
 
 
 		//2019 comment
-		//if(textEnable)  //Якщо вказано що текст потрібен
-		//TextDraw();  	//Вивидення тексту
+		//if(textEnable)  //РЇРєС‰Рѕ РІРєР°Р·Р°РЅРѕ С‰Рѕ С‚РµРєСЃС‚ РїРѕС‚СЂС–Р±РµРЅ
+		//TextDraw();  	//Р’РёРІРёРґРµРЅРЅСЏ С‚РµРєСЃС‚Сѓ
 
 }
 
 
 
-bool  SaveToFile_BT(std::string URL_name) //Функція зберігає всю графічну систему у файл, для змоги подальшого використання для ініціалізації
+bool  SaveToFile_BT(std::string URL_name) //Р¤СѓРЅРєС†С–СЏ Р·Р±РµСЂС–РіР°С” РІСЃСЋ РіСЂР°С„С–С‡РЅСѓ СЃРёСЃС‚РµРјСѓ Сѓ С„Р°Р№Р», РґР»СЏ Р·РјРѕРіРё РїРѕРґР°Р»СЊС€РѕРіРѕ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РґР»СЏ С–РЅС–С†С–Р°Р»С–Р·Р°С†С–С—
 {
 	std::ofstream Strim1(URL_name.c_str());
 	if(!Strim1) return 0; //eror create file
 	Strim1<<"Version 1.6\n";
 
-	//======================Записую групи======================//
+	//======================Р—Р°РїРёСЃСѓСЋ РіСЂСѓРїРё======================//
 	int i = 0;
 	while(i < Grups_.size())
 	{
@@ -3086,7 +3086,7 @@ bool  SaveToFile_BT(std::string URL_name) //Функція зберігає всю графічну систем
 		Strim1<<"GrupVizual "<<Grups_[i].vizual<<'\n';
 		Strim1<<"GrupID_Objects "<<Grups_[i].ID_Objects.size();
 		int J = 0;
-		while(J < Grups_[i].ID_Objects.size()) //Записую кылькількість і ідентифікатори
+		while(J < Grups_[i].ID_Objects.size()) //Р—Р°РїРёСЃСѓСЋ РєС‹Р»СЊРєС–Р»СЊРєС–СЃС‚СЊ С– С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРё
 		{
 		Strim1<<' '<<Grups_[i].ID_Objects[J];
 		J++;
@@ -3096,7 +3096,7 @@ bool  SaveToFile_BT(std::string URL_name) //Функція зберігає всю графічну систем
 	}
 
 	Strim1<<"\n";
-	//======================Записую Кнопки======================//
+	//======================Р—Р°РїРёСЃСѓСЋ РљРЅРѕРїРєРё======================//
 	i = 0;
 	while(i < mObgects.size())
 	{
@@ -3154,7 +3154,7 @@ bool  SaveToFile_BT(std::string URL_name) //Функція зберігає всю графічну систем
 		Strim1<<"Knopka_End"<<"\n\n";
 		i++;
 	}
-	//=======================Закінчти читання
+	//=======================Р—Р°РєС–РЅС‡С‚Рё С‡РёС‚Р°РЅРЅСЏ
 	Strim1<<"Form_Init_End";
 
 
@@ -3163,7 +3163,7 @@ bool  SaveToFile_BT(std::string URL_name) //Функція зберігає всю графічну систем
 	return 1;
 }
 
-bool chislo_znp(char A) //перевіряє чи символ це число
+bool chislo_znp(char A) //РїРµСЂРµРІС–СЂСЏС” С‡Рё СЃРёРјРІРѕР» С†Рµ С‡РёСЃР»Рѕ
 {
 		return (A == '1' || A == '2' || A == '3' || A == '4' || A == '5' || A == '6' || A == '7' || A == '8' || A == '9' || A == '0');
 }
@@ -3188,14 +3188,15 @@ float StringToFloat(std::string Text)
 }*/
 
 
-//Список прочитаних слів які можуть бути командами або аргументами до команд
+//РЎРїРёСЃРѕРє РїСЂРѕС‡РёС‚Р°РЅРёС… СЃР»С–РІ СЏРєС– РјРѕР¶СѓС‚СЊ Р±СѓС‚Рё РєРѕРјР°РЅРґР°РјРё Р°Р±Рѕ Р°СЂРіСѓРјРµРЅС‚Р°РјРё РґРѕ РєРѕРјР°РЅРґ
 
-//Запис всіх помилок
+//Р—Р°РїРёСЃ РІСЃС–С… РїРѕРјРёР»РѕРє
 std::vector<std::string> ErrorLog;
 
 std::vector<std::string> ReadFile;
 bool ReadWordComands(std::string URL)
 {
+	URL = korin_dir + URL;
 	std::ifstream Strim1(URL.c_str());
 	if(!Strim1)
 	{
@@ -3246,13 +3247,13 @@ bool ReadWordComands(std::string URL)
 		}
 
 		//if(Comand.size() > 0)
-		ReadFile.push_back(Comand); //Записую команду у вектор для подальшої обробки
+		ReadFile.push_back(Comand); //Р—Р°РїРёСЃСѓСЋ РєРѕРјР°РЅРґСѓ Сѓ РІРµРєС‚РѕСЂ РґР»СЏ РїРѕРґР°Р»СЊС€РѕС— РѕР±СЂРѕР±РєРё
 
 		if(ReadFile.size()>=2)
 		{
 			if(ReadFile[ReadFile.size()-2] == "include")
 			{
-				std::string tempURL = ReadFile[ReadFile.size()-1];
+				std::string tempURL =  ReadFile[ReadFile.size()-1];
 				//delete arg include
 				ReadFile.erase(ReadFile.begin()+(ReadFile.size()-1));
 				//delete include
@@ -3297,22 +3298,22 @@ void Clear()
 	PressKnopkaONE = false;
 	windows_data.ViewportPosX = 0;
 	windows_data.ViewportPosY = 0;
-	//Вимикаємо користувацьку функцію на правах конструктора
+	//Р’РёРјРёРєР°С”РјРѕ РєРѕСЂРёСЃС‚СѓРІР°С†СЊРєСѓ С„СѓРЅРєС†С–СЋ РЅР° РїСЂР°РІР°С… РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 	//Disable(textureLoader.ISusTextureLoader);
 	//Disable(isVoidDrawPlane);
 	Disable(isVoidDrawPlane);
 	Disable(isVoidGlobalDrawPlane);
 	
-	//Функція для завантажена текстур при потребі розширити підтримук типів текстур визначається користувачем
+	//Р¤СѓРЅРєС†С–СЏ РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅР° С‚РµРєСЃС‚СѓСЂ РїСЂРё РїРѕС‚СЂРµР±С– СЂРѕР·С€РёСЂРёС‚Рё РїС–РґС‚СЂРёРјСѓРє С‚РёРїС–РІ С‚РµРєСЃС‚СѓСЂ РІРёР·РЅР°С‡Р°С”С‚СЊСЃСЏ РєРѕСЂРёСЃС‚СѓРІР°С‡РµРј
 	//bool (*usTextureLoader)(std::string url, int &width, int &height, GLuint &TxID);
 
 	string vertexS = "";
 
 
 	textEnable = 1;
-	OBGECT BT_K_TEMP = Knopka_IN();                 //Допоміжна змінна яка налаштовуєтся а потім вкидаєтся її копія в вектор кнопок
+	OBGECT BT_K_TEMP = Knopka_IN();                 //Р”РѕРїРѕРјС–Р¶РЅР° Р·РјС–РЅРЅР° СЏРєР° РЅР°Р»Р°С€С‚РѕРІСѓС”С‚СЃСЏ Р° РїРѕС‚С–Рј РІРєРёРґР°С”С‚СЃСЏ С—С— РєРѕРїС–СЏ РІ РІРµРєС‚РѕСЂ РєРЅРѕРїРѕРє
 	Grup  BT_G_TEMP = Grup_IN();
-	BT_MAUSE_KLIK_KNOPKA = 0;                       //якщо сигнал від glut то ліва кнопка миші по стандарту
+	BT_MAUSE_KLIK_KNOPKA = 0;                       //СЏРєС‰Рѕ СЃРёРіРЅР°Р» РІС–Рґ glut С‚Рѕ Р»С–РІР° РєРЅРѕРїРєР° РјРёС€С– РїРѕ СЃС‚Р°РЅРґР°СЂС‚Сѓ
 	windows_data.Maus_Data_ .PressState = 0;
 	windows_data.Maus_Data_ .MausBT = -1;
 
@@ -3324,9 +3325,45 @@ void Clear()
 
 }
 
-
-bool  Open(std::string URL_name) //Функція читатимефаіл форм
+/*
+bool  Open(std::string dir, std::string name)
 {
+	korin_dir = dir;
+	return Open(name);
+}*/
+
+bool  Open(std::string URL_name) //Р¤СѓРЅРєС†С–СЏ С‡РёС‚Р°С‚РёРјРµС„Р°С–Р» С„РѕСЂРј
+{
+	
+
+	//РђР»РіРѕСЂРёС‚Рј СЂРѕР·РґС–Р»РµРЅРЅСЏ Р°РґСЂРµСЃРё РєРѕСЂРёРЅРµРІРѕС— РїР°РїРєРё С– РЅР°Р·РІРё С„Р°Р»Сѓ
+	{
+	std::string Dir = URL_name;
+	std::string File = "";
+	while(Dir.size()>0 && Dir[Dir.size()-1] != '\\')
+	{
+		File+=Dir[Dir.size()-1];
+		Dir.erase(Dir.size()-1);
+	}
+
+	std::string RFile = "";
+	while(File.size()>0)
+	{
+		RFile+=File[File.size()-1];
+		File.erase(File.size()-1);
+	}
+	
+
+	korin_dir = Dir;
+	URL_name = RFile;
+
+	
+	}
+	
+	
+
+
+
 	IStheProcessReform = true;
 	Clear();
 	DevChBTG();
@@ -3349,7 +3386,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 	//float Version;
 	//Strim1<<"Version 1.2\n";
 
-	//Область Ініціалізації
+	//РћР±Р»Р°СЃС‚СЊ Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–С—
 	int i = 0;
 	while(i < ReadFile.size())
 	{
@@ -3360,11 +3397,11 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 
 
 		
-	//Кнопки
+	//РљРЅРѕРїРєРё
 		if(ReadFile[i] == "Object_Begin")                                       {BT_K_TEMP = Knopka_IN();}
 		else
 			//2019
-			if(ReadFile[i] == "Object_Copy")										  {i++;      for(int j = 0; j < mObgects.size(); j++) {if(mObgects[j].Names == ReadFile[i]){BT_K_TEMP = mObgects[j]; break;}}  } //Скопіювати властивості з іншої кнопки по назві якщо така уже є
+			if(ReadFile[i] == "Object_Copy")										  {i++;      for(int j = 0; j < mObgects.size(); j++) {if(mObgects[j].Names == ReadFile[i]){BT_K_TEMP = mObgects[j]; break;}}  } //РЎРєРѕРїС–СЋРІР°С‚Рё РІР»Р°СЃС‚РёРІРѕСЃС‚С– Р· С–РЅС€РѕС— РєРЅРѕРїРєРё РїРѕ РЅР°Р·РІС– СЏРєС‰Рѕ С‚Р°РєР° СѓР¶Рµ С”
 		
 			
 			
@@ -3489,7 +3526,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 			
 			
 			else
-				if(ReadFile[i] == "Object_HoverFix") //Параметри змін при наведенні устанивити такими як і стандартні
+				if(ReadFile[i] == "Object_HoverFix") //РџР°СЂР°РјРµС‚СЂРё Р·РјС–РЅ РїСЂРё РЅР°РІРµРґРµРЅРЅС– СѓСЃС‚Р°РЅРёРІРёС‚Рё С‚Р°РєРёРјРё СЏРє С– СЃС‚Р°РЅРґР°СЂС‚РЅС–
 				{
 					i++;
 					BT_K_TEMP.HoverColor = BT_K_TEMP.Color;
@@ -3516,29 +3553,29 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 		else
 			if(ReadFile[i] == "Comanda")                                         
 			{
-				i++;                                                   //Наступне значення
-				ComandVector ComandVectorTemp1;                        //Темчасова змінна для збереження
-				ComandVectorTemp1.Comand_FUNC = ReadFile[i];           //Зберегти назву функції
-				i++;                                                   //Наступне значення
+				i++;                                                   //РќР°СЃС‚СѓРїРЅРµ Р·РЅР°С‡РµРЅРЅСЏ
+				ComandVector ComandVectorTemp1;                        //РўРµРјС‡Р°СЃРѕРІР° Р·РјС–РЅРЅР° РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ
+				ComandVectorTemp1.Comand_FUNC = ReadFile[i];           //Р—Р±РµСЂРµРіС‚Рё РЅР°Р·РІСѓ С„СѓРЅРєС†С–С—
+				i++;                                                   //РќР°СЃС‚СѓРїРЅРµ Р·РЅР°С‡РµРЅРЅСЏ
 
-				int SizeMax = StringToInt(ReadFile[i]);                //Кількість значень
+				int SizeMax = StringToInt(ReadFile[i]);                //РљС–Р»СЊРєС–СЃС‚СЊ Р·РЅР°С‡РµРЅСЊ
 				int U = 0;
-				while(U<SizeMax)                                       //Пойти по всім значенням
+				while(U<SizeMax)                                       //РџРѕР№С‚Рё РїРѕ РІСЃС–Рј Р·РЅР°С‡РµРЅРЅСЏРј
 				{
-					i++;                                               //Наступне значення
-					if(chislo_znp(ReadFile[i][0]))                     //Якщо значення число
-						ComandVectorTemp1.ArgLine.push_back(StringToInt(ReadFile[i]));          //Зберегти числове значення
+					i++;                                               //РќР°СЃС‚СѓРїРЅРµ Р·РЅР°С‡РµРЅРЅСЏ
+					if(chislo_znp(ReadFile[i][0]))                     //РЇРєС‰Рѕ Р·РЅР°С‡РµРЅРЅСЏ С‡РёСЃР»Рѕ
+						ComandVectorTemp1.ArgLine.push_back(StringToInt(ReadFile[i]));          //Р—Р±РµСЂРµРіС‚Рё С‡РёСЃР»РѕРІРµ Р·РЅР°С‡РµРЅРЅСЏ
 					else                             
-						ComandVectorTemp1.ComandLine.push_back(ReadFile[i]);                    //Зберегти текстове значення*/
+						ComandVectorTemp1.ComandLine.push_back(ReadFile[i]);                    //Р—Р±РµСЂРµРіС‚Рё С‚РµРєСЃС‚РѕРІРµ Р·РЅР°С‡РµРЅРЅСЏ*/
 					U++;		
 				}
 				
 
 				if(ComandVectorTemp1.ComandLine.size()+ComandVectorTemp1.ArgLine.size() >0)
 				{	
-					BT_K_TEMP.Comanda.push_back(ComandVectorTemp1);     //Зберегти команду
+					BT_K_TEMP.Comanda.push_back(ComandVectorTemp1);     //Р—Р±РµСЂРµРіС‚Рё РєРѕРјР°РЅРґСѓ
 				}
-		    }//Читання команд
+		    }//Р§РёС‚Р°РЅРЅСЏ РєРѕРјР°РЅРґ
 			
 
 		else
@@ -3552,29 +3589,29 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 	i = 0;
 	while(i < ReadFile.size())
 	{	
-        //Групи
-		if(ReadFile[i] == "GrupNew_Begin" || ReadFile[i] == "Grup_Begin")                    BT_G_TEMP = Grup_IN();													//Стандартні налаштування сброс
+        //Р“СЂСѓРїРё
+		if(ReadFile[i] == "GrupNew_Begin" || ReadFile[i] == "Grup_Begin")                    BT_G_TEMP = Grup_IN();													//РЎС‚Р°РЅРґР°СЂС‚РЅС– РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ СЃР±СЂРѕСЃ
 		else
-		if(ReadFile[i] == "GrupName" || ReadFile[i] == "Grup_Name")                         {i++; BT_G_TEMP.Name = ReadFile[i]; }										//Ім'я групи
+		if(ReadFile[i] == "GrupName" || ReadFile[i] == "Grup_Name")                         {i++; BT_G_TEMP.Name = ReadFile[i]; }										//Р†Рј'СЏ РіСЂСѓРїРё
 		else
-		if(ReadFile[i] == "GrupEnable" || ReadFile[i] == "Grup_Enable")						  {i++; BT_G_TEMP.Enable = StringToBool(ReadFile[i]);}						//Активність
+		if(ReadFile[i] == "GrupEnable" || ReadFile[i] == "Grup_Enable")						  {i++; BT_G_TEMP.Enable = StringToBool(ReadFile[i]);}						//РђРєС‚РёРІРЅС–СЃС‚СЊ
 		else
-		if(ReadFile[i] == "GrupVizual" || ReadFile[i] == "Grup_Vizual")                       {i++; BT_G_TEMP.vizual = StringToBool(ReadFile[i]);}						//Видимість
+		if(ReadFile[i] == "GrupVizual" || ReadFile[i] == "Grup_Vizual")                       {i++; BT_G_TEMP.vizual = StringToBool(ReadFile[i]);}						//Р’РёРґРёРјС–СЃС‚СЊ
 		
 		//=======================================2019
 		/////////////////////////////////////////////
 		else
-		if(ReadFile[i] == "Grup_Type" || ReadFile[i] == "Grup_type")                         {i++; BT_G_TEMP.type = ReadFile[i]; }	 //Тип групи
+		if(ReadFile[i] == "Grup_Type" || ReadFile[i] == "Grup_type")                         {i++; BT_G_TEMP.type = ReadFile[i]; }	 //РўРёРї РіСЂСѓРїРё
 
-		if(ReadFile[i] == "Grup_PosX")                                           {i++;   BT_G_TEMP.PosX = StringToInt(ReadFile[i]);} //Позиція якщо група вважається вікном або панеллю
+		if(ReadFile[i] == "Grup_PosX")                                           {i++;   BT_G_TEMP.PosX = StringToInt(ReadFile[i]);} //РџРѕР·РёС†С–СЏ СЏРєС‰Рѕ РіСЂСѓРїР° РІРІР°Р¶Р°С”С‚СЊСЃСЏ РІС–РєРЅРѕРј Р°Р±Рѕ РїР°РЅРµР»Р»СЋ
 		else
 		if(ReadFile[i] == "Grup_PosY")                                           {i++;   BT_G_TEMP.PosY = StringToInt(ReadFile[i]);}
 		else
-			if(ReadFile[i] == "Grup_ISheader")						  {i++; BT_G_TEMP.ISheader = StringToBool(ReadFile[i]);}						//Чи показувати допоміжну полосу вікна
+			if(ReadFile[i] == "Grup_ISheader")						  {i++; BT_G_TEMP.ISheader = StringToBool(ReadFile[i]);}						//Р§Рё РїРѕРєР°Р·СѓРІР°С‚Рё РґРѕРїРѕРјС–Р¶РЅСѓ РїРѕР»РѕСЃСѓ РІС–РєРЅР°
 		else
-			if(ReadFile[i] == "Grup_IStitle")                       {i++; BT_G_TEMP.IStitle = StringToBool(ReadFile[i]);}						//Чи показувати назву вікна
+			if(ReadFile[i] == "Grup_IStitle")                       {i++; BT_G_TEMP.IStitle = StringToBool(ReadFile[i]);}						//Р§Рё РїРѕРєР°Р·СѓРІР°С‚Рё РЅР°Р·РІСѓ РІС–РєРЅР°
 		else
-			if(ReadFile[i] == "Grup_Title")                         {i++; BT_G_TEMP.title = ReadFile[i]; }	 //Назва вікна
+			if(ReadFile[i] == "Grup_Title")                         {i++; BT_G_TEMP.title = ReadFile[i]; }	 //РќР°Р·РІР° РІС–РєРЅР°
 			else
 			if(ReadFile[i] == "Grup_IsCloseButton")						  {i++; BT_G_TEMP.CloseButton = StringToBool(ReadFile[i]);}	
 			else
@@ -3605,7 +3642,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 
 		else
 		//2019
-		if(ReadFile[i] == "Grup_Copy")										  {i++;      for(int j = 0; j < Grups_.size(); j++) {if(Grups_[j].Name == ReadFile[i]){  BT_G_TEMP = Grups_[j]; break;}}   BT_G_TEMP.ID_Objects.clear();  } //Скопіювати властивості з іншої групи по назві якщо така уже є
+		if(ReadFile[i] == "Grup_Copy")										  {i++;      for(int j = 0; j < Grups_.size(); j++) {if(Grups_[j].Name == ReadFile[i]){  BT_G_TEMP = Grups_[j]; break;}}   BT_G_TEMP.ID_Objects.clear();  } //РЎРєРѕРїС–СЋРІР°С‚Рё РІР»Р°СЃС‚РёРІРѕСЃС‚С– Р· С–РЅС€РѕС— РіСЂСѓРїРё РїРѕ РЅР°Р·РІС– СЏРєС‰Рѕ С‚Р°РєР° СѓР¶Рµ С”
 		
 		/*
 		/*
@@ -3636,7 +3673,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 		
 		
 		else
-		if(ReadFile[i] == "GrupID_Objects")			          {																			//Читання зареєстрованих ідентифікаторів кнопок
+		if(ReadFile[i] == "GrupID_Objects")			          {																			//Р§РёС‚Р°РЅРЅСЏ Р·Р°СЂРµС”СЃС‚СЂРѕРІР°РЅРёС… С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ РєРЅРѕРїРѕРє
 																 i++;
 			                                                     int j = 0, k = StringToInt(ReadFile[i]);
 																 																 
@@ -3644,7 +3681,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 																 {
 																	 i++;  
 																	 
-																	 if(chislo_znp(ReadFile[i][0]))    //Обробити залежно від того чи число надійшло чи назва
+																	 if(chislo_znp(ReadFile[i][0]))    //РћР±СЂРѕР±РёС‚Рё Р·Р°Р»РµР¶РЅРѕ РІС–Рґ С‚РѕРіРѕ С‡Рё С‡РёСЃР»Рѕ РЅР°РґС–Р№С€Р»Рѕ С‡Рё РЅР°Р·РІР°
 																	 {
 																	 BT_G_TEMP.ID_Objects.push_back(StringToInt(ReadFile[i]));
 																	 }
@@ -3661,21 +3698,21 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 		if(ReadFile[i] == "Grup_End")						   {
 																	std::cout<<"\n<"<<BT_G_TEMP.Name<<">\n";
 			//i++;
-																	//Додати кнопку в групу по параметру при створенны кнопки 2018
+																	//Р”РѕРґР°С‚Рё РєРЅРѕРїРєСѓ РІ РіСЂСѓРїСѓ РїРѕ РїР°СЂР°РјРµС‚СЂСѓ РїСЂРё СЃС‚РІРѕСЂРµРЅРЅС‹ РєРЅРѕРїРєРё 2018
 																	for(int g = 0;g < TlogBtToGrupsLog.size();g++)
 																	{
-																		if(TlogBtToGrupsLog[g].NameGrup == BT_G_TEMP.Name) //Шукаємо групу по імені
+																		if(TlogBtToGrupsLog[g].NameGrup == BT_G_TEMP.Name) //РЁСѓРєР°С”РјРѕ РіСЂСѓРїСѓ РїРѕ С–РјРµРЅС–
 																		{
-																		 int ID_T =  ID_names(TlogBtToGrupsLog[g].NameBT); //Шукаємо об'єкт по назві
+																		 int ID_T =  ID_names(TlogBtToGrupsLog[g].NameBT); //РЁСѓРєР°С”РјРѕ РѕР±'С”РєС‚ РїРѕ РЅР°Р·РІС–
 																	    
-																		 if(ID_T >= 0) //Якщо ідентифікатор більше -1 Обеэт знайдено 
+																		 if(ID_T >= 0) //РЇРєС‰Рѕ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ Р±С–Р»СЊС€Рµ -1 РћР±РµСЌС‚ Р·РЅР°Р№РґРµРЅРѕ 
 																		 {
 																			 bool vvvv = 1;
-																			 for(int t = 0; t < BT_G_TEMP.ID_Objects.size();t++) //Пройдемоя по записаних індефікаторах в групи
+																			 for(int t = 0; t < BT_G_TEMP.ID_Objects.size();t++) //РџСЂРѕР№РґРµРјРѕСЏ РїРѕ Р·Р°РїРёСЃР°РЅРёС… С–РЅРґРµС„С–РєР°С‚РѕСЂР°С… РІ РіСЂСѓРїРё
 																			 {
-																				 if(BT_G_TEMP.ID_Objects[t] == ID_T)  //і якщо цей індефікатор там вже є
+																				 if(BT_G_TEMP.ID_Objects[t] == ID_T)  //С– СЏРєС‰Рѕ С†РµР№ С–РЅРґРµС„С–РєР°С‚РѕСЂ С‚Р°Рј РІР¶Рµ С”
 																				 {
-																					 vvvv = 0; //Вказуэмо що йог зберыгати не потрыбно вдруге
+																					 vvvv = 0; //Р’РєР°Р·СѓСЌРјРѕ С‰Рѕ Р№РѕРі Р·Р±РµСЂС‹РіР°С‚Рё РЅРµ РїРѕС‚СЂС‹Р±РЅРѕ РІРґСЂСѓРіРµ
 																					 break;
 																				 }
 																			 }
@@ -3692,7 +3729,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 																		}
 				
 																	}
-																	//Завантажую текстуру вікна якщо вона є
+																	//Р—Р°РІР°РЅС‚Р°Р¶СѓСЋ С‚РµРєСЃС‚СѓСЂСѓ РІС–РєРЅР° СЏРєС‰Рѕ РІРѕРЅР° С”
 																	
 																	if(BT_G_TEMP.bacgroundImageURL != "" && BT_G_TEMP.bacgroundImageURL != "NULL" && BT_G_TEMP.bacgroundImageURL != "null")
 																	{
@@ -3706,7 +3743,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 			
 																	Grups_.push_back(BT_G_TEMP); BT_G_TEMP.ID_Objects.clear();
 																	
-		}											//Зберігаю групу
+		}											//Р—Р±РµСЂС–РіР°СЋ РіСЂСѓРїСѓ
 		else
 		if(ReadFile[i] == "Form_Init_End")                                         break;
 	//=================================================================================================
@@ -3720,7 +3757,7 @@ bool  Open(std::string URL_name) //Функція читатимефаіл форм
 
 
 
-//Функції для отримання порту перегляду
+//Р¤СѓРЅРєС†С–С— РґР»СЏ РѕС‚СЂРёРјР°РЅРЅСЏ РїРѕСЂС‚Сѓ РїРµСЂРµРіР»СЏРґСѓ
 int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 {
 	int ID = ID_names(Name);
@@ -3731,7 +3768,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 	return ID;
 }
-	//Функції для отримання порту перегляду
+	//Р¤СѓРЅРєС†С–С— РґР»СЏ РѕС‚СЂРёРјР°РЅРЅСЏ РїРѕСЂС‚Сѓ РїРµСЂРµРіР»СЏРґСѓ
 	int  Get_glViewport_BT(int ID,bool Avto_Perspective,int fovy,int Zfar)
 	{
 		if(Avto_Perspective) 
@@ -3741,12 +3778,12 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 	    Private_Rozmis(ID);
 		glViewport(X_CORD,Y_CORD,mObgects[ID].SizeX,mObgects[ID].SizeY);
-		mObgects[ID].Temp.Perehvat = 1; //Вказую що область цієї кнопки була вжевикористана
+		mObgects[ID].Temp.Perehvat = 1; //Р’РєР°Р·СѓСЋ С‰Рѕ РѕР±Р»Р°СЃС‚СЊ С†С–С”С— РєРЅРѕРїРєРё Р±СѓР»Р° РІР¶РµРІРёРєРѕСЂРёСЃС‚Р°РЅР°
 		return ID;
 	}
 
 
-	void  GrupEnable(std::vector<int>ID,bool State) //Активувати або деактивувати групи = груповий пакет
+	void  GrupEnable(std::vector<int>ID,bool State) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
@@ -3756,13 +3793,13 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 		}
 		//return ID;
 	}
-	/*void  GrupEnable(int ID,bool State) //Активувати або деактивувати групи
+	/*void  GrupEnable(int ID,bool State) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё
 	{
 		Grups_[ID].Enable = State;
 	}*/
 
 
-		void  GrupVisual(std::vector<int>ID,bool State) //Видимість = груповий пакет
+		void  GrupVisual(std::vector<int>ID,bool State) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
@@ -3771,7 +3808,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 			i++;
 		}
 	}
-/*	void  GrupVisual(int ID,bool State) //Видимість групи
+/*	void  GrupVisual(int ID,bool State) //Р’РёРґРёРјС–СЃС‚СЊ РіСЂСѓРїРё
 	{
 		Grups_[ID].vizual = State;
 	}*/
@@ -3789,7 +3826,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 
 
-		void  GrupEnableInsert(std::vector<int>ID,bool State) //Активувати або деактивувати групи = груповий пакет Всі окрім
+		void  GrupEnableInsert(std::vector<int>ID,bool State) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -3801,7 +3838,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 		//return ID;
 	}
 
-		void  GrupVisualInsert(std::vector<int>ID,bool State) //Видимість = груповий пакет Всі окрім
+		void  GrupVisualInsert(std::vector<int>ID,bool State) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -3815,7 +3852,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 
 
-	void  GrupEnableAll(bool State) //Задіяти команду для усіх груп
+	void  GrupEnableAll(bool State) //Р—Р°РґС–СЏС‚Рё РєРѕРјР°РЅРґСѓ РґР»СЏ СѓСЃС–С… РіСЂСѓРї
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -3826,7 +3863,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 		//return ID;
 	}
 
-		void  GrupVisualAll(bool State) //Задіяти команду для усіх груп
+		void  GrupVisualAll(bool State) //Р—Р°РґС–СЏС‚Рё РєРѕРјР°РЅРґСѓ РґР»СЏ СѓСЃС–С… РіСЂСѓРї
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -3888,7 +3925,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 
 /*
-	void  GrupEnable(std::vector<std::string>ID,bool State) //Активувати або деактивувати групи = груповий пакет
+	void  GrupEnable(std::vector<std::string>ID,bool State) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
@@ -3898,13 +3935,13 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 		}
 		//return ID;
 	}
-	/*void  GrupEnable(int ID,bool State) //Активувати або деактивувати групи
+	/*void  GrupEnable(int ID,bool State) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё
 	{
 		Grups_[ID].Enable = State;
 	}
 	
 
-	void  GrupVisual(std::vector<int>ID,bool State) //Видимість = груповий пакет
+	void  GrupVisual(std::vector<int>ID,bool State) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
@@ -3914,7 +3951,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 		}
 		//return ID;
 	}
-	/*void  GrupVisual(int ID,bool State) //Видимість групи
+	/*void  GrupVisual(int ID,bool State) //Р’РёРґРёРјС–СЃС‚СЊ РіСЂСѓРїРё
 	{
 		Grups_[ID].vizual = State;
 	}*/
@@ -3932,7 +3969,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 	// ID_GRUP_NAME(std::string Name)
 	
-		void  GrupEnableInsert(std::vector<std::string>ID,bool State) //Активувати або деактивувати групи = груповий пакет Всі окрім
+		void  GrupEnableInsert(std::vector<std::string>ID,bool State) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -3944,7 +3981,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 		//return ID;
 	}
 		
-		void  GrupVisualInsert(std::vector<std::string>ID,bool State) //Видимість = груповий пакет Всі окрім
+		void  GrupVisualInsert(std::vector<std::string>ID,bool State) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -3971,7 +4008,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 		//return ID;
 	}
 	
-		void  GrupEnable(std::vector<std::string>ID,bool State) //Активувати або деактивувати групи = груповий пакет
+		void  GrupEnable(std::vector<std::string>ID,bool State) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
@@ -3986,7 +4023,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 		
 
-	void  GrupVisual(std::vector<std::string>ID,bool State) //Видимість = груповий пакет
+	void  GrupVisual(std::vector<std::string>ID,bool State) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
@@ -4006,7 +4043,7 @@ int  Get_glViewport_BT(std::string Name,bool Avto_Perspective,int fovy,int Zfar)
 
 
 
-void  GrupVisualInsert(std::vector<std::string>ID,std::vector<int>ID1,bool State) //Видимість = груповий пакет Всі окрім
+void  GrupVisualInsert(std::vector<std::string>ID,std::vector<int>ID1,bool State) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -4046,7 +4083,7 @@ void  GrupVisualInsert(std::vector<std::string>ID,std::vector<int>ID1,bool State
 
 
 
-void  GrupEnableInsert(std::vector<std::string>ID,std::vector<int>ID1,bool State) //Видимість = груповий пакет Всі окрім
+void  GrupEnableInsert(std::vector<std::string>ID,std::vector<int>ID1,bool State) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -4083,7 +4120,7 @@ void  GrupEnableInsert(std::vector<std::string>ID,std::vector<int>ID1,bool State
 	
 
 
-void  GrupEnableInsertRevers(std::vector<std::string>ID,std::vector<int>ID1) //Видимість = груповий пакет Всі окрім
+void  GrupEnableInsertRevers(std::vector<std::string>ID,std::vector<int>ID1) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -4120,7 +4157,7 @@ void  GrupEnableInsertRevers(std::vector<std::string>ID,std::vector<int>ID1) //В
 		//return ID;
 	}
 
-void  GrupVisualInsertRevers(std::vector<std::string>ID,std::vector<int>ID1) //Видимість = груповий пакет Всі окрім
+void  GrupVisualInsertRevers(std::vector<std::string>ID,std::vector<int>ID1) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚ Р’СЃС– РѕРєСЂС–Рј
 	{
 		int j = 0;
 		while(Grups_.size() > j)
@@ -4159,7 +4196,7 @@ void  GrupVisualInsertRevers(std::vector<std::string>ID,std::vector<int>ID1) //В
 	//*/
 
 
-	void  GrupEnableRevers(std::vector<std::string>ID,std::vector<int>ID1) //Активувати або деактивувати групи = груповий пакет
+	void  GrupEnableRevers(std::vector<std::string>ID,std::vector<int>ID1) //РђРєС‚РёРІСѓРІР°С‚Рё Р°Р±Рѕ РґРµР°РєС‚РёРІСѓРІР°С‚Рё РіСЂСѓРїРё = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
@@ -4181,7 +4218,7 @@ void  GrupVisualInsertRevers(std::vector<std::string>ID,std::vector<int>ID1) //В
 
 		
 
-	void  GrupVisualRevers(std::vector<std::string>ID,std::vector<int>ID1) //Видимість = груповий пакет
+	void  GrupVisualRevers(std::vector<std::string>ID,std::vector<int>ID1) //Р’РёРґРёРјС–СЃС‚СЊ = РіСЂСѓРїРѕРІРёР№ РїР°РєРµС‚
 	{
 		int i = 0;
 		while(ID.size()>i)
