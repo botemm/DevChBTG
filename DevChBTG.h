@@ -10,7 +10,14 @@
 
 //void (*func)(std::string Name,int id);
 
-
+//Отключаем лишние придуприждения
+#pragma warning(disable : 4996) 
+#pragma warning(disable : 4018) 
+#pragma warning(disable : 4244) 
+#pragma warning(disable : 4805) 
+#pragma warning(disable : 4244) 
+#pragma warning(disable : 4101) 
+#pragma warning(disable : 4800) 
 
 #pragma once
 
@@ -369,7 +376,7 @@ float getWigthText(char CHARone,int fontStyle,int size)
 	}
 
 
-	 bool load(string url)
+	 bool load(std::string url)
 	 {
 		 font DEF;
 		 std::ifstream INp(url.c_str(), ios::binary | ios::in);
@@ -444,14 +451,10 @@ float getWigthText(char CHARone,int fontStyle,int size)
 					format = GL_RGBA;
 
 				glBindTexture(GL_TEXTURE_2D, DEF.texture.texture);
-				glTexImage2D(GL_TEXTURE_2D, 0, format,  DEF.texture.width,  DEF.texture.height, 0, format, GL_UNSIGNED_BYTE, &image1[0]);
-				glGenerateMipmap(GL_TEXTURE_2D);
 
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-				
+				glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+				glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+				glTexImage2D(GL_TEXTURE_2D, 0, format,  DEF.texture.width,  DEF.texture.height, 0, format, GL_UNSIGNED_BYTE, &image1[0]);
 
 
 
@@ -461,7 +464,7 @@ float getWigthText(char CHARone,int fontStyle,int size)
 				
 	 }
 
-	bool loadPR(string url)
+	bool loadPR(std::string url)
 	{
 		   /* font DEF;
 			LoTEinfo t = loadTexture(url.c_str());
@@ -1166,7 +1169,9 @@ void DrawPlane(float SizeX,float SizeY,float TX,float TY,float R,float G, float 
 {
 	
 
-	glUseProgram(0);
+//	glUseProgram(0);
+	
+	
 
 	glColor4ub(R,G,B,A);
 	glBindTexture(GL_TEXTURE_2D,TextuteID);
